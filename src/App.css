@@ -1,38 +1,70 @@
-.App {
-  text-align: center;
+.app-wrapper {
+  margin: 0 auto;
+  width: 1903px;
+  display: grid;
+  grid-template-areas: 
+    "head head head head"
+    "cov cov cov cov"
+    ". nv cont ."
+  ;
+  grid-template-rows: 60px 0.3fr 1fr;
+  grid-template-columns: 1fr 1fr 10fr 1fr;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav {
+  grid-area: nv;
+  background-color: green;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  grid-area: head;
+  background-color: white;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 0 15px;
+  justify-content: space-between;
+}
+.logo img {
+  width: 80px;
+}
+.content {
+  grid-area: cont;
+  background-color: red;
+}
+.cover {
+  grid-area: cov;
+  background-color: skyblue;
 }
 
-.App-link {
-  color: #61dafb;
+.menu {
+  display: flex;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.menu li {
+  width: 120px;
+  height: 50px;
+}
+
+.menu a, .setting-area a  {
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	line-height: 50px;
+  color: #3c3c3c;
+  
+}
+.setting-area{
+  display: flex;
+}
+.setting-area img {
+  height: 20px;
+  vertical-align: middle;
+}
+.setting-area div {   
+	width: 50px;
+	text-align: center;
+}
+.photo-header img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 }
