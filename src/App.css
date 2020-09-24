@@ -1,6 +1,5 @@
 .app-wrapper {
   margin: 0 auto;
-  width: 1903px;
   display: grid;
   grid-template-areas: 
     "head head head head"
@@ -24,6 +23,7 @@
 }
 .logo img {
   width: 80px;
+  cursor: pointer;
 }
 .content {
   grid-area: cont;
@@ -50,16 +50,20 @@
 	text-align: center;
 	line-height: 50px;
   color: #3c3c3c;
-  
 }
-.setting-area{
+.menu a:hover, .setting-panel a:hover {
+  background-color: gainsboro;
+  color: darkslategrey;
+}
+.setting-panel{
   display: flex;
+  margin-right: 30px;
 }
-.setting-area img {
+.setting-panel img {
   height: 20px;
   vertical-align: middle;
 }
-.setting-area div {   
+.setting-panel div {   
 	width: 50px;
 	text-align: center;
 }
@@ -67,4 +71,9 @@
   height: 40px;
   width: 40px;
   border-radius: 50%;
+  cursor: pointer;
+}
+.setting-area {
+  display: flex;
+  align-items: center;
 }
