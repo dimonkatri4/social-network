@@ -31,7 +31,7 @@
 }
 .cover {
   grid-area: cov;
-  background-color: skyblue;
+  position: relative;
 }
 
 .menu {
@@ -76,4 +76,38 @@
 .setting-area {
   display: flex;
   align-items: center;
+}
+.cover-photo {
+  height: 30vw;
+}
+.cover-photo img {
+  width: 100%;
+  height: 100%;
+}
+
+.main-photo {
+  border: 4px solid rgba(255, 255, 255, 0.99);
+  box-shadow: 0 1px 0 #e1e8ed;
+  border-radius: 100%;
+  display: inline-block;
+  position: absolute;
+  top: 19vw;
+  left: 1vw;
+  height: 14vw;
+}
+.main-photo img {
+  width: 14vw;
+  height: 100%;
+  border-radius: 100%;
+}
+
+.cover-menu {
+  height: 4vw;
+  padding: 0 17vw;
+  line-height: 4vw;
+}
+
+.user-name {
+  font-size: 2em;
+  color: saddlebrown;
 }
