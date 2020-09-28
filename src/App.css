@@ -34,7 +34,7 @@
   position: relative;
 }
 
-.menu {
+.menu, .cover-menu {
   display: flex;
 
 }
@@ -44,16 +44,16 @@
   height: 50px;
 }
 
-.menu a, .setting-area a  {
+.menu a, .setting-area a, .cover-menu a  {
 	display: block;
 	text-decoration: none;
 	text-align: center;
 	line-height: 50px;
-  color: #3c3c3c;
+  color: #424242;
 }
-.menu a:hover, .setting-panel a:hover {
-  background-color: gainsboro;
-  color: darkslategrey;
+.menu a:hover, .setting-panel a:hover, .cover-menu a:hover  {
+  background-color: #e3e6f1;
+  color:  #007bff;
 }
 .setting-panel{
   display: flex;
@@ -100,14 +100,23 @@
   height: 100%;
   border-radius: 100%;
 }
-
-.cover-menu {
+.cover-info {
   height: 4vw;
-  padding: 0 17vw;
+  padding-left: 17vw;
   line-height: 4vw;
+  display: flex;
 }
-
 .user-name {
   font-size: 2em;
-  color: saddlebrown;
+  color: #088dcd;
+  padding-right: 30px;
+}
+
+.cover-menu a {
+  line-height: inherit;
+}
+
+.cover-menu li {
+  width: 90px;
+  height: auto;
 }
