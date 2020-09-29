@@ -36,7 +36,7 @@
 
 .menu, .cover-menu {
   display: flex;
-
+  height: 50px;
 }
 
 .menu li {
@@ -105,15 +105,13 @@
   padding-left: 17vw;
   line-height: 4vw;
   display: flex;
+  margin: 5px 0;
+  align-items: center;
 }
 .user-name {
   font-size: 2em;
   color: #088dcd;
   padding-right: 30px;
-}
-
-.cover-menu a {
-  line-height: inherit;
 }
 
 .cover-menu li {
