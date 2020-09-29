@@ -2,12 +2,12 @@
   margin: 0 auto;
   display: grid;
   grid-template-areas: 
-    "head head head head"
-    "cov cov cov cov"
-    ". nv cont ."
+    "head head head head head "
+    "cov cov cov cov cov"
+    ". nv cont . ."
   ;
   grid-template-rows: 60px 0.3fr 1fr;
-  grid-template-columns: 1fr 1fr 10fr 1fr;
+  grid-template-columns: 1fr 2fr 5fr 2fr 1fr;
 }
 .nav {
   grid-area: nv;
@@ -28,6 +28,9 @@
 .content {
   grid-area: cont;
   background-color: red;
+}
+.content img {
+  width: 100%;
 }
 .cover {
   grid-area: cov;
