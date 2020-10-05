@@ -2,16 +2,17 @@
   margin: 0 auto;
   display: grid;
   grid-template-areas: 
-    "head head head head head "
-    "cov cov cov cov cov"
-    ". nv cont . ."
+    "head"
+    "cov"
+    "main"
   ;
   grid-template-rows: 60px 0.3fr 1fr;
-  grid-template-columns: 1fr 2fr 5fr 2fr 1fr;
+  grid-template-columns: 1fr;
 }
 .nav {
   grid-area: nv;
   background-color: green;
+  margin: 0 10px;
 }
 .header {
   grid-area: head;
@@ -21,6 +22,17 @@
   padding: 0 15px;
   justify-content: space-between;
 }
+.main-page {
+  background-color: #f4f2f2;
+  padding-top: 30px;
+  grid-area: main;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 2fr 5fr 2fr 1fr;
+  grid-template-areas: 
+    ". nv cont sd ."
+  ;
+}
 .logo img {
   width: 80px;
   cursor: pointer;
@@ -28,6 +40,7 @@
 .content {
   grid-area: cont;
   background-color: red;
+  margin: 0 10px;
 }
 .content img {
   width: 100%;
@@ -108,7 +121,6 @@
   padding-left: 17vw;
   line-height: 4vw;
   display: flex;
-  margin: 5px 0;
   align-items: center;
 }
 .user-name {
@@ -120,4 +132,9 @@
 .cover-menu li {
   width: 90px;
   height: auto;
+}
+.sidebar {
+  grid-area: sd;
+  background-color: bisque;
+  margin: 0 10px;
 }
