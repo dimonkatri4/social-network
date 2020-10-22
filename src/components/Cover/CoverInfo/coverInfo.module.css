@@ -1,0 +1,12 @@
+.cover_info {
+    height: 4vw;
+    padding-left: 17vw;
+    line-height: 4vw;
+    display: flex;
+    align-items: center;
+  }
+  .user_name {
+    font-size: 2em;
+    color: #088dcd;
+    padding-right: 30px;
+  }

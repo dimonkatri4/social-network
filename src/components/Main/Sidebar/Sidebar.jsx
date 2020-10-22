@@ -1,9 +1,10 @@
 import React from 'react'
+import s from "./sidebar.module.css"
 
 const Sidebar = () => {
     return (
-        <div className='sidebar'>
-            <div className='friends-block'>
+        <div className={s.sidebar}>
+            <div className='friends_block'>
                 <div>Friends</div>
                 <div>
                     <img src="" alt=""/>

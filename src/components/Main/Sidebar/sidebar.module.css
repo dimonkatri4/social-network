@@ -1,0 +1,5 @@
+.sidebar {
+    grid-area: sd;
+    background-color: bisque;
+    margin: 0 10px;
+  }

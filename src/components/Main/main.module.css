@@ -1,0 +1,12 @@
+.main_page {
+    background-color: #f4f2f2;
+    padding-top: 30px;
+    grid-area: main;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr 5fr 2fr 1fr;
+    grid-template-areas: 
+      ". nv cont sd ."
+    ;
+  }
+  

@@ -1,0 +1,15 @@
+.main_photo {
+    border: 4px solid rgba(255, 255, 255, 0.99);
+    box-shadow: 0 1px 0 #e1e8ed;
+    border-radius: 100%;
+    display: inline-block;
+    position: absolute;
+    top: 19vw;
+    left: 1vw;
+    height: 14vw;
+  }
+  .main_photo img {
+    width: 14vw;
+    height: 100%;
+    border-radius: 100%;
+  }

@@ -1,0 +1,6 @@
+.nav {
+    grid-area: nv;
+    background-color: green;
+    margin: 0 10px;
+  }
+  

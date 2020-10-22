@@ -1,8 +1,9 @@
 import React from 'react'
+import s from "./coverMenu.module.css"
 
 const CoverMenu = () => {
     return (
-        <ul className="cover-menu">
+        <ul className={`${s.cover_menu} cover_menu`}>
             <li><a href="/">Time Line</a></li>
             <li><a href="/">Photos</a></li>
             <li><a href="/">Videos</a></li>

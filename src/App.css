@@ -9,132 +9,21 @@
   grid-template-rows: 60px 0.3fr 1fr;
   grid-template-columns: 1fr;
 }
-.nav {
-  grid-area: nv;
-  background-color: green;
-  margin: 0 10px;
-}
-.header {
-  grid-area: head;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  padding: 0 15px;
-  justify-content: space-between;
-}
-.main-page {
-  background-color: #f4f2f2;
-  padding-top: 30px;
-  grid-area: main;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 2fr 5fr 2fr 1fr;
-  grid-template-areas: 
-    ". nv cont sd ."
-  ;
-}
-.logo img {
-  width: 80px;
-  cursor: pointer;
-}
-.content {
-  grid-area: cont;
-  background-color: red;
-  margin: 0 10px;
-}
-.content img {
-  width: 100%;
-}
-.cover {
-  grid-area: cov;
-  position: relative;
-}
 
-.menu, .cover-menu {
+.menu, .cover_menu {
   display: flex;
   height: 50px;
 }
 
-.menu li {
-  width: 120px;
-  height: 50px;
-}
-
-.menu a, .setting-area a, .cover-menu a  {
+.menu a, .setting_area a, .cover_menu a  {
 	display: block;
 	text-decoration: none;
 	text-align: center;
 	line-height: 50px;
   color: #424242;
 }
-.menu a:hover, .setting-panel a:hover, .cover-menu a:hover  {
+.menu a:hover, .setting_panel a:hover, .cover_menu a:hover  {
   background-color: #e3e6f1;
   color:  #007bff;
 }
-.setting-panel{
-  display: flex;
-  margin-right: 30px;
-}
-.setting-panel img {
-  height: 20px;
-  vertical-align: middle;
-}
-.setting-panel div {   
-	width: 50px;
-	text-align: center;
-}
-.photo-header img {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-.setting-area {
-  display: flex;
-  align-items: center;
-}
-.cover-photo {
-  height: 30vw;
-}
-.cover-photo img {
-  width: 100%;
-  height: 100%;
-}
 
-.main-photo {
-  border: 4px solid rgba(255, 255, 255, 0.99);
-  box-shadow: 0 1px 0 #e1e8ed;
-  border-radius: 100%;
-  display: inline-block;
-  position: absolute;
-  top: 19vw;
-  left: 1vw;
-  height: 14vw;
-}
-.main-photo img {
-  width: 14vw;
-  height: 100%;
-  border-radius: 100%;
-}
-.cover-info {
-  height: 4vw;
-  padding-left: 17vw;
-  line-height: 4vw;
-  display: flex;
-  align-items: center;
-}
-.user-name {
-  font-size: 2em;
-  color: #088dcd;
-  padding-right: 30px;
-}
-
-.cover-menu li {
-  width: 90px;
-  height: auto;
-}
-.sidebar {
-  grid-area: sd;
-  background-color: bisque;
-  margin: 0 10px;
-}
