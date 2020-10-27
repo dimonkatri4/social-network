@@ -5,7 +5,7 @@
     "head"
     "cov"
     "main"
-  ;
+    ;
   grid-template-rows: 60px 0.3fr 1fr;
   grid-template-columns: 1fr;
 }
@@ -25,5 +25,11 @@
 .menu a:hover, .setting_panel a:hover, .cover_menu a:hover  {
   background-color: #e3e6f1;
   color:  #007bff;
+}
+.profile_block {
+  border: 1px solid #ede9e9;
+  border-radius: 5px;
+  background-color: #fdfdfd;
+  margin-bottom: 20px;
 }
 

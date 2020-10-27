@@ -1,0 +1,17 @@
+.profile_block img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50px;
+    vertical-align: top;
+    margin: 20px;
+}
+.profile_block textarea {
+    margin: 20px;
+    width: 75%;
+    margin-left: 0px;
+    border: 1px solid #eeeeee;
+    outline: none;
+    resize: none;
+    border-radius: 5px;
+    padding: 10px;
+}
