@@ -3,7 +3,7 @@ import s from "./navbar.module.css"
 
 const Navbar = () => {
     return (
-        <nav className={s.nav}>
+        <nav className={`${s.nav} profile_block`}>
             <div>
                 <a href='/'>Profile</a>
             </div>

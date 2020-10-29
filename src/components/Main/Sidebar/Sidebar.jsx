@@ -3,7 +3,7 @@ import s from "./sidebar.module.css"
 
 const Sidebar = () => {
     return (
-        <div className={s.sidebar}>
+        <div className={` ${s.sidebar} profile_block`}>
             <div className='friends_block'>
                 <div>Friends</div>
                 <div>

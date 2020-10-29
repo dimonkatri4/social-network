@@ -1,4 +1,4 @@
-.profile_block img {
+.ava {
     height: 60px;
     width: 60px;
     border-radius: 50px;
@@ -7,11 +7,67 @@
 }
 .profile_block textarea {
     margin: 20px;
-    width: 75%;
+    width: 100%;
     margin-left: 0px;
     border: 1px solid #eeeeee;
     outline: none;
     resize: none;
     border-radius: 5px;
     padding: 10px;
+    border-bottom: none;
+    height: 100px;
+    font-size: 25px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.create_post {
+    display: flex;
+    position: relative;
+    height: 190px;
+}
+.panel {
+    position: absolute;
+    border: 1px solid #eeeeee;
+    left: 100px;
+    margin-right: 120px;
+    bottom: 20px;
+    width: -webkit-fill-available;
+    border-top: none;
+    height: 35px;
+    line-height: 35px;
+    background: #fff;
+    display: flex;
+    justify-content: flex-end;
+}
+.panel img {
+    height: 15px;
+    width: 15px;
+    padding: 10px;
+}
+
+.panel a {
+    display: block;
+}
+
+.item  {
+    background-image: url(/images/icons/music.png);
+    height: 15px;
+    width: 15px;
+}
+.panel a:hover {
+    background-color: #e3e6f1;
+}
+.panel button {
+    background-color: #088dcd;
+    cursor: pointer;
+    border: none;
+    height: 25px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    width: 80px;
+    align-self: center;
+    margin: 15px;
+    outline: none;
 }
