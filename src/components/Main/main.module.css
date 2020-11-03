@@ -9,4 +9,10 @@
       ". nv cont sd ."
     ;
   }
+
+  .content {
+    grid-area: cont;
+    margin: 0 10px;
+  }
+
   
