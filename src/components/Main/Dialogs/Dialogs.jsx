@@ -20,6 +20,8 @@ const Dialogs = () => {
         { id: '4', message: 'YO!' }
     ]
 
+    
+
 
     return (
         <div className={`${s.dialogs} profile_block`}>
