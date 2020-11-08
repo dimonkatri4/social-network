@@ -17,21 +17,23 @@ const Dialogs = () => {
         { id: '1', message: 'Hi!' },
         { id: '2', message: 'How are you?' },
         { id: '3', message: 'Do you like coffe?' },
-        { id: '4', message: 'YO!' }
+        { id: '4', message: 'YO!' },
+        { id: '5', message: 'Blablabla' }
     ]
 
-    
+    let dialogsElement = dialogsData
+        .map (dialog => <DialogItem name={dialog.name} id={dialog.id} />)
 
+    let messagesElement = messagesDate
+        .map (message => <Message message={message.message} /> )
 
     return (
         <div className={`${s.dialogs} profile_block`}>
             <div className={s.dialogsItem}>
-                <DialogItem name={dialogsData[0].name} id={dialogsData[0].id} />
-                <DialogItem name={dialogsData[1].name} id={dialogsData[1].id} />
+                {dialogsElement}
             </div>
             <div className={s.messages}>
-                <Message message={messagesDate[0].message} />
-                <Message message={messagesDate[1].message} />
+                {messagesElement}
             </div>
         </div>
     )
