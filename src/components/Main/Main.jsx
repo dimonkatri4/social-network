@@ -3,24 +3,29 @@ import Navbar from './Navbar/Navbar'
 import Profile from './Profile/Profile'
 import Sidebar from './Sidebar/Sidebar'
 import s from "./main.module.css"
-import {Route} from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Dialogs from './Dialogs/Dialogs'
 import News from './News/News'
 import Music from './Music/Music'
 import Settings from './Settings/Settings'
 
-const Main = () => {
+const Main = (props) => {
     return (
         <div className={s.main_page}>
-            <Navbar/>
+            <Navbar />
             <div className={s.content}>
-                <Route path='/profile' component={Profile} />
-                <Route path='/dialog' component={Dialogs} />
+                <Route path='/profile' render={() => <Profile />} />
+                <Route path='/dialog' render={() =>
+                    <Dialogs
+                        dialogsData={props.dialogsData}
+                        messagesData={props.messagesData}
+                    />}
+                />
                 <Route path='/news' component={News} />
                 <Route path='/music' component={Music} />
                 <Route path='/settings' component={Settings} />
             </div>
-            <Sidebar/>
+            <Sidebar />
         </div>
     )
 }
