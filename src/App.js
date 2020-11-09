@@ -13,6 +13,7 @@ const App = (props) => {
       <Main
         dialogsData = {props.dialogsData}
         messagesData = {props.messagesData}
+        postsData = {props.postsData}
       />
     </div>
   );

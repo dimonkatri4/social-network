@@ -21,12 +21,20 @@ let messagesData = [
   { id: '5', message: 'Blablabla' }
 ]
 
+let postsData = [
+  {id:1, message:'Hi, how are you?', likeCount: 10},
+  {id:2, message:'It\'s my first post', likeCount: 5},
+  {id:3, message:'Helo!', likeCount: 7},
+  {id:4, message:'Hi, how are you?', likeCount: 14},
+]
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <App 
         dialogsData = {dialogsData}
         messagesData = {messagesData}
+        postsData = {postsData}
       />
     </BrowserRouter>
   </React.StrictMode>,

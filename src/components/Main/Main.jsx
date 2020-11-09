@@ -14,7 +14,10 @@ const Main = (props) => {
         <div className={s.main_page}>
             <Navbar />
             <div className={s.content}>
-                <Route path='/profile' render={() => <Profile />} />
+                <Route path='/profile' render={() => <Profile
+                    postsData={props.postsData}
+                    />} 
+                />
                 <Route path='/dialog' render={() =>
                     <Dialogs
                         dialogsData={props.dialogsData}
