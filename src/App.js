@@ -11,9 +11,7 @@ const App = (props) => {
       <Header/>
       <Cover/>
       <Main
-        dialogsData = {props.dialogsData}
-        messagesData = {props.messagesData}
-        postsData = {props.postsData}
+        state = {props.state}
       />
     </div>
   );

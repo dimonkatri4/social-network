@@ -15,13 +15,12 @@ const Main = (props) => {
             <Navbar />
             <div className={s.content}>
                 <Route path='/profile' render={() => <Profile
-                    postsData={props.postsData}
+                    state={props.state.profilePage}
                     />} 
                 />
                 <Route path='/dialog' render={() =>
                     <Dialogs
-                        dialogsData={props.dialogsData}
-                        messagesData={props.messagesData}
+                        state = {props.state.dialogsPage}
                     />}
                 />
                 <Route path='/news' component={News} />
