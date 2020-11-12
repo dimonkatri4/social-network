@@ -8,11 +8,11 @@
         },
         dialogsPage: {
             dialogs: [
-                { name: 'Dima', id: '1' },
-                { name: 'Oleg', id: '2' },
-                { name: 'Yuriy', id: '3' },
-                { name: 'Petro', id: '4' },
-                { name: 'Andriy', id: '5' }
+                { name: 'Dima', id: '1', img: 'images/users/1.jpg' },
+                { name: 'Oleg', id: '2', img: 'images/users/2.jpg' },
+                { name: 'Yuriy', id: '3', img: 'images/users/3.png' },
+                { name: 'Petro', id: '4', img: 'images/users/4.jpg' },
+                { name: 'Andriy', id: '5', img: 'images/users/5.jpg' }
             ],
             messages: [
                 { id: '1', message: 'Hi!' },

@@ -1,6 +1,72 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 4fr 10fr;
+    grid-template-rows: 50px 1fr;
+    grid-template-areas: 
+        "c c"
+        "d m"
+    ;
+    padding: 20px;
+    
+}
+
+.dialogsItem {
+    border-right: 1px solid #e1e8ed ;
+    grid-area: d;
+}
+
+.caption {
+    grid-area: c;
+    position: relative;
+}
+
+.caption h3 {
+    font-size: larger;
+    font-weight: 600;
+    color: #424242;
+    
+}
+
+.messages {
+    grid-area: m;
+}
+
+.caption h3::before {
+    bottom: 20px;
+    content: "";
+    height: 2px;
+    left: 0;
+    position: absolute;
+    width: 50px;
+    background: #088dcd;
+}
+
+.name_dialog img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.name_dialog {
+    margin: 20px;
+    margin-top: 0px;
+    display: flex;
+    border-bottom: 1px solid #e1e8ed ;
+    padding-bottom: 15px;   
 }
 
 
+.status {
+    padding-top: 10px;
+    font-style: italic;
+    text-transform: capitalize;
+    color: #838383;
+    font-size: 14px;
+    font-weight: 100;
+}
+.name {
+    font-weight: 600;
+    font-size: large;
+    color: #545454;
+}

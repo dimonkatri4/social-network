@@ -1,3 +1,25 @@
+.text {
+    padding: 5px;
+    background: rgba(39, 170, 225, 0.1);
+}
+
+.user_photo img {
+    height: 30px;
+    width: 30px;
+    border-radius: 25px;
+    margin-right: 10px;
+}
+
 .message {
-    padding: 10px;
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+
+.triangle {
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-right: 9px solid rgba(39, 170, 225, 0.1);
 }
