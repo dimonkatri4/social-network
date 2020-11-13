@@ -41,32 +41,3 @@
     background: #088dcd;
 }
 
-.name_dialog img {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    margin-right: 20px;
-}
-
-.name_dialog {
-    margin: 20px;
-    margin-top: 0px;
-    display: flex;
-    border-bottom: 1px solid #e1e8ed ;
-    padding-bottom: 15px;   
-}
-
-
-.status {
-    padding-top: 10px;
-    font-style: italic;
-    text-transform: capitalize;
-    color: #838383;
-    font-size: 14px;
-    font-weight: 100;
-}
-.name {
-    font-weight: 600;
-    font-size: large;
-    color: #545454;
-}

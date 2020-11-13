@@ -12,7 +12,7 @@ const CreatePost = () => {
                     <a href="/"><img src="images/icons/picture.png"/></a>
                     <a href="/"><img src="images/icons/video-camera.png"/></a>
                     <a href="/"><img src="images/icons/photo-camera.png"/></a>
-                    <button>Publish</button>
+                    <button className='button'>Publish</button>
                 </div>
             </div>
         </div>

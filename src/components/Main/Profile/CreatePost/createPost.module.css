@@ -58,16 +58,5 @@
     background-color: #e3e6f1;
 }
 .panel button {
-    background-color: #088dcd;
-    cursor: pointer;
-    border: none;
-    height: 25px;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 500;
-    width: 80px;
-    align-self: center;
     margin: 15px;
-    outline: none;
 }
