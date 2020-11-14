@@ -46,3 +46,23 @@
     outline: none;
 }
 
+.title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #424242;
+}
+
+.title::before {
+    top: 20px;
+    content: "";
+    height: 2px;
+    left: 0;
+    position: absolute;
+    width: 50px;
+    background: #088dcd;
+}
+
+.caption {
+  position: relative;
+  margin-bottom: 20px;
+}

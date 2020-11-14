@@ -27,7 +27,7 @@ const Main = (props) => {
                 <Route path='/music' component={Music} />
                 <Route path='/settings' component={Settings} />
             </div>
-            <Sidebar />
+            <Sidebar state={props.state.friendsPage} />
         </div>
     )
 }

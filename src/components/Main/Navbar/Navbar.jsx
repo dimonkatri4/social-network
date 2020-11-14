@@ -5,6 +5,9 @@ import s from "./navbar.module.css"
 const Navbar = () => {
     return (
         <nav className={`${s.nav} profile_block`}>
+            <div className={`${s.caption} caption`}>
+                <h3 className="title">Shortcuts</h3>
+            </div>
             <div className={s.item}>
                 <NavLink to='/profile' activeClassName={s.active}>Profile</NavLink>
             </div >

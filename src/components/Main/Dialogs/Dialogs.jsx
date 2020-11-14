@@ -24,8 +24,8 @@ const Dialogs = (props) => {
 
     return (
         <div className={`${s.dialogs} profile_block`}>
-            <div className={s.caption}>
-                <h3>All Messages</h3>
+            <div className={`${s.caption} caption`}>
+                <h3 className="title">All Messages</h3>
             </div>
             <div className={s.dialogsItem}>
                 {dialogsElement}

@@ -17,27 +17,10 @@
 
 .caption {
     grid-area: c;
-    position: relative;
-}
-
-.caption h3 {
-    font-size: larger;
-    font-weight: 600;
-    color: #424242;
-    
 }
 
 .messages {
     grid-area: m;
 }
 
-.caption h3::before {
-    bottom: 20px;
-    content: "";
-    height: 2px;
-    left: 0;
-    position: absolute;
-    width: 50px;
-    background: #088dcd;
-}
 

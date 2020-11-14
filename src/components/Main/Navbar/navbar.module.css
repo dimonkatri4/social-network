@@ -12,12 +12,9 @@
   .item a {
     color: rgb(39, 0, 65);
     text-decoration: none;
-    margin: 10px;
     
   }
   .item a.active {
     color: #088dcd;
   }
 
-
-  
