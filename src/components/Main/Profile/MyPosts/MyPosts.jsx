@@ -7,7 +7,7 @@ const MyPosts = (props) => {
         .map( post => <Post message={post.message} likeCount={post.likeCount} />)
 
     return (
-        <div className="profile_block">
+        <div>
             {postElement}
         </div>
     )
