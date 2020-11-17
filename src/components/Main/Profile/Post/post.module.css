@@ -5,5 +5,9 @@
 }
 
 .item {
-    margin: 20px;
+    padding: 30px;
+}
+
+.caption {
+    display: flex;
 }
