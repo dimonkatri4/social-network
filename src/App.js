@@ -12,6 +12,7 @@ const App = (props) => {
       <Cover/>
       <Main
         state = {props.state}
+        addPost = {props.addPost}
       />
     </div>
   );

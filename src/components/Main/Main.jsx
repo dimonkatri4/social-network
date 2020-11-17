@@ -16,6 +16,7 @@ const Main = (props) => {
             <div className={s.content}>
                 <Route path='/profile' render={() => <Profile
                     state={props.state.profilePage}
+                    addPost={props.addPost}
                     />} 
                 />
                 <Route path='/dialog' render={() =>

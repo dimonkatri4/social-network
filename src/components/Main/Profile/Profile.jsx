@@ -6,7 +6,7 @@ import s from "./profile.module.css"
 const Profile = (props) => {
     return (
         <div className={s.content}>
-            <CreatePost/>
+            <CreatePost addPost={props.addPost} />
             <MyPosts posts={props.state.posts} />
         </div>
     )
