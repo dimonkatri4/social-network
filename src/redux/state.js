@@ -22,7 +22,7 @@
                 { id: '5', message: 'Blablabla' }
             ] 
         },
-        friendsPage: {
+        sidebarPage: {
             friends: [
                 {id:'1', name: 'Sami', surname:'Kizibash', img:'images/users/1.jpg'},
                 {id:'2', name: 'Aleck', surname:'Wu', img:'images/users/2.jpg'},
