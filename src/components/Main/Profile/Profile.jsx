@@ -6,8 +6,10 @@ import s from "./profile.module.css"
 const Profile = (props) => {
     return (
         <div className={s.content}>
-            <CreatePost addPost={props.addPost} />
-            <MyPosts posts={props.state.posts} />
+            <CreatePost addPost={props.addPost}
+                newPostText={props.profilePage.newPostText}
+                updateNewPostText={props.updateNewPostText} />
+            <MyPosts posts={props.profilePage.posts} />
         </div>
     )
 }

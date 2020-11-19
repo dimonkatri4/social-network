@@ -6,7 +6,8 @@ import { rerenderEntireTree } from "../render";
                 { id: 2, message: 'It\'s my first post', likeCount: 5 },
                 { id: 3, message: 'Helo!', likeCount: 7 },
                 { id: 4, message: 'Hi, how are you?', likeCount: 14 },
-            ]
+            ],
+            newPostText: ''
         },
         dialogsPage: {
             dialogs: [
@@ -37,13 +38,19 @@ import { rerenderEntireTree } from "../render";
     }
 
 
-    export let addPost = (postMessage) => {
+    export let addPost = () => {
         let newPost = {
             id:5,
-            message: postMessage,
+            message: state.profilePage.newPostText,
             likeCount: 0
         };
-        state.profilePage.posts.push(newPost);
+        state.profilePage.posts.unshift(newPost);
+        state.profilePage.newPostText = '';
+        rerenderEntireTree(state)
+    }
+
+    export let updateNewPostText = (newText) => {
+        state.profilePage.newPostText = newText;
         rerenderEntireTree(state);
     }
 

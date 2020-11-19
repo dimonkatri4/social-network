@@ -10,16 +10,16 @@ import SelectDialog from './SelectDialog/SelectDialog'
 
 const Dialogs = (props) => {
 
-    let nameDialogs = props.state.dialogs
+    let nameDialogs = props.dialogsPage.dialogs
         .map(el => <Route path={`/dialog/${el.id}`} render={() => <NameDialog img={el.img} name={el.name} />} />)
    
-    let inputMessageElement = props.state.dialogs
+    let inputMessageElement = props.dialogsPage.dialogs
         .map(el => <Route path={`/dialog/${el.id}`} render={() => <InputMessage />} />)
 
-    let dialogsElement = props.state.dialogs
+    let dialogsElement = props.dialogsPage.dialogs
         .map(dialog => <DialogItem name={dialog.name} id={dialog.id} img={dialog.img} />)
 
-    let messagesElement = props.state.messages
+    let messagesElement = props.dialogsPage.messages
         .map(message => <Route path={`/dialog/${message.id}`} render={() => <Message message={message.message} />} />)
 
     return (
