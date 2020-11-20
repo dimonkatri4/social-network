@@ -7,6 +7,11 @@ const MyPosts = (props) => {
         .map(post => <Post
             message={post.message}
             likeCount={post.likeCount}
+            userName = {post.userName}
+            commentsCount = {post.commentsCount}
+            viewsCount = {post.viewsCount}
+            shareCount = {post.shareCount}
+            date={post.date}
         />)
 
     return (
