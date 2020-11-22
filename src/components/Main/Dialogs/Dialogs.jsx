@@ -10,17 +10,19 @@ import SelectDialog from './SelectDialog/SelectDialog'
 
 const Dialogs = (props) => {
 
+    //   debugger;
     let nameDialogs = props.dialogsPage.dialogs
         .map(el => <Route path={`/dialog/${el.id}`} render={() => <NameDialog img={el.img} name={el.name} />} />)
-   
-    let inputMessageElement = props.dialogsPage.dialogs
-        .map(el => <Route path={`/dialog/${el.id}`} render={() => <InputMessage />} />)
+
+    // let number = Number();
+    // props.dialogsPage.dialogs
+    //     .map(el => <Route path={`/dialog/${el.id}`} render={() => <InputMessage addMessage={props.addMessage} />} />)
 
     let dialogsElement = props.dialogsPage.dialogs
         .map(dialog => <DialogItem name={dialog.name} id={dialog.id} img={dialog.img} />)
 
     let messagesElement = props.dialogsPage.messages
-        .map(message => <Route path={`/dialog/${message.id}`} render={() => <Message message={message.message} />} />)
+        .map(message => <Route path='/dialog/:numder' render={() => <Message message={message.message} />} />)
 
     return (
         <div className={`${s.dialogs} profile_block`}>
@@ -33,8 +35,12 @@ const Dialogs = (props) => {
             <div className={s.messages}>
                 {nameDialogs}
                 {messagesElement}
-                {inputMessageElement}
-                <Route exact path="/dialog" render={()=> <SelectDialog/>} />
+                <Route path='/dialog/:number' render={() => <InputMessage
+                    addMessage={props.addMessage}
+                    newMessageText={props.dialogsPage.newMessageText}
+                    updateNewMessageText = {props.updateNewMessageText}
+                />} />
+                <Route exact path="/dialog" render={() => <SelectDialog />} />
             </div>
         </div>
     )

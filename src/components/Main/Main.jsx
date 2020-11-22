@@ -23,6 +23,8 @@ const Main = (props) => {
                 <Route path='/dialog' render={() =>
                     <Dialogs
                     dialogsPage = {props.state.dialogsPage}
+                    addMessage = {props.addMessage}
+                    updateNewMessageText = {props.updateNewMessageText}
                     />}
                 />
                 <Route path='/news' component={News} />

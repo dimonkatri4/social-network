@@ -3,6 +3,8 @@ import s from './message.module.css'
 
 
 const Message = (props) => {
+
+
     return (
         <div className={s.message}>
             <div className={s.user_photo}>

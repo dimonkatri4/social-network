@@ -1,4 +1,7 @@
-import { rerenderEntireTree } from "../render";
+
+let rerenderEntireTree = () => {
+
+}
 
     let state = {
         profilePage: {posts:[
@@ -23,7 +26,8 @@ import { rerenderEntireTree } from "../render";
                 { id: '3', message: 'Do you like coffe?' },
                 { id: '4', message: 'YO!' },
                 { id: '5', message: 'Blablabla' }
-            ] 
+            ],
+            newMessageText: ''
         },
         sidebarPage: {
             friends: [
@@ -59,6 +63,23 @@ import { rerenderEntireTree } from "../render";
         rerenderEntireTree(state);
     }
 
-    
+    export let addMessage = () => {
+        let newMessage = {
+            id: 6,
+            message: state.dialogsPage.newMessageText
+        }
+        state.dialogsPage.messages.push(newMessage);
+        state.dialogsPage.newMessageText = '';
+        rerenderEntireTree(state)
+    }
+
+    export let updateNewMessageText = (newText) => {
+        state.dialogsPage.newMessageText = newText;
+        rerenderEntireTree(state)
+    }
+
+    export const subscribe = (observer) => {
+        rerenderEntireTree = observer
+    }
 
     export default state
