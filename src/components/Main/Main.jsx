@@ -10,7 +10,7 @@ import Music from './Music/Music'
 import Settings from './Settings/Settings'
 
 const Main = (props) => {
-    debugger;
+    
     return (
         <div className={s.main_page}>
             <Navbar />
