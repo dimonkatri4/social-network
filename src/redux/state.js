@@ -59,12 +59,12 @@ let store = {
         };
         this._state.profilePage.posts.unshift(newPost);
         this._state.profilePage.newPostText = '';
-        this._subscriber(this._state)
+        this._subscriber()
     },
 
     updateNewPostText(newText) {
         this._state.profilePage.newPostText = newText;
-        this._subscriber(this._state)
+        this._subscriber();
     },
 
      addMessage() {
@@ -74,12 +74,12 @@ let store = {
         }
         this._state.dialogsPage.messages.push(newMessage);
         this._state.dialogsPage.newMessageText = '';
-        this._subscriber(this._state)
+        this._subscriber();
     },
 
     updateNewMessageText(newText) {
         this._state.dialogsPage.newMessageText = newText;
-        this._subscriber(this._state)
+        this._subscriber();
     },
 
     subscribe(observer)  {

@@ -8,24 +8,23 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './redux/state'
 
 
-let rerenderEntireTree = () => {
+
+let rerenderEntireTree = (state) => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
         <App 
-          state = {store.getState()}
-          addPost={store.addPost}
-          updateNewPostText = {store.updateNewPostText}
-          addMessage = {store.addMessage}
-          updateNewMessageText = {store.updateNewMessageText}
+          state = {state}
+          store = {store}
         />
       </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')
   );
+
 }
 
-rerenderEntireTree();
+rerenderEntireTree(store.getState());
 
 store.subscribe(rerenderEntireTree);
 

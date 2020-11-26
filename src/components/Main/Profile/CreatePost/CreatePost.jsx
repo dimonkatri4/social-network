@@ -2,10 +2,9 @@ import React from 'react'
 import s from "./createPost.module.css"
 
 const CreatePost = (props) => {
-
     let newPostElement = React.createRef();
     let addText = () => {
-        props.addPost();
+        props.addPost() ;
     }
     let onPostChange = () => {
         let text = newPostElement.current.value;
