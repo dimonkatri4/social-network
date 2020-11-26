@@ -8,14 +8,16 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './redux/state'
 
 
-
 let rerenderEntireTree = (state) => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
         <App 
           state = {state}
-          store = {store}
+          addPost={store.addPost.bind(store)}
+          updateNewPostText = {store.updateNewPostText.bind(store)}
+          addMessage = {store.addMessage.bind(store)}
+          updateNewMessageText = {store.updateNewMessageText.bind(store)}
         />
       </BrowserRouter>
     </React.StrictMode>,
