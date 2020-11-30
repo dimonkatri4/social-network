@@ -36,9 +36,8 @@ const Dialogs = (props) => {
                 {nameDialogs}
                 {messagesElement}
                 <Route path='/dialog/:number' render={() => <InputMessage
-                    addMessage={props.addMessage}
                     newMessageText={props.dialogsPage.newMessageText}
-                    updateNewMessageText = {props.updateNewMessageText}
+                    dispatch = {props.dispatch}
                 />} />
                 <Route exact path="/dialog" render={() => <SelectDialog />} />
             </div>

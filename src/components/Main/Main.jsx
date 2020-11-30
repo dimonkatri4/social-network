@@ -17,15 +17,13 @@ const Main = (props) => {
             <div className={s.content}>
                 <Route path='/profile' render={() => <Profile
                     profilePage={props.state.profilePage}
-                    addPost={props.addPost}
-                    updateNewPostText = {props.updateNewPostText}
+                    dispatch = {props.dispatch}
                     />} 
                 />
                 <Route path='/dialog' render={() =>
                     <Dialogs
                     dialogsPage = {props.state.dialogsPage}
-                    addMessage = {props.addMessage}
-                    updateNewMessageText = {props.updateNewMessageText}
+                    dispatch = {props.dispatch}
                     />}
                 />
                 <Route path='/news' component={News} />
