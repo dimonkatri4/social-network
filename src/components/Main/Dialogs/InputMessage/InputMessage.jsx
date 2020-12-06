@@ -3,21 +3,20 @@ import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../.
 import s from './inputMessage.module.css'
 
 const InputMessage = (props) => {
-    let newMessageElement = React.createRef();
 
     let newMessage = () => {
         props.dispatch(addMessageActionCreator())
     }
 
-    let onMessageChange = () => {
-        let text = newMessageElement.current.value;
+    let onMessageChange = (event) => {
+        let text = event.target.value;
         props.dispatch(updateNewMessageTextActionCreator(text))
     }
 
     
     return (
         <div className={s.input_text}>
-            <textarea ref={newMessageElement}
+            <textarea
                 onChange={onMessageChange}
                 value={props.newMessageText}
                 placeholder="write message"
