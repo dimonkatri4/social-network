@@ -1,5 +1,5 @@
 import React from 'react'
-import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../../../redux/state';
+import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../../../redux/dilogs-reducer';
 import s from './inputMessage.module.css'
 
 const InputMessage = (props) => {
