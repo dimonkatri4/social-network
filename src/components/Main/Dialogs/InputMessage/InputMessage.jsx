@@ -1,16 +1,15 @@
 import React from 'react'
-import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../../../redux/dilogs-reducer';
 import s from './inputMessage.module.css'
 
 const InputMessage = (props) => {
 
     let newMessage = () => {
-        props.dispatch(addMessageActionCreator())
+        props.addMessage();
     }
 
     let onMessageChange = (event) => {
         let text = event.target.value;
-        props.dispatch(updateNewMessageTextActionCreator(text))
+        props.updateNewMessage(text);
     }
 
     

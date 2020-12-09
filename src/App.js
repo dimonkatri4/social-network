@@ -12,7 +12,7 @@ const App = (props) => {
       <Cover/>
       <Main
         state = {props.state}
-        dispatch = {props.dispatch}
+        store = {props.store}
       />
     </div>
   );
