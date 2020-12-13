@@ -17,13 +17,11 @@ const Main = (props) => {
             <div className={s.content}>
                 <Route path='/profile' render={() => <Profile
                     profilePage={props.state.profilePage}
-                    store = {props.store}
                     />}
                 />
                 <Route path='/dialog' render={() =>
                     <Dialogs
                     dialogsPage = {props.state.dialogsPage}
-                    store = {props.store}
                     />}
                 />
                 <Route path='/news' component={News} />
