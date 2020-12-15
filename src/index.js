@@ -5,7 +5,7 @@ import * as serviceWorker from './serviceWorker';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import store from './redux/state'
+import store from './redux/redux-store'
 
 
 let rerenderEntireTree = (state) => {
@@ -14,10 +14,7 @@ let rerenderEntireTree = (state) => {
       <BrowserRouter>
         <App 
           state = {state}
-          addPost={store.addPost.bind(store)}
-          updateNewPostText = {store.updateNewPostText.bind(store)}
-          addMessage = {store.addMessage.bind(store)}
-          updateNewMessageText = {store.updateNewMessageText.bind(store)}
+          store = {store}
         />
       </BrowserRouter>
     </React.StrictMode>,
@@ -28,8 +25,10 @@ let rerenderEntireTree = (state) => {
 
 rerenderEntireTree(store.getState());
 
-store.subscribe(rerenderEntireTree);
-
+store.subscribe(() => {
+    let state = store.getState();
+    rerenderEntireTree(state)
+    });
 
 
 

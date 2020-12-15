@@ -1,15 +1,12 @@
 import React from 'react'
-import CreatePost from './CreatePost/CreatePost'
 import MyPosts from './MyPosts/MyPosts'
 import s from "./profile.module.css"
+import CreatePostContainer from "./CreatePost/CreatePostContainer";
 
 const Profile = (props) => {
     return (
         <div className={s.content}>
-            <CreatePost addPost={props.addPost}
-                newPostText={props.profilePage.newPostText}
-                updateNewPostText={props.updateNewPostText}
-            />
+            <CreatePostContainer store = {props.store} />
             <MyPosts posts={props.profilePage.posts} />
         </div>
     )

@@ -2,10 +2,10 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import DialogItem from './DialogItem/DialogItem'
 import s from './dialogs.module.css'
-import InputMessage from './InputMessage/InputMessage'
 import Message from './Message/Message'
 import NameDialog from './NameDialog/NameDialog'
 import SelectDialog from './SelectDialog/SelectDialog'
+import InputMessageContainer from "./InputMessage/InputMessageContainer";
 
 
 const Dialogs = (props) => {
@@ -35,11 +35,7 @@ const Dialogs = (props) => {
             <div className={s.messages}>
                 {nameDialogs}
                 {messagesElement}
-                <Route path='/dialog/:number' render={() => <InputMessage
-                    addMessage={props.addMessage}
-                    newMessageText={props.dialogsPage.newMessageText}
-                    updateNewMessageText = {props.updateNewMessageText}
-                />} />
+                <Route path='/dialog/:number' render={() => <InputMessageContainer store={props.store} />} />
                 <Route exact path="/dialog" render={() => <SelectDialog />} />
             </div>
         </div>

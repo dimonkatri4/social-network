@@ -2,21 +2,20 @@ import React from 'react'
 import s from './inputMessage.module.css'
 
 const InputMessage = (props) => {
-    let newMessageElement = React.createRef();
 
     let newMessage = () => {
-        props.addMessage()
+        props.addMessage();
     }
 
-    let onMessageChange = () => {
-        let text = newMessageElement.current.value;
-        props.updateNewMessageText(text)
+    let onMessageChange = (event) => {
+        let text = event.target.value;
+        props.updateNewMessage(text);
     }
 
     
     return (
         <div className={s.input_text}>
-            <textarea ref={newMessageElement}
+            <textarea
                 onChange={onMessageChange}
                 value={props.newMessageText}
                 placeholder="write message"

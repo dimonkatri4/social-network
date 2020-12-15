@@ -12,10 +12,7 @@ const App = (props) => {
       <Cover/>
       <Main
         state = {props.state}
-        addPost = {props.addPost}
-        addMessage = {props.addMessage}
-        updateNewPostText = {props.updateNewPostText}
-        updateNewMessageText = {props.updateNewMessageText}
+        store = {props.store}
       />
     </div>
   );
