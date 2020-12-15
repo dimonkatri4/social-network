@@ -8,6 +8,7 @@ const CreatePost = (props) => {
     let addText = () => {
         props.addPost() ;
     }
+    debugger
     let onPostChange = () => {
         let text = newPostElement.current.value;
         props.updateNewPost(text);

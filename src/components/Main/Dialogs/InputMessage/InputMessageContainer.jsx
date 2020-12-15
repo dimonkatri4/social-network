@@ -1,25 +1,20 @@
 import React from 'react'
-import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../../../redux/dilogs-reducer';
+import {addMessageActionCreator, updateNewMessageTextActionCreator} from '../../../../redux/dilogs-reducer';
 import InputMessage from "./InputMessage";
+import {connect} from "react-redux";
 
 
-const InputMessageContainer = (props) => {
-
-    let state = props.store.getState();
-
-    let newMessage = () => {
-        props.store.dispatch(addMessageActionCreator())
+let mapStateToProps = (state) => {
+    return {
+        newMessageText: state.dialogsPage.newMessageText
     }
-
-    let onMessageChange = (text) => {
-        props.store.dispatch(updateNewMessageTextActionCreator(text))
-    }
-
-    
-    return <InputMessage addMessage={newMessage}
-                         updateNewMessage={onMessageChange}
-                         newMessageText={state.dialogsPage.newMessageText}
-    />
 }
+let mapDispatchToProps = (dispatch) => {
+    return {
+        addMessage: () => {dispatch(addMessageActionCreator())},
+        updateNewMessage: (text) => {dispatch(updateNewMessageTextActionCreator(text))}
+    }
+}
+const InputMessageContainer = connect(mapStateToProps,mapDispatchToProps)(InputMessage)
 
 export default InputMessageContainer

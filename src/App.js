@@ -12,7 +12,6 @@ const App = (props) => {
       <Cover/>
       <Main
         state = {props.state}
-        store = {props.store}
       />
     </div>
   );
