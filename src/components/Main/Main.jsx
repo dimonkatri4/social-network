@@ -8,6 +8,7 @@ import Dialogs from './Dialogs/Dialogs'
 import News from './News/News'
 import Music from './Music/Music'
 import Settings from './Settings/Settings'
+import UsersContainer from "./Users/UsersContainer";
 
 const Main = (props) => {
     return (
@@ -26,6 +27,7 @@ const Main = (props) => {
                 <Route path='/news' component={News} />
                 <Route path='/music' component={Music} />
                 <Route path='/settings' component={Settings} />
+                <Route path='/users' component={UsersContainer} />
             </div>
             <Sidebar sidebarPage={props.state.sidebarPage} />
         </div>
