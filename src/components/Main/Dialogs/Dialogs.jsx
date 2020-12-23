@@ -12,17 +12,17 @@ const Dialogs = (props) => {
 
     //   debugger;
     let nameDialogs = props.dialogsPage.dialogs
-        .map(el => <Route path={`/dialog/${el.id}`} render={() => <NameDialog img={el.img} name={el.name} />} />)
+        .map(el => <Route path={`/dialog/${el.id}`} render={() => <NameDialog img={el.img} name={el.name} key={el.id} />} />)
 
     // let number = Number();
     // props.dialogsPage.dialogs
     //     .map(el => <Route path={`/dialog/${el.id}`} render={() => <InputMessage addMessage={props.addMessage} />} />)
 
     let dialogsElement = props.dialogsPage.dialogs
-        .map(dialog => <DialogItem name={dialog.name} id={dialog.id} img={dialog.img} />)
+        .map(dialog => <DialogItem name={dialog.name} id={dialog.id} img={dialog.img} key={dialog.id} />)
 
     let messagesElement = props.dialogsPage.messages
-        .map(message => <Route path='/dialog/:numder' render={() => <Message message={message.message} />} />)
+        .map(message => <Route path='/dialog/:numder' render={() => <Message message={message.message} key={message.id} />} />)
 
     return (
         <div className={`${s.dialogs} profile_block`}>

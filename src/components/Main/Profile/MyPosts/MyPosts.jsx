@@ -12,6 +12,7 @@ const MyPosts = (props) => {
             viewsCount = {post.viewsCount}
             shareCount = {post.shareCount}
             date={post.date}
+            key = {post.id}
         />)
 
     return (

@@ -4,7 +4,7 @@ import s from "./photoHeader.module.css"
 const PhotoHeader = () => {
     return (
         <div className={s.photo_header}>
-            <img src="images/photo-user.jpg" />
+            <img src="images/photo-user.jpg" alt="user" />
         </div>
     )
 }

@@ -1,4 +1,3 @@
-import React from 'react'
 import {addMessageActionCreator, updateNewMessageTextActionCreator} from '../../../../redux/dilogs-reducer';
 import InputMessage from "./InputMessage";
 import {connect} from "react-redux";

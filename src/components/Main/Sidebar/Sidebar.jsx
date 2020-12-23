@@ -5,7 +5,7 @@ import s from "./sidebar.module.css"
 const Sidebar = (props) => {
 
     let friendElement = props.sidebarPage.friends
-        .map(el=><Friend img = {el.img} name={el.name} surname={el.surname} />)
+        .map(el=><Friend img = {el.img} name={el.name} surname={el.surname} key={el.id} />)
 
 
 return (
