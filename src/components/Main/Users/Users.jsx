@@ -3,46 +3,16 @@ import s from "./users.module.css"
 import axios from "axios";
 
 class Users extends React.Component {
-    constructor(props) {
-        super(props);
 
+    componentDidMount() {
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
             this.props.setUsers(response.data.items)
         })
-
-        // props.setUsers(
-        //     [
-        //         {
-        //             id: 1,
-        //             photoUrl: 'https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697',
-        //             followed: true,
-        //             fullName: 'cat griffith',
-        //             status: 'i`m fine',
-        //             location: {city: 'Kyiv', country: 'Ukraine'}
-        //         },
-        //         {
-        //             id: 2,
-        //             photoUrl: 'https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697',
-        //             followed: true,
-        //             fullName: 'cat Dima',
-        //             status: 'i`m fine, too',
-        //             location: {city: 'Kyiv', country: 'Ukraine'}
-        //         },
-        //         {
-        //             id: 3,
-        //             photoUrl: 'https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697',
-        //             followed: false,
-        //             fullName: 'cat Liuda',
-        //             status: 'i`m fine,too too',
-        //             location: {city: 'Kyiv', country: 'Ukraine'}
-        //         }
-        //     ]
-        // )
     }
 
     render() {
         return (
-            <div>
+            <div className="profile_block">
                 {
                     this.props.users.map(u => <div>
                         <div><img

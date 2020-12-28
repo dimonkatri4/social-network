@@ -6,7 +6,7 @@
     "cov"
     "main"
     ;
-  grid-template-rows: 60px 0.3fr 1fr;
+  grid-template-rows: 60px 0.001fr 1fr;
   grid-template-columns: 1fr;
 }
 
