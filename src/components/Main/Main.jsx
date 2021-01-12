@@ -16,12 +16,12 @@ const Main = (props) => {
             <Navbar />
             <div className={s.content}>
                 <Route path='/profile' render={() => <Profile
-                    profilePage={props.state.profilePage}
+                    profilePage={props.profilePage}
                     />}
                 />
                 <Route path='/dialog' render={() =>
                     <Dialogs
-                    dialogsPage = {props.state.dialogsPage}
+                    dialogsPage = {props.dialogsPage}
                     />}
                 />
                 <Route path='/news' component={News} />
@@ -29,7 +29,7 @@ const Main = (props) => {
                 <Route path='/settings' component={Settings} />
                 <Route path='/users' component={UsersContainer} />
             </div>
-            <Sidebar sidebarPage={props.state.sidebarPage} />
+            <Sidebar sidebarPage={props.sidebarPage} />
         </div>
     )
 }
