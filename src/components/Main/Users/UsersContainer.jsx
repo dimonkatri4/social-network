@@ -1,15 +1,25 @@
 import React from "react";
 import {connect} from "react-redux";
-import {followAC, setCurrentPageAC, setTotalCountUsersAC, setUsersAC, unfollowAC} from "../../../redux/users-reducer";
+import {
+    followAC,
+    setCurrentPageAC,
+    setTotalCountUsersAC,
+    setUsersAC,
+    toggleIsFetchingAC,
+    unfollowAC
+} from "../../../redux/users-reducer";
 import axios from "axios";
 import Users from "./Users";
+import preloader from '../../../images/Preloader.gif'
 
 // класова контейнерна компонента в якій виконуємо ajax-запит
 // і передає пропси в функціональну,чисту компоненту Users
 class UsersContainer extends React.Component {
 
     componentDidMount() {
+        this.props.toggleIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`).then(response => {
+            this.props.toggleIsFetching(false)
             this.props.setUsers(response.data.items);
             this.props.setTotalCountUsers(response.data.totalCount)
         })
@@ -17,13 +27,17 @@ class UsersContainer extends React.Component {
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
+        this.props.toggleIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNumber}`).then(response => {
+            this.props.toggleIsFetching(false)
             this.props.setUsers(response.data.items)
         })
     }
 
     render() {
-        return <Users
+        return <>
+            {this.props.isFetching ? <img src={preloader} alt=""/> : null}
+            <Users
             currentPage={this.props.currentPage}
             onPageChanged={this.onPageChanged}
             unfollow={this.props.unfollow}
@@ -32,6 +46,7 @@ class UsersContainer extends React.Component {
             pageSize={this.props.pageSize}
             users = {this.props.users}
         />
+        </>
     }
 }
 
@@ -42,7 +57,8 @@ let mapStateToProps = (state) => {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage
+        currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching
     }
 }
 
@@ -52,7 +68,8 @@ let mapDispatchToProps = (dispatch) => {
         unfollow: (userId) => {dispatch(unfollowAC(userId))},
         setUsers: (users) => {dispatch(setUsersAC(users))},
         setCurrentPage: (page) => {dispatch(setCurrentPageAC(page))},
-        setTotalCountUsers: (count)=> {dispatch(setTotalCountUsersAC(count))}
+        setTotalCountUsers: (count)=> {dispatch(setTotalCountUsersAC(count))},
+        toggleIsFetching: (isFetching) => {dispatch(toggleIsFetchingAC(isFetching))}
     }
 }
 
