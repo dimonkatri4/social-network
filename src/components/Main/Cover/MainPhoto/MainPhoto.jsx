@@ -1,10 +1,10 @@
 import React from 'react'
 import s from "./mainPhoto.module.css"
 
-const MainPhoto = () => {
+const MainPhoto = (props) => {
     return (
         <div className={s.main_photo}>
-            <img src="images/photo-user.jpg" alt=""/>
+            <img src={props.photo.large} alt=""/>
         </div>
     )
 }

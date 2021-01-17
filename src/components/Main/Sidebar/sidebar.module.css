@@ -1,6 +1,6 @@
 .sidebar {
     grid-area: sd;
-    margin: 0 10px;
+    margin: 10px;
     padding: 20px;
     height: fit-content;
   }

@@ -9,16 +9,18 @@ import News from './News/News'
 import Music from './Music/Music'
 import Settings from './Settings/Settings'
 import UsersContainer from "./Users/UsersContainer";
+import ProfileContainer from "./Profile/ProfileContainer";
 
 const Main = (props) => {
     return (
         <div className={s.main_page}>
             <Navbar />
-            <div className={s.content}>
-                <Route path='/profile' render={() => <Profile
+
+                <Route path='/profile' render={() => <ProfileContainer
                     profilePage={props.profilePage}
                     />}
                 />
+            <div className={s.content}>
                 <Route path='/dialog' render={() =>
                     <Dialogs
                     dialogsPage = {props.dialogsPage}

@@ -4,12 +4,15 @@ import CoverPhoto from './CoverPhoto/CoverPhoto'
 import MainPhoto from './MainPhoto/MainPhoto'
 import s from "./cover.module.css"
 
-const Cover = () => {
+const Cover = (props) => {
+    if(!props.profile) {
+        return <div>Loading</div>
+    }
     return (
         <div className={s.cover}>
             <CoverPhoto/>
-            <MainPhoto/>
-            <CoverInfo/>
+            <MainPhoto photo = {props.profile.photos}/>
+            <CoverInfo fullName={props.profile.fullName}/>
         </div>
     )
 }
