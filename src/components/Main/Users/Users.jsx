@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./users.module.css"
-import axios from "axios";
+import * as axios from "axios";
 
 class Users extends React.Component {
 
