@@ -16,7 +16,7 @@ const Main = (props) => {
         <div className={s.main_page}>
             <Navbar />
 
-                <Route path='/profile' render={() => <ProfileContainer
+                <Route path='/profile/:userId?' render={() => <ProfileContainer
                     profilePage={props.profilePage}
                     />}
                 />
