@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import './common/style/reset.css'
-import Header from './components/Header/Header';
 import MainContainer from "./components/Main/MainContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App = () => {
   return (
     <div className='app-wrapper'>
-      <Header/>
+      <HeaderContainer/>
       <MainContainer />
     </div>
   );

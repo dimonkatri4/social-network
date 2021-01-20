@@ -4,12 +4,13 @@ import Menu from './Menu/Menu'
 import SettingArea from './SettingArea/SettingArea'
 import s from "./header.module.css"
 
-const Header = () => {
+const Header = (props) => {
     return (
         <header className={s.header}>
             <Logo/>
             <Menu/>
-            <SettingArea/>
+            <SettingArea {...props}/>
+
         </header>
     )
 }
