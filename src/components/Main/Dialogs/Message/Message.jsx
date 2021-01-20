@@ -1,5 +1,6 @@
 import React from 'react'
 import s from './message.module.css'
+import photoUser from '../../../../images/photo-user.jpg'
 
 
 const Message = (props) => {
@@ -8,7 +9,7 @@ const Message = (props) => {
     return (
         <div className={s.message}>
             <div className={s.user_photo}>
-                <img src="images/photo-user.jpg" alt=""/>
+                <img src={photoUser} alt=""/>
             </div>
             <div className={s.triangle}></div> 
             <div className={s.text}>{props.message}</div>

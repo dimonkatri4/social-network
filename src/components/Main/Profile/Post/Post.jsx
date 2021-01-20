@@ -1,11 +1,16 @@
 import React from 'react'
 import s from './post.module.css'
+import photoUser from '../../../../images/photo-user.jpg'
+import likeIcon from '../../../../images/icons/love.png'
+import eyeIcon from '../../../../images/icons/eye.png'
+import commentsIcon from '../../../../images/icons/comments.png'
+import shareIcon from '../../../../images/icons/share.png'
 
 const Post = (props) => {
     return (
         <div className={`${s.item} profile_block`}>
             <div className={s.caption}>
-                <img src='images/photo-user.jpg' alt="user" />
+                <img src={photoUser} alt="user" />
                 <div className={s.userName}>{props.userName}</div>
                 <div className={s.date}>Published: {props.date}</div>
             </div>
@@ -13,19 +18,19 @@ const Post = (props) => {
             <div className={s.post_panel}>
                 <ul>
                     <li>
-                        <div className={s.like}><img src="images/icons/love.png" alt="like" /></div>
+                        <div className={s.like}><img src={likeIcon} alt="like" /></div>
                         <span className={s.likeCount}>{props.likeCount}</span>
                     </li>
                     <li>
-                        <div><img src="images/icons/eye.png" alt="eye" /></div>
+                        <div><img src={eyeIcon} alt="eye" /></div>
                         <span >{props.viewsCount}</span>
                     </li>
                     <li>
-                        <div><img src="images/icons/comments.png" alt="comments" /></div>
+                        <div><img src={commentsIcon} alt="comments" /></div>
                         <span >{props.commentsCount}</span>
                     </li>
                     <li>
-                        <div className={s.share}><img src="images/icons/share.png" alt="share" /></div>
+                        <div className={s.share}><img src={shareIcon} alt="share" /></div>
                         <span >{props.shareCount}</span>
                     </li>
                 </ul>

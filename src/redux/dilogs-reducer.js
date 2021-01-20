@@ -1,13 +1,20 @@
+import user1Photo from '../images/users/1.jpg'
+import user2Photo from '../images/users/2.jpg'
+import user3Photo from '../images/users/3.png'
+import user4Photo from '../images/users/4.jpg'
+import user5Photo from '../images/users/5.jpg'
+
+
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState = {
     dialogs: [
-        {name: 'Dima', id: '1', img: 'images/users/1.jpg'},
-        {name: 'Oleg', id: '2', img: 'images/users/2.jpg'},
-        {name: 'Yuriy', id: '3', img: 'images/users/3.png'},
-        {name: 'Petro', id: '4', img: 'images/users/4.jpg'},
-        {name: 'Andriy', id: '5', img: 'images/users/5.jpg'}
+        {name: 'Dima', id: '1', img: user1Photo},
+        {name: 'Oleg', id: '2', img: user2Photo},
+        {name: 'Yuriy', id: '3', img: user3Photo},
+        {name: 'Petro', id: '4', img: user4Photo},
+        {name: 'Andriy', id: '5', img: user5Photo}
     ],
     messages: [
         {id: '1', message: 'Hi!'},
