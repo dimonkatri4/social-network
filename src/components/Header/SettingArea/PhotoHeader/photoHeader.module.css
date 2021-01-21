@@ -4,3 +4,13 @@
     border-radius: 50%;
     cursor: pointer;
   }
+.photo_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+.photo_header div {
+    color: #088dcd;
+    text-transform: capitalize;
+}

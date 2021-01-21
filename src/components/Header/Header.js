@@ -3,14 +3,15 @@ import Logo from './Logo/Logo'
 import Menu from './Menu/Menu'
 import SettingArea from './SettingArea/SettingArea'
 import s from "./header.module.css"
+import SignIn from "./SignIn/SignIn";
+import SearchBar from "./SearchBar/SearchBar";
 
 const Header = (props) => {
     return (
         <header className={s.header}>
             <Logo/>
-            <Menu/>
-            <SettingArea {...props}/>
-
+            {props.isAuth ? <Menu/> : <SearchBar/> }
+            {props.isAuth ? <SettingArea {...props}/> : <SignIn/> }
         </header>
     )
 }
