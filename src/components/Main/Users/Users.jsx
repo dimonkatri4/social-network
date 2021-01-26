@@ -27,19 +27,23 @@ let Users = (props) => {
                         src={u.photos.small !== null ? u.photos.small : 'https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697'}
                         alt="" className={s.ava}/></NavLink></div>
                     <div>{u.followed ?
-                        <button onClick={() => {
+                        <button disabled={props.followingInProgress.some(id => id === u.id )} onClick={() => {
+                            props.toggleFollowing(true, u.id)
                             userAPI.deleteFollow(u.id).then(data => {
                                 if (data.resultCode == 0) {
                                     props.unfollow(u.id)
                                 }
+                                props.toggleFollowing(false, u.id)
                             })
                         }
                         }>Unfollow</button> :
-                        <button onClick={() => {
+                        <button disabled={props.followingInProgress.some(id => id === u.id )} onClick={() => {
+                            props.toggleFollowing(true, u.id)
                             userAPI.postFollow(u.id).then(data => {
                                 if (data.resultCode == 0) {
                                     props.follow(u.id)
                                 }
+                                props.toggleFollowing(false, u.id)
                             })
                         }
                         }>Follow</button>}</div>
