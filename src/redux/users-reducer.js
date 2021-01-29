@@ -69,8 +69,8 @@ const usersReducer = (state = initialState, action) => {
 }
 
 //Action Creators
-export const follow = (userId) => ({type: FOLLOW, userId: userId});
-export const unfollow = (userId) => ({type: UNFOLLOW, userId: userId});
+export const followSuccess = (userId) => ({type: FOLLOW, userId: userId});
+export const unfollowSuccess = (userId) => ({type: UNFOLLOW, userId: userId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page});
 export const setTotalCountUsers = (count) => ({type: SET_TOTAL_COUNT_USERS, count})
@@ -85,6 +85,30 @@ export const getUsers = (pageSize,currentPage) => {
             dispatch(toggleIsFetching(false));
             dispatch(setUsers(data.items));
             dispatch(setTotalCountUsers(data.totalCount))
+        })
+    }
+}
+
+export const unfollow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowing(true, userId))
+        userAPI.deleteFollow(userId).then(data => {
+            if (data.resultCode == 0) {
+                dispatch(unfollowSuccess(userId))
+            }
+            dispatch(toggleFollowing(false, userId))
+        })
+    }
+}
+
+export const follow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowing(true, userId))
+        userAPI.postFollow(userId).then(data => {
+            if (data.resultCode == 0) {
+                dispatch(followSuccess(userId))
+            }
+            dispatch(toggleFollowing(false, userId))
         })
     }
 }

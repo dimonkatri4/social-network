@@ -3,14 +3,11 @@ import {connect} from "react-redux";
 import {
     follow, getUsers,
     setCurrentPage,
-    setTotalCountUsers,
-    setUsers, toggleFollowing,
-    toggleIsFetching,
+    toggleFollowing,
     unfollow
 } from "../../../redux/users-reducer";
 import Users from "./Users";
 import preloader from '../../../images/Preloader.gif'
-import {userAPI} from "../../../api/api";
 
 
 // класова контейнерна компонента в якій виконуємо ajax-запит
@@ -70,16 +67,19 @@ let mapStateToProps = (state) => {
 
 /*let mapDispatchToProps = (dispatch) => {
     return {
-        follow: (userId) => {dispatch(followAC(userId))},
+        follow: (userId) => {dispatch(follow(userId))},
         unfollow: (userId) => {dispatch(unfollow(userId))},
-        setUsers: (users) => {dispatch(setUsersAC(users))},
-        setCurrentPage: (page) => {dispatch(setCurrentPageAC(page))},
-        setTotalCountUsers: (count)=> {dispatch(setTotalCountUsersAC(count))},
-        toggleIsFetching: (isFetching) => {dispatch(toggleIsFetchingAC(isFetching))}
+        setUsers: (users) => {dispatch(setUsers(users))},
+        setCurrentPage: (page) => {dispatch(setCurrentPage(page))},
+        setTotalCountUsers: (count)=> {dispatch(setTotalCountUsers(count))},
+        toggleIsFetching: (isFetching) => {dispatch(toggleIsFetching(isFetching))},
+        toggleFollowing: (isFetching, userId) => {dispatch(toggleFollowing(isFetching, userId))},
+        getUsers: (pageSize,currentPage) => {dispatch(getUsers(pageSize,currentPage))}
     }
 }*/
 
 
 export default connect(mapStateToProps,
-    {follow, unfollow, setUsers, setCurrentPage, setTotalCountUsers, toggleIsFetching, toggleFollowing, getUsers})(UsersContainer);
+    {follow, unfollow, setCurrentPage, toggleFollowing, getUsers}
+    )(UsersContainer);
 
