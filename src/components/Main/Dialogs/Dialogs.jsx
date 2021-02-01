@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import {Redirect, Route} from 'react-router-dom'
 import DialogItem from './DialogItem/DialogItem'
 import s from './dialogs.module.css'
 import Message from './Message/Message'
@@ -12,18 +12,23 @@ const Dialogs = (props) => {
 
     //   debugger;
     let nameDialogs = props.dialogsPage.dialogs
-        .map(el => <Route path={`/dialog/${el.id}`} render={() => <NameDialog img={el.img} name={el.name} key={el.id} />} />)
+        .map(el => <Route path={`/dialog/${el.id}`}
+                          render={() => <NameDialog img={el.img} name={el.name} key={el.id}/>}/>)
 
     // let number = Number();
     // props.dialogsPage.dialogs
     //     .map(el => <Route path={`/dialog/${el.id}`} render={() => <InputMessage addMessage={props.addMessage} />} />)
 
     let dialogsElement = props.dialogsPage.dialogs
-        .map(dialog => <DialogItem name={dialog.name} id={dialog.id} img={dialog.img} key={dialog.id} />)
+        .map(dialog => <DialogItem name={dialog.name} id={dialog.id} img={dialog.img} key={dialog.id}/>)
 
     let messagesElement = props.dialogsPage.messages
-        .map(message => <Route path='/dialog/:numder' render={() => <Message message={message.message} key={message.id} />} />)
+        .map(message => <Route path='/dialog/:numder'
+                               render={() => <Message message={message.message} key={message.id}/>}/>)
 
+    if (!props.isAuth) {
+        return <Redirect to='/login'/>
+    }
     return (
         <div className={`${s.dialogs} profile_block`}>
             <div className={`${s.caption} caption`}>
@@ -35,8 +40,8 @@ const Dialogs = (props) => {
             <div className={s.messages}>
                 {nameDialogs}
                 {messagesElement}
-                <Route path='/dialog/:number' render={() => <InputMessageContainer/>} />
-                <Route exact path="/dialog" render={() => <SelectDialog />} />
+                <Route path='/dialog/:number' render={() => <InputMessageContainer/>}/>
+                <Route exact path="/dialog" render={() => <SelectDialog/>}/>
             </div>
         </div>
     )

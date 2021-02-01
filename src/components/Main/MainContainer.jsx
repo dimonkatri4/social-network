@@ -6,7 +6,8 @@ let mapStateToProps = (state) => {
     return {
         profilePage: state.profilePage,
         dialogsPage: state.dialogsPage,
-        sidebarPage: state.sidebarPage
+        sidebarPage: state.sidebarPage,
+        isAuth: state.auth.isAuth
     }
 }
 
