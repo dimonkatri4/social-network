@@ -9,12 +9,11 @@ import photoIcon from '../../../../images/icons/photo-camera.png'
 
 
 const CreatePost = (props) => {
-    let newPostElement = React.createRef();
     let addText = () => {
         props.addPost() ;
     }
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
+    let onPostChange = (e) => {
+        let text = e.target.value;
         props.updateNewPost(text);
     }
 
@@ -22,7 +21,7 @@ const CreatePost = (props) => {
         <div className={`${s.profile_block} profile_block`} >
             <div className={s.create_post}>
                 <img className={s.ava} src={photoUser} alt="avatar" />
-                <textarea ref={newPostElement}
+                <textarea
                     rows="8"
                     value={props.newPostText}
                     placeholder="write something"
