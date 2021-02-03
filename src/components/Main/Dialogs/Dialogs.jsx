@@ -6,11 +6,12 @@ import Message from './Message/Message'
 import NameDialog from './NameDialog/NameDialog'
 import SelectDialog from './SelectDialog/SelectDialog'
 import InputMessageContainer from "./InputMessage/InputMessageContainer";
+import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 
 
 const Dialogs = (props) => {
 
-    //   debugger;
+     debugger;
     let nameDialogs = props.dialogsPage.dialogs
         .map(el => <Route path={`/dialog/${el.id}`}
                           render={() => <NameDialog img={el.img} name={el.name} key={el.id}/>}/>)
@@ -26,9 +27,9 @@ const Dialogs = (props) => {
         .map(message => <Route path='/dialog/:numder'
                                render={() => <Message message={message.message} key={message.id}/>}/>)
 
-    if (!props.isAuth) {
+/*    if (!props.isAuth) {
         return <Redirect to='/login'/>
-    }
+    }*/
     return (
         <div className={`${s.dialogs} profile_block`}>
             <div className={`${s.caption} caption`}>
@@ -47,4 +48,4 @@ const Dialogs = (props) => {
     )
 }
 
-export default Dialogs
+export default withAuthRedirect(Dialogs)

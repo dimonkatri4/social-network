@@ -12,7 +12,7 @@ import ProfileContainer from "./Profile/ProfileContainer";
 import Login from "./Login/Login";
 
 const Main = (props) => {
-    debugger
+
     return (
         <div className={s.main_page}>
             <Navbar />
