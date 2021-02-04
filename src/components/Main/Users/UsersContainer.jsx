@@ -8,6 +8,8 @@ import {
 } from "../../../redux/users-reducer";
 import Users from "./Users";
 import preloader from '../../../images/Preloader.gif'
+import {compose} from "redux";
+import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 
 
 // класова контейнерна компонента в якій виконуємо ajax-запит
@@ -45,7 +47,7 @@ class UsersContainer extends React.Component {
                 totalUsersCount={this.props.totalUsersCount}
                 pageSize={this.props.pageSize}
                 users={this.props.users}
-                followingInProgress = {this.props.followingInProgress}
+                followingInProgress={this.props.followingInProgress}
                 toggleFollowing={this.props.toggleFollowing}
             />
         </>
@@ -78,9 +80,11 @@ let mapStateToProps = (state) => {
     }
 }*/
 
+export default compose(
+    withAuthRedirect,
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowing, getUsers})
+)(UsersContainer)
 
-export default connect(mapStateToProps,
-    {follow, unfollow, setCurrentPage, toggleFollowing, getUsers
-    }
-    )(UsersContainer);
+/*export default connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowing, getUsers}
+                            )(UsersContainer);*/
 
