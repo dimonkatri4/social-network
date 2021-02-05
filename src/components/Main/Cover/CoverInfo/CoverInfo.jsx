@@ -9,7 +9,7 @@ const CoverInfo = (props) => {
             <div className={s.cover_info}>
                 <div className={s.user_name}>{props.fullName}</div>
                 <CoverMenu/>
-                <ProfileStatus/>
+                <ProfileStatus status={"Hello my friend!"} />
             </div>
     )
 }
