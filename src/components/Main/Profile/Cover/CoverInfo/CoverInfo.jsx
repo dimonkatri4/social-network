@@ -1,7 +1,8 @@
 import React from 'react'
 import CoverMenu from './CoverMenu/CoverMenu'
 import s from "./coverInfo.module.css"
-import ProfileStatus from "../../Profile/ProfileStatus/ProfileStatus";
+import ProfileStatus from "../../ProfileStatus/ProfileStatus";
+import Cover from "../Cover";
 
 
 const CoverInfo = (props) => {
@@ -9,7 +10,7 @@ const CoverInfo = (props) => {
             <div className={s.cover_info}>
                 <div className={s.user_name}>{props.fullName}</div>
                 <CoverMenu/>
-                <ProfileStatus status={"Hello my friend!"} />
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
             </div>
     )
 }
