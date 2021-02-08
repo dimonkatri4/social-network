@@ -28,7 +28,7 @@ class ProfileStatus extends React.Component {
 
     componentDidUpdate(prevProps,prevState) {
         debugger
-        if(this.props.status !== prevProps.status) {
+        if(this.props.status !== prevProps.status) {                    // умова щоб уникнути зациклення
             this.setState({
                 status: this.props.status
             })
