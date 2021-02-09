@@ -21,8 +21,8 @@ const LoginForm = (props) => {
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
 const Login = (props) => {
-   const onSubmit = (submit) => {
-        console.log(submit)
+    const onSubmit = (formData) => {                //як параметр formData через контейнерну компоненту LoginReduxForm
+        console.log(formData)                       // приходять всі дані з форми, за допомогою ф-ї handleSubmit
     }
     return <>
         <h1>LOGIN</h1>
