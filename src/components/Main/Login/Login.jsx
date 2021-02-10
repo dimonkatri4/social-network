@@ -1,5 +1,7 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
+import {connect} from "react-redux";
+import {logIn} from "../../../redux/auth-reducer";
 
 const LoginForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
@@ -21,8 +23,9 @@ const LoginForm = (props) => {
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
 const Login = (props) => {
-    const onSubmit = (formData) => {                //як параметр formData через контейнерну компоненту LoginReduxForm
-        console.log(formData)                       // приходять всі дані з форми, за допомогою ф-ї handleSubmit
+    const onSubmit = (formData) => {
+        let {login, password, rememberMe,captcha} = formData;
+        props.logIn(login, password, rememberMe,captcha)
     }
     return <>
         <h1>LOGIN</h1>
@@ -31,5 +34,8 @@ const Login = (props) => {
 
 }
 
+let mapStateToProps = (state) => ({
 
-export default Login
+})
+
+export default connect(mapStateToProps,{logIn})(Login)
