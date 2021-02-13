@@ -11,7 +11,6 @@ import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 
 const Dialogs = (props) => {
 
-     debugger;
     let nameDialogs = props.dialogsPage.dialogs
         .map(el => <Route path={`/dialog/${el.id}`}
                           render={() => <NameDialog img={el.img} name={el.name} key={el.id}/>}/>)

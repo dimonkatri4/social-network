@@ -6,7 +6,6 @@ import pictureIcon from '../../../../images/icons/picture.png'
 import videoIcon from '../../../../images/icons/video-camera.png'
 import photoIcon from '../../../../images/icons/photo-camera.png'
 import {Field, reduxForm} from "redux-form";
-import {addPost} from "../../../../redux/profile-reducer";
 
 const PostForm = (props) => {
     return  <form onSubmit={props.handleSubmit}  >

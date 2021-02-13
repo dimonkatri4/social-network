@@ -1,6 +1,7 @@
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from '../../../../redux/dilogs-reducer';
-import InputMessage from "./InputMessage";
+import {addMessage, updateNewMessageTextActionCreator} from '../../../../redux/dilogs-reducer';
+import InputMessageForm from "./InputMessage";
 import {connect} from "react-redux";
+import InputMessageFormRedux from "./InputMessage";
 
 
 let mapStateToProps = (state) => {
@@ -10,10 +11,11 @@ let mapStateToProps = (state) => {
 }
 let mapDispatchToProps = (dispatch) => {
     return {
-        addMessage: () => {dispatch(addMessageActionCreator())},
-        updateNewMessage: (text) => {dispatch(updateNewMessageTextActionCreator(text))}
+        onSubmit: (formData) => {
+            dispatch(addMessage(formData.messageText))
+        }
     }
 }
-const InputMessageContainer = connect(mapStateToProps,mapDispatchToProps)(InputMessage)
+const InputMessageContainer = connect(mapStateToProps,mapDispatchToProps)(InputMessageFormRedux)
 
 export default InputMessageContainer
