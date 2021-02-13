@@ -9,7 +9,7 @@ import {Field, reduxForm} from "redux-form";
 import {addPost} from "../../../../redux/profile-reducer";
 
 const PostForm = (props) => {
-    return  <form onSubmit={props.handleSubmit} >
+    return  <form onSubmit={props.handleSubmit}  >
         <Field
             component={'textarea'}
             name={'messageText'}
@@ -31,13 +31,13 @@ const PostFormRedux = reduxForm({form:'post'})(PostForm)
 
 const CreatePost = (props) => {
     const onSubmit = (formData) => {
-        props.addPost(formData)
+        props.addPost(formData.messageText)
     }
     return (
         <div className={`${s.profile_block} profile_block`} >
             <div className={s.create_post}>
                 <img className={s.ava} src={photoUser} alt="avatar" />
-                <PostFormRedux onSubmit={onSubmit}  />
+                <PostFormRedux onSubmit={onSubmit} />
             </div>
         </div>
     )
