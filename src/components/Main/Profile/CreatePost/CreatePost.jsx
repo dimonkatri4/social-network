@@ -13,7 +13,6 @@ const PostForm = (props) => {
             component={'textarea'}
             name={'messageText'}
             rows="8"
-            value={props.newPostText}
             placeholder="write something"/>
         <div className={s.panel}>
             <a href="/"><img src={musicIcon} alt="music" /></a>
@@ -26,7 +25,6 @@ const PostForm = (props) => {
 }
 
 const PostFormRedux = reduxForm({form:'post'})(PostForm)
-
 
 const CreatePost = (props) => {
     const onSubmit = (formData) => {
@@ -41,9 +39,5 @@ const CreatePost = (props) => {
         </div>
     )
 }
-
-
-
-
 
 export default CreatePost

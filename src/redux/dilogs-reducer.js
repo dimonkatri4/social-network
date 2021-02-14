@@ -6,7 +6,6 @@ import user5Photo from '../images/users/5.jpg'
 
 
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState = {
     dialogs: [
@@ -23,7 +22,6 @@ let initialState = {
         {id: '4', message: 'YO!'},
         {id: '5', message: 'Blablabla'}
     ],
-    newMessageText: ''
 }
 
 const dialogsReducer = (state = initialState, action) => {
@@ -35,13 +33,7 @@ const dialogsReducer = (state = initialState, action) => {
             }
             return {
                 ...state,
-                messages: [...state.messages, newMessage],
-                newMessageText: ''
-            };
-        case UPDATE_NEW_MESSAGE_TEXT:
-            return {
-                ...state,
-                newMessageText: action.newText
+                messages: [...state.messages, newMessage]
             };
         default:
             return state;
@@ -49,7 +41,5 @@ const dialogsReducer = (state = initialState, action) => {
 }
 
 export const addMessage = (messageText) => ({type: ADD_MESSAGE, messageText});
-export const updateNewMessageTextActionCreator = (text) =>
-    ({type: UPDATE_NEW_MESSAGE_TEXT, newText: text});
 
 export default dialogsReducer;

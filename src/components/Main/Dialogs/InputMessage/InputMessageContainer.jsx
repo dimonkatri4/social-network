@@ -1,12 +1,10 @@
-import {addMessage, updateNewMessageTextActionCreator} from '../../../../redux/dilogs-reducer';
-import InputMessageForm from "./InputMessage";
+import {addMessage} from '../../../../redux/dilogs-reducer';
 import {connect} from "react-redux";
 import InputMessageFormRedux from "./InputMessage";
 
 
 let mapStateToProps = (state) => {
     return {
-        newMessageText: state.dialogsPage.newMessageText
     }
 }
 let mapDispatchToProps = (dispatch) => {

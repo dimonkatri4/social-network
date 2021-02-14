@@ -17,7 +17,6 @@ const InputMessageForm = (props) => {
             <Field
                 component={'textarea'}
                 name={'messageText'}
-                value={props.newMessageText}
                 placeholder="write message"
             />
             <button className='button'>Send</button>
