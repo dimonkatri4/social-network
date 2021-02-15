@@ -25,6 +25,6 @@ const InputMessageForm = (props) => {
     )
 }
 
-const InputMessageFormRedux = reduxForm({form:'message'})(InputMessageForm)
+const InputMessageFormRedux = reduxForm({form:'inputMessage'})(InputMessageForm)
 
 export default InputMessageFormRedux

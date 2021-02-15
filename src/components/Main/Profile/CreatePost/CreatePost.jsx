@@ -24,7 +24,7 @@ const PostForm = (props) => {
     </form>
 }
 
-const PostFormRedux = reduxForm({form:'post'})(PostForm)
+const PostFormRedux = reduxForm({form:'createPost'})(PostForm)
 
 const CreatePost = (props) => {
     const onSubmit = (formData) => {
