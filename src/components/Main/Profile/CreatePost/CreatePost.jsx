@@ -6,14 +6,21 @@ import pictureIcon from '../../../../images/icons/picture.png'
 import videoIcon from '../../../../images/icons/video-camera.png'
 import photoIcon from '../../../../images/icons/photo-camera.png'
 import {Field, reduxForm} from "redux-form";
+import {maxLength, required} from "../../../../utils/validators/validators";
+import {Textarea} from "../../../common/FormsControl/FormsControl";
+
+const maxLength20 = maxLength(20)
 
 const PostForm = (props) => {
     return  <form onSubmit={props.handleSubmit}  >
         <Field
-            component={'textarea'}
+            component={Textarea}
             name={'messageText'}
             rows="8"
-            placeholder="write something"/>
+            placeholder="write something"
+            validate = {[required, maxLength20]}
+        />
+
         <div className={s.panel}>
             <a href="/"><img src={musicIcon} alt="music" /></a>
             <a href="/"><img src={pictureIcon} alt="picture_icon" /></a>
