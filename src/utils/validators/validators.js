@@ -4,6 +4,14 @@ export const required = (value) => {
 }
 
 export const maxLength = (length) => (value) => {
-    if (value.length > length) return `Maximum ${length} symbol`
+    if (value.length > length) return `Must be maximum ${length} symbol!`
     return undefined
 }
+export const minLength = (length) => (value) => {
+    if (value.length < length) return `Must be minimum ${length} symbol!`
+    return undefined
+}
+export const email = value =>
+    value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
+        ? 'Invalid email address'
+        : undefined
