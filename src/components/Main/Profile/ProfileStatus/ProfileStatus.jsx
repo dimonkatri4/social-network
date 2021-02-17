@@ -1,4 +1,5 @@
 import React from "react";
+import style from "./profileStatus.module.css"
 
 class ProfileStatus extends React.Component {
 
@@ -38,7 +39,8 @@ class ProfileStatus extends React.Component {
         render() {
         return <div>
             {!this.state.editMode &&
-                <span onDoubleClick={this.activateEditMode}>{this.props.status || '----'} </span>
+            <span onDoubleClick={this.activateEditMode}>{this.props.status
+            || <span className={style.addStatus}>Add status</span>} </span>
             }
             {this.state.editMode &&
                 <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditMode} value={this.state.status}/>
