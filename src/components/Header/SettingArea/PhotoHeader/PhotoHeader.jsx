@@ -8,7 +8,7 @@ const PhotoHeader = (props) => {
     return (
         <div className={s.photo_header}>
             <img src={photoUser} alt="user" />
-            <div>{props.isAuth?props.login:<NavLink to='/login'>Login</NavLink>}</div>
+            <div>{props.isAuth && props.login}</div>
         </div>
     )
 }
