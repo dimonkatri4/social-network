@@ -7,3 +7,9 @@
     color: red;
     font-size: 20px;
 }
+
+.commonErrorLogin {
+    border: solid 1px red;
+    color:orangered;
+    font-size: 18px;
+}

@@ -3,10 +3,10 @@ import {Field, reduxForm} from "redux-form";
 import {connect} from "react-redux";
 import {login} from "../../../redux/auth-reducer";
 import {Input} from "../../common/FormsControl/FormsControl";
-import {email, minLength, required} from "../../../utils/validators/validators";
+import {email, required} from "../../../utils/validators/validators";
 import {Redirect} from "react-router-dom";
+import style from "../../common/FormsControl/formsControl.module.css"
 
-const minLength6 = minLength(6)
 
 const LoginForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
@@ -14,11 +14,12 @@ const LoginForm = (props) => {
             <Field placeholder={'Login'} component={Input} name={'login'} validate={[required,email]}/>
         </div>
         <div>
-            <Field placeholder={'Password'} component={Input} name={'password'} validate={[required,minLength6]}/>
+            <Field placeholder={'Password'} component={Input} name={'password'} validate={[required]} type={'password'}/>
         </div>
         <div>
             <Field type={'checkbox'} name={'rememberMe'} component={Input}/>Remember Me
         </div>
+        { props.error && <div className={style.commonErrorLogin}>{props.error}</div>}
         <div>
             <button>Login</button>
         </div>
