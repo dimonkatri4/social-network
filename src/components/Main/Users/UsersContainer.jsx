@@ -9,7 +9,6 @@ import {
 import Users from "./Users";
 import preloader from '../../../images/Preloader.gif'
 import {compose} from "redux";
-import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 
 
 // класова контейнерна компонента в якій виконуємо ajax-запит
@@ -81,7 +80,6 @@ let mapStateToProps = (state) => {
 }*/
 
 export default compose(
-    withAuthRedirect,
     connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowing, getUsers})
 )(UsersContainer)
 
