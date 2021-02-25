@@ -7,8 +7,8 @@ import {
     unfollow
 } from "../../../redux/users-reducer";
 import Users from "./Users";
-import preloader from '../../../images/Preloader.gif'
 import {compose} from "redux";
+import Preloader from "../../common/Preloader/Preloader";
 
 
 // класова контейнерна компонента в якій виконуємо ajax-запит
@@ -37,7 +37,7 @@ class UsersContainer extends React.Component {
 
     render() {
         return <>
-            {this.props.isFetching ? <img src={preloader} alt=""/> : null}
+            {this.props.isFetching && <Preloader/>}
             <Users
                 currentPage={this.props.currentPage}
                 onPageChanged={this.onPageChanged}

@@ -6,15 +6,6 @@ import {getAuthUserData} from "../../redux/auth-reducer";
 
 
 class HeaderContainer extends React.Component {
-    componentDidMount() {
-        this.props.getAuthUserData();
-            /*authAPI.authMe().then(data => {
-            if(data.resultCode===0){
-                let {id, email, login} = data.data;
-                this.props.setAuthUserData(id, email, login)
-            }
-        })*/
-    }
 
     render() {
         return <Header {...this.props} />
