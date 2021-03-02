@@ -78,7 +78,7 @@ export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFe
 export const toggleFollowing = (isFetching, userId) => ({type: TOGGLE_FOLLOWING_IN_PROGRESS, isFetching, userId})
 
 //Thunk Creators
-export const getUsers = (pageSize,currentPage) => {
+export const requestUsers = (pageSize, currentPage) => {
    return (dispatch) => {
         dispatch(toggleIsFetching(true));
         userAPI.getUser(pageSize, currentPage).then(data => {
