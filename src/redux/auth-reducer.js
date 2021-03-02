@@ -35,9 +35,8 @@ export const authMe = () => {
     }
 }
 
-export const logIn = (userLogin, password, rememberMe=false) => (dispatch) => {
+export const logIn = (userLogin, password, rememberMe) => (dispatch) => {
     authAPI.login(userLogin, password, rememberMe).then(data => {
-        debugger
         if (data.resultCode===0){
             dispatch(setAuthUserData())
         }
