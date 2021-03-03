@@ -1,7 +1,7 @@
 import {userAPI} from "../api/api";
 
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
+const FOLLOW_SUCCESS = 'FOLLOW_SUCCESS';
+const UNFOLLOW_SUCCESS = 'UNFOLLOW_SUCCESS';
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_COUNT_USERS = 'SET_TOTAL_COUNT_USERS'
@@ -20,7 +20,7 @@ let initialState = {
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FOLLOW:
+        case FOLLOW_SUCCESS:
             return {
                 ...state,
                 users: state.users.map(u => {
@@ -30,7 +30,7 @@ const usersReducer = (state = initialState, action) => {
                     return u
                 })
             }
-        case UNFOLLOW:
+        case UNFOLLOW_SUCCESS:
             return {
                 ...state,
                 users: state.users.map(u => {
@@ -69,8 +69,8 @@ const usersReducer = (state = initialState, action) => {
 }
 
 //Action Creators
-export const followSuccess = (userId) => ({type: FOLLOW, userId: userId});
-export const unfollowSuccess = (userId) => ({type: UNFOLLOW, userId: userId});
+export const followSuccess = (userId) => ({type: FOLLOW_SUCCESS, userId: userId});
+export const unfollowSuccess = (userId) => ({type: UNFOLLOW_SUCCESS, userId: userId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page});
 export const setTotalCountUsers = (count) => ({type: SET_TOTAL_COUNT_USERS, count})
@@ -78,10 +78,10 @@ export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFe
 export const toggleFollowing = (isFetching, userId) => ({type: TOGGLE_FOLLOWING_IN_PROGRESS, isFetching, userId})
 
 //Thunk Creators
-export const requestUsers = (pageSize, currentPage) => {
+export const requestUsers = (pageSize, page) => {
    return (dispatch) => {
         dispatch(toggleIsFetching(true));
-        userAPI.getUser(pageSize, currentPage).then(data => {
+        userAPI.getUser(pageSize, page).then(data => {
             dispatch(toggleIsFetching(false));
             dispatch(setUsers(data.items));
             dispatch(setTotalCountUsers(data.totalCount))

@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./users.module.css";
+import style from "./users.module.css";
 import {NavLink} from "react-router-dom";
 
 let Users = (props) => {
@@ -12,8 +12,8 @@ let Users = (props) => {
     }
     return (
         <div className="profile_block">
-            <div className={s.pageCount}>
-                {pageCount.map(p => <span className={props.currentPage === p && s.current}
+            <div className={style.pageCount}>
+                {pageCount.map(p => <span className={props.currentPage === p && style.current}
                                           onClick={(event) => {
                                               props.onPageChanged(p)
                                           }}
@@ -23,7 +23,7 @@ let Users = (props) => {
                 props.users.map(u => <div>
                     <div><NavLink to={'/profile/' + u.id}> <img
                         src={u.photos.small !== null ? u.photos.small : 'https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697'}
-                        alt="" className={s.ava}/></NavLink></div>
+                        alt="" className={style.ava}/></NavLink></div>
                     <div>{u.followed ?
                         <button disabled={props.followingInProgress.some(id => id === u.id )} onClick={() => {
                             props.unfollow(u.id)
