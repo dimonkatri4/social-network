@@ -15,10 +15,10 @@ let initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,
-    followingInProgress: []                          //масив userId
+    followingInProgress: [],                         //масив userId
 }
 
-const usersReducer = (state = initialState, action) => {
+const usersReducer = (state  = initialState, action) => {
     switch (action.type) {
         case FOLLOW_SUCCESS:
             return {
