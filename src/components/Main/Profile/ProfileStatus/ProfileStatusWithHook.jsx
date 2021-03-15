@@ -4,19 +4,18 @@ import style from "./profileStatus.module.css"
 const ProfileStatusWithHook = (props) =>  {
 
     let [editMode, setEditMode] = useState(false);
-    let [status, setStatus] = useState()
+    let [status, setStatus] = useState(props.status)
 
    const activateEditMode = () => {
         setEditMode(true)
     }
     const deactivateEditMode = () => {
-        setEditMode(false)
+        setEditMode(false);
+        props.updateStatus(status);
     }
     const onStatusChange = (e) => {
-        let status = e.target.value;
-        this.setState({
-            status:status
-        })
+        let text = e.target.value;
+        setStatus(text);
     }
 
         return <div>
@@ -25,8 +24,7 @@ const ProfileStatusWithHook = (props) =>  {
             || <span className={style.addStatus}>Add status</span>} </span>
             }
             {editMode &&
-                <input  autoFocus={true} onBlur={deactivateEditMode}
-                       />
+                <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={status}/>
             }
 
         </div>
