@@ -1,8 +1,7 @@
 import React from 'react'
 import CoverMenu from './CoverMenu/CoverMenu'
 import s from "./coverInfo.module.css"
-import ProfileStatus from "../../ProfileStatus/ProfileStatus";
-import Cover from "../Cover";
+import ProfileStatusWithHook from "../../ProfileStatus/ProfileStatusWithHook";
 
 
 const CoverInfo = (props) => {
@@ -10,7 +9,7 @@ const CoverInfo = (props) => {
             <div className={s.cover_info}>
                 <div className={s.user_name}>{props.fullName}</div>
                 <CoverMenu/>
-                <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+                <ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus} />
             </div>
     )
 }

@@ -3,10 +3,11 @@ import CoverInfo from './CoverInfo/CoverInfo'
 import CoverPhoto from './CoverPhoto/CoverPhoto'
 import MainPhoto from './MainPhoto/MainPhoto'
 import s from "./cover.module.css"
+import Preloader from "../../../common/Preloader/Preloader";
 
 const Cover = (props) => {
     if(!props.profile) {
-        return <div>Loading</div>
+        return <Preloader/>
     }
     return (
         <div className={s.cover}>
