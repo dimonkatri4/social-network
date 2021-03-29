@@ -1,25 +1,34 @@
 import React from 'react'
 import Post from '../Post/Post'
 
-const MyPosts = (props) => {
+class MyPosts extends React.Component {
 
-    let postElement = props.posts
-        .map(post => <Post
-            message={post.message}
-            likeCount={post.likeCount}
-            userName = {post.userName}
-            commentsCount = {post.commentsCount}
-            viewsCount = {post.viewsCount}
-            shareCount = {post.shareCount}
-            date={post.date}
-            key = {post.id}
-        />)
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps !== this.props || nextState !== this.state
+    }
 
-    return (
-        <div>
-            {postElement}
-        </div>
-    )
+    render() {
+
+        console.log("MYPOST")
+
+        let postElement = this.props.posts
+            .map(post => <Post
+                message={post.message}
+                likeCount={post.likeCount}
+                userName={post.userName}
+                commentsCount={post.commentsCount}
+                viewsCount={post.viewsCount}
+                shareCount={post.shareCount}
+                date={post.date}
+                key={post.id}
+            />)
+
+        return (
+            <div>
+                {postElement}
+            </div>
+        )
+    }
 }
 
 export default MyPosts
