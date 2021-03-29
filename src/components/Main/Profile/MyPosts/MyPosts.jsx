@@ -1,11 +1,11 @@
 import React from 'react'
 import Post from '../Post/Post'
 
-class MyPosts extends React.Component {
+class MyPosts extends React.PureComponent {
 
-    shouldComponentUpdate(nextProps, nextState) {
+/*    shouldComponentUpdate(nextProps, nextState) {
         return nextProps !== this.props || nextState !== this.state
-    }
+    }*/
 
     render() {
 
