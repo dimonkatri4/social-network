@@ -18,6 +18,17 @@ let initialState = {
     followingInProgress: [],                         //масив userId
 }
 
+// common function for follow and unfollow thunk creators
+let followUnfollowFlow = async (dispatch,userId,apiMethod,actionCreator) => {
+    dispatch(toggleFollowing(true, userId))
+    const data = await apiMethod(userId);
+    if (data.resultCode == 0) {
+        dispatch(actionCreator(userId))
+    }
+    dispatch(toggleFollowing(false, userId))
+}
+
+
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case FOLLOW_SUCCESS:
@@ -87,21 +98,11 @@ export const requestUsers = (pageSize, page) => async (dispatch) => {
 }
 
 export const unfollow = (userId) => async (dispatch) => {
-    dispatch(toggleFollowing(true, userId))
-    const data = await userAPI.deleteFollow(userId);
-    if (data.resultCode == 0) {
-        dispatch(unfollowSuccess(userId))
-    }
-    dispatch(toggleFollowing(false, userId))
+    followUnfollowFlow(dispatch,userId,userAPI.deleteFollow,unfollowSuccess);
 }
 
 export const follow = (userId) => async (dispatch) => {
-    dispatch(toggleFollowing(true, userId))
-    const data = await userAPI.postFollow(userId);
-    if (data.resultCode == 0) {
-        dispatch(followSuccess(userId))
-    }
-    dispatch(toggleFollowing(false, userId))
+    followUnfollowFlow(dispatch,userId,userAPI.postFollow,followSuccess);
 }
 
 export default usersReducer;
