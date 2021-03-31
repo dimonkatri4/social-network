@@ -19,7 +19,7 @@ let initialState = {
 }
 
 // common function for follow and unfollow thunk creators
-let followUnfollowFlow = async (dispatch,userId,apiMethod,actionCreator) => {
+let followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
     dispatch(toggleFollowing(true, userId))
     const data = await apiMethod(userId);
     if (data.resultCode == 0) {
@@ -28,28 +28,28 @@ let followUnfollowFlow = async (dispatch,userId,apiMethod,actionCreator) => {
     dispatch(toggleFollowing(false, userId))
 }
 
+//common function for change or update property in object
+const updateObjectInArray = (items, itemId, objectProperty, newObjProps) => {
+    return items.map(i => {
+        if (i[objectProperty] === itemId) {
+            return {...i, ...newObjProps}
+        }
+        return i
+    })
+}
+
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case FOLLOW_SUCCESS:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return {...u, followed: true}
-                    }
-                    return u
-                })
+                users: updateObjectInArray(state.users, action.userId, "id", {followed: true})
             }
         case UNFOLLOW_SUCCESS:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return {...u, followed: false}
-                    }
-                    return u
-                })
+                users: updateObjectInArray(state.users, action.userId, "id", {followed: false})
             }
         case SET_USERS:
             return {
@@ -80,8 +80,8 @@ const usersReducer = (state = initialState, action) => {
 }
 
 //Action Creators
-export const followSuccess = (userId) => ({type: FOLLOW_SUCCESS, userId: userId});
-export const unfollowSuccess = (userId) => ({type: UNFOLLOW_SUCCESS, userId: userId});
+export const followSuccess = (userId) => ({type: FOLLOW_SUCCESS, userId});
+export const unfollowSuccess = (userId) => ({type: UNFOLLOW_SUCCESS, userId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page});
 export const setTotalCountUsers = (count) => ({type: SET_TOTAL_COUNT_USERS, count})
@@ -98,11 +98,11 @@ export const requestUsers = (pageSize, page) => async (dispatch) => {
 }
 
 export const unfollow = (userId) => async (dispatch) => {
-    followUnfollowFlow(dispatch,userId,userAPI.deleteFollow,unfollowSuccess);
+    followUnfollowFlow(dispatch, userId, userAPI.deleteFollow, unfollowSuccess);
 }
 
 export const follow = (userId) => async (dispatch) => {
-    followUnfollowFlow(dispatch,userId,userAPI.postFollow,followSuccess);
+    followUnfollowFlow(dispatch, userId, userAPI.postFollow, followSuccess);
 }
 
 export default usersReducer;
