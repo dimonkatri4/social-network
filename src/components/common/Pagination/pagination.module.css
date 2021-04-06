@@ -1,11 +1,16 @@
 .current {
     font-weight: 600;
     font-size: 20px;
+    background-color: whitesmoke;
 }
 .pageCount span {
-    margin: 7px;
+    margin: 2px;
     cursor: pointer;
 }
 .pageCount {
     margin: 5px;
+}
+.numberPage {
+    border: 1px solid gray;
+    padding: 2px;
 }

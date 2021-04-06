@@ -7,7 +7,7 @@ let Users = ({totalUsersCount, pageSize, currentPage, onPageChanged, follow, unf
         <div className="profile_block">
             <Pagination
                 currentPage={currentPage}
-                totalUsersCount={totalUsersCount}
+                totalItemsCount={totalUsersCount}
                 pageSize={pageSize}
                 onPageChanged={onPageChanged}
             />
