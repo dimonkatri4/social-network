@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import style from "./pagination.module.css";
+import classNames from "classnames";
 
 let Pagination = ({totalItemsCount,pageSize,currentPage,onPageChanged, portionSize = 10}) => {
     let pageCount = Math.ceil(totalItemsCount / pageSize);
@@ -21,7 +22,7 @@ let Pagination = ({totalItemsCount,pageSize,currentPage,onPageChanged, portionSi
             <button onClick={() => {setPortionNumber( portionNumber-1)}}>Prev</button>}
             {pages
                 .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
-                .map(p => <span className={`${currentPage === p && style.current} ${style.numberPage}`}
+                .map(p => <span className={classNames(currentPage === p && style.current, style.numberPage)}
                                       onClick={(event) => {
                                           onPageChanged(p)
                                       }}
