@@ -7,7 +7,7 @@ import {initializeApp} from "./redux/app-reducer";
 import {connect, Provider} from "react-redux";
 import Preloader from "./components/common/Preloader/Preloader";
 import {compose} from "redux";
-import {BrowserRouter, withRouter} from "react-router-dom";
+import {HashRouter, withRouter} from "react-router-dom";
 import store from "./redux/redux-store";
 
 class App extends React.Component {
@@ -37,11 +37,11 @@ const AppContainer =  compose(
 
 const AppSocialNetwork = () => {
     return <React.StrictMode>
-        <BrowserRouter>
+        <HashRouter>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
-        </BrowserRouter>
+        </HashRouter>
     </React.StrictMode>
 }
 
