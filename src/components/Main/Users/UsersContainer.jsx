@@ -1,14 +1,21 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    follow, getUsers,
+    follow, requestUsers,
     setCurrentPage,
     toggleFollowing,
     unfollow
 } from "../../../redux/users-reducer";
 import Users from "./Users";
-import preloader from '../../../images/Preloader.gif'
 import {compose} from "redux";
+import Preloader from "../../common/Preloader/Preloader";
+import {
+    getCurrentPage,
+    getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount, getUsers
+} from "../../../redux/users-selectors";
 
 
 // класова контейнерна компонента в якій виконуємо ajax-запит
@@ -16,7 +23,7 @@ import {compose} from "redux";
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.getUsers(this.props.pageSize, this.props.currentPage)
+        this.props.requestUsers(this.props.pageSize, this.props.currentPage)
         // this.props.toggleIsFetching(true);
         // userAPI.getUser(this.props.pageSize, this.props.currentPage).then(data => {
         //     this.props.toggleIsFetching(false)
@@ -27,7 +34,7 @@ class UsersContainer extends React.Component {
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
-        this.props.getUsers(this.props.pageSize, pageNumber)
+        this.props.requestUsers(this.props.pageSize, pageNumber)
         /*this.props.toggleIsFetching(true)
         userAPI.getUser(this.props.pageSize, pageNumber).then(data => {
             this.props.toggleIsFetching(false)
@@ -36,8 +43,9 @@ class UsersContainer extends React.Component {
     }
 
     render() {
+        console.log("USERS render")
         return <>
-            {this.props.isFetching ? <img src={preloader} alt=""/> : null}
+            {this.props.isFetching && <Preloader/>}
             <Users
                 currentPage={this.props.currentPage}
                 onPageChanged={this.onPageChanged}
@@ -55,7 +63,7 @@ class UsersContainer extends React.Component {
 
 // контейнерна компонента яка будується за допомогою connect
 // і передає пропси з кол-беками в класову компоненту UsersContainer
-let mapStateToProps = (state) => {
+/*let mapStateToProps = (state) => {
     return {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
@@ -63,6 +71,19 @@ let mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
         followingInProgress: state.usersPage.followingInProgress
+    }
+}*/
+
+let mapStateToProps = (state) => {
+    console.log("mapStateToProps USERS")
+    return {
+        //users: getUsersSuper(state),
+        users:getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state)
     }
 }
 
@@ -80,7 +101,7 @@ let mapStateToProps = (state) => {
 }*/
 
 export default compose(
-    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowing, getUsers})
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowing, requestUsers})
 )(UsersContainer)
 
 /*export default connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowing, getUsers}

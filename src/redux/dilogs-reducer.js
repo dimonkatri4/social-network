@@ -5,7 +5,7 @@ import user4Photo from '../images/users/4.jpg'
 import user5Photo from '../images/users/5.jpg'
 
 
-const ADD_MESSAGE = 'ADD-MESSAGE';
+const ADD_MESSAGE = 'dialogs/ADD-MESSAGE';
 
 let initialState = {
     dialogs: [
