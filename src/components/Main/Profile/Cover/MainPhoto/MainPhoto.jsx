@@ -4,9 +4,9 @@ import photoUser from '../../../../../images/photo-user.jpg'
 
 const MainPhoto = (props) => {
 
-    const updatePhoto = (e) = {
-       if( e.files.length !== 0) {
-           props.savePhoto(e.files[0])
+    const updatePhoto = (e) => {
+       if( e.target.files.length !== 0) {
+           props.savePhoto(e.target.files[0])
     }
     }
 
@@ -15,7 +15,7 @@ const MainPhoto = (props) => {
             <div className={s.main_photo}>
                 <img src={props.photo.large || photoUser} alt=""/>
             </div>
-            <input type="file" className={s.inputPhoto} onChange={}/>
+            {props.isOwner && <input type="file" className={s.inputPhoto} onChange={updatePhoto}/>}
         </div>
     )
 }
