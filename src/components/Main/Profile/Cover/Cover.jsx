@@ -13,7 +13,11 @@ const Cover = (props) => {
         <div className={s.cover}>
             <CoverPhoto/>
             <MainPhoto photo = {props.profile.photos} isOwner={props.isOwner} savePhoto={props.savePhoto} />
-            <CoverInfo fullName={props.profile.fullName} status={props.status} updateStatus={props.updateStatus} />
+            <CoverInfo fullName={props.profile.fullName}
+                       status={props.status}
+                       updateStatus={props.updateStatus}
+                       isOwner={props.isOwner}
+            />
         </div>
     )
 }
