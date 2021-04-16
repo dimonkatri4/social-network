@@ -2,14 +2,3 @@
     width: 120px;
     height: 100px;
 }
-.current {
-    font-weight: 600;
-    font-size: 20px;
-}
-.pageCount span {
-    margin: 7px;
-    cursor: pointer;
-}
-.pageCount {
-    margin: 5px;
-}

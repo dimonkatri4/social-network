@@ -1,18 +1,19 @@
 import React from 'react'
 import Post from '../Post/Post'
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
+    console.log("MYPOST");
 
     let postElement = props.posts
         .map(post => <Post
             message={post.message}
             likeCount={post.likeCount}
-            userName = {post.userName}
-            commentsCount = {post.commentsCount}
-            viewsCount = {post.viewsCount}
-            shareCount = {post.shareCount}
+            userName={post.userName}
+            commentsCount={post.commentsCount}
+            viewsCount={post.viewsCount}
+            shareCount={post.shareCount}
             date={post.date}
-            key = {post.id}
+            key={post.id}
         />)
 
     return (
@@ -20,6 +21,6 @@ const MyPosts = (props) => {
             {postElement}
         </div>
     )
-}
+});
 
 export default MyPosts

@@ -8,7 +8,12 @@ const Profile = (props) => {
     // if(!props.isAuth) return <Redirect to='/login'/>
 
     return ( <>
-            <Cover profile={props.profilePage.profile} status={props.status} updateStatus={props.updateStatus} />
+            <Cover profile={props.profilePage.profile}
+                   status={props.status}
+                   updateStatus={props.updateStatus}
+                   isOwner = {props.isOwner}
+                   savePhoto = {props.savePhoto}
+            />
         <div className={s.content}>
             <CreatePostContainer/>
             <MyPosts posts={props.profilePage.posts} />
