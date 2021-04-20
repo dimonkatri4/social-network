@@ -31,6 +31,7 @@
   border-radius: 5px;
   background-color: #fdfdfd;
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 .button {
     background-color: #088dcd;
@@ -44,6 +45,10 @@
     width: 80px;
     align-self: center;
     outline: none;
+}
+
+.button:hover {
+    box-shadow: 5px 7px 5px #e1e8ed;
 }
 
 .title {
