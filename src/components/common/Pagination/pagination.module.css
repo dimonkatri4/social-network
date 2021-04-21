@@ -1,7 +1,9 @@
-.current {
-    font-weight: 600;
-    font-size: 20px;
-    background-color: whitesmoke;
+.numberPage:hover {
+    background: #eee;
+}
+.current, .arrowLeft:hover, .arrowRight:hover {
+    color: white;
+    background-color: #088dcd;
 }
 .pageCount span {
     margin: 2px;
@@ -9,8 +11,18 @@
 }
 .pageCount {
     margin: 5px;
+    border: 1px solid #ddd;
+    display: inline-block;
+    padding: 5px;
 }
 .numberPage {
-    border: 1px solid gray;
+    border-right: 1px solid #ddd;
+    padding: 2px;
+}
+.arrowLeft {
+    border-right: 1px solid #ddd;
+    padding: 2px;
+}
+.arrowRight {
     padding: 2px;
 }
