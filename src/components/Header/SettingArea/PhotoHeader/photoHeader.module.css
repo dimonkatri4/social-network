@@ -3,6 +3,7 @@
     width: 40px;
     border-radius: 50%;
     cursor: pointer;
+    outline: none;
   }
 .photo_header {
     display: flex;
@@ -10,6 +11,7 @@
     align-items: center;
     cursor: pointer;
     position: relative;
+    margin-right: 10px;
 }
 .photo_header div {
     color: #088dcd;
@@ -19,12 +21,29 @@
     position: absolute;
     border: 1px solid #e1e8ed;
     border-radius: 0 0 3px 3px;
-    background: #fff none repeat scroll 0 0;
-    top: 60px;
-    right: -10px;
+    background: #fafafa;
+    top: 59px;
+    right: -20px;
     z-index: 2;
-    width: 130px;
+    width: 140px;
 }
 .userSettings ul li {
-    margin: 10px 5px;
+
+}
+.itemMenu a {
+    text-align: start;
+    line-height: 35px;
+    font-size: 14px;
+    padding: 5px;
+}
+.itemMenu a:hover {
+    background-color: #e3e6f1;
+}
+.itemMenu a:active, .icon:active{
+    background-color: #088dcd;
+    color: white;
+}
+.icon {
+    color:#088dcd;
+    margin-right: 4px;
 }
