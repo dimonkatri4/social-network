@@ -2,9 +2,9 @@ import React, {useState} from "react";
 import style from "./pagination.module.css";
 import classNames from "classnames";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faAngleDoubleLeft, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
+import {faAngleDoubleLeft, faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons'
 
-let Pagination = ({totalItemsCount,pageSize,currentPage,onPageChanged, portionSize = 10}) => {
+let Pagination = ({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10}) => {
     let pageCount = Math.ceil(totalItemsCount / pageSize);
 
     let pages = [];
@@ -13,24 +13,28 @@ let Pagination = ({totalItemsCount,pageSize,currentPage,onPageChanged, portionSi
         pages.push(i)
     }
 
-    let portionCount = Math.ceil(pageCount/portionSize);
+    let portionCount = Math.ceil(pageCount / portionSize);
     let [portionNumber, setPortionNumber] = useState(1);
-    let leftPortionPageNumber = ((portionNumber-1)*portionSize+1);
-    let rightPortionPageNumber = (portionNumber*portionSize);
+    let leftPortionPageNumber = ((portionNumber - 1) * portionSize + 1);
+    let rightPortionPageNumber = (portionNumber * portionSize);
 
     return (
         <div className={style.pageCount}>
-                { portionNumber > 1 &&
-            <FontAwesomeIcon className={style.arrowLeft} icon={faAngleDoubleLeft} onClick={() => {setPortionNumber( portionNumber-1)}} />}
+            {portionNumber > 1 &&
+            <span className={style.arrow} onClick={() => setPortionNumber(portionNumber - 1)}>
+                <FontAwesomeIcon icon={faAngleDoubleLeft}/>
+            </span>}
             {pages
                 .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                 .map(p => <span className={classNames(currentPage === p && style.current, style.numberPage)}
-                                      onClick={(event) => {
-                                          onPageChanged(p)
-                                      }}
-            >{p}</span>)}
-            { portionCount > portionNumber &&
-                <FontAwesomeIcon className={style.arrowRight} icon={faAngleDoubleRight} onClick={() => {setPortionNumber( portionNumber+1)}} />}
+                                onClick={(event) => {
+                                    onPageChanged(p)
+                                }}
+                >{p}</span>)}
+            {portionCount > portionNumber &&
+            <span className={style.arrow} onClick={() => {setPortionNumber(portionNumber + 1)}}>
+                <FontAwesomeIcon icon={faAngleDoubleRight} />
+            </span>}
         </div>
     )
 }

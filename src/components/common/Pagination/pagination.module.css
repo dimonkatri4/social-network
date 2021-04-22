@@ -1,28 +1,42 @@
-.numberPage:hover {
-    background: #eee;
-}
-.current, .arrowLeft:hover, .arrowRight:hover {
+.current {
     color: white;
     background-color: #088dcd;
 }
 .pageCount span {
-    margin: 2px;
     cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #ddd;
+    padding: 2px;
 }
 .pageCount {
-    margin: 5px;
+    margin: auto;
     border: 1px solid #ddd;
-    display: inline-block;
-    padding: 5px;
+    display: flex;
+    width: fit-content;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
-.numberPage {
-    border-right: 1px solid #ddd;
-    padding: 2px;
+
+.numberPage:hover, .arrow:hover{
+    background: #eee;
 }
-.arrowLeft {
-    border-right: 1px solid #ddd;
-    padding: 2px;
+.current:hover{
+    background-color: #088dcd;
 }
-.arrowRight {
-    padding: 2px;
+.arrow {
+    color: #088dcd;
+}
+
+.pageCount span:last-child {
+    border-right: none;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.pageCount span:first-child {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
 }

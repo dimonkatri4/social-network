@@ -6,6 +6,12 @@ import User from "./User";
 let Users = ({totalUsersCount, pageSize, currentPage, onPageChanged, follow, unfollow, ...props}) => {
     return (
         <div className="profile_block">
+            <Pagination
+                currentPage={currentPage}
+                totalItemsCount={totalUsersCount}
+                pageSize={pageSize}
+                onPageChanged={onPageChanged}
+            />
             <div>
                 {
                     props.users.map(u => <User
@@ -16,12 +22,6 @@ let Users = ({totalUsersCount, pageSize, currentPage, onPageChanged, follow, unf
                     />)
                 }
             </div>
-            <Pagination
-                currentPage={currentPage}
-                totalItemsCount={totalUsersCount}
-                pageSize={pageSize}
-                onPageChanged={onPageChanged}
-            />
         </div>
     )
 }
