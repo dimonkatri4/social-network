@@ -9,6 +9,14 @@ const PhotoHeader = (props) => {
         <div className={s.photo_header}>
             <img src={photoUser} alt="user" />
             <div>{props.isAuth && props.login}</div>
+            <div className={s.userSettings}>
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                </ul>
+            </div>
         </div>
     )
 }

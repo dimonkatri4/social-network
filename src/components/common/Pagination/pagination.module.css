@@ -30,7 +30,10 @@
 .arrow {
     color: #088dcd;
 }
-
+.arrow:active, .numberPage:active {
+    background-color: #088dcd;
+    color: white;
+}
 .pageCount span:last-child {
     border-right: none;
     border-bottom-right-radius: 10px;
