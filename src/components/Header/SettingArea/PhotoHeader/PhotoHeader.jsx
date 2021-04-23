@@ -13,12 +13,12 @@ const PhotoHeader = (props) => {
 
 
     return (
-        <div className={s.photo_header}>
-            <img src={photoUser} alt="user" onClick={() => setEditMode(true)}
-                 onBlur={() => setEditMode(false)} autofocus={true} tabIndex="0"/>
+        <div className={s.photo_header} >
+            <img src={photoUser} alt="user" onClick={() => setEditMode(!editMode)}
+                 />
             <div>{props.isAuth && props.login}</div>
             {editMode &&
-            <div className={classNames(s.userSettings)}>
+            <div className={classNames(s.userSettings)} onClick={() => setEditMode(false)}>
                 <ul>
                     <li className={s.itemMenu}>
                         <NavLink to='/'>
