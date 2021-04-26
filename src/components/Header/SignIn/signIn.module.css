@@ -13,3 +13,13 @@
     padding: 11px 20px;
     height: 100%;
 }
+
+.inputPlace {
+    display: flex;
+}
+
+.commonErrorLogin {
+    border: solid 1px red;
+    color:orangered;
+    font-size: 18px;
+}
