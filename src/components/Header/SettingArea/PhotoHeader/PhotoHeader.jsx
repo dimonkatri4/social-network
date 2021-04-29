@@ -18,7 +18,7 @@ const PhotoHeader = (props) => {
                  />
             <div>{props.isAuth && props.login}</div>
             {editMode &&
-            <div className={classNames(s.userSettings)} onClick={() => setEditMode(false)}>
+            <div className={classNames(s.userSettings)}  autofocus={true} onClick={() => setEditMode(false)}>
                 <ul>
                     <li className={s.itemMenu}>
                         <NavLink to='/'>
