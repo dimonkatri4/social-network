@@ -61,7 +61,7 @@ const PhotoHeader = (props) => {
                         </NavLink>
                     </li>
                     <li className={s.itemMenu} onClick={props.logout}>
-                        <NavLink to='/'>
+                        <NavLink to='/login'>
                             <FontAwesomeIcon icon={faSignOutAlt} className={s.icon}/>
                             Log Out
                         </NavLink>
