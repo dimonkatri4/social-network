@@ -6,7 +6,7 @@
     grid-template-columns: 1fr 2fr 5fr 2fr 1fr;
     grid-template-areas:
       "cov cov cov cov cov"
-      ". nv cont sd ."
+      ". lp cont rp ."
     ;
   }
 

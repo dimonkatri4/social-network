@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from './Navbar/Navbar';
-import Sidebar from './Sidebar/Sidebar';
+import LeftPanel from './LeftPanel/LeftPanel';
+import Sidebar from './RightPanel/Sidebar/Sidebar';
 import s from './main.module.css';
 import {Route} from 'react-router-dom';
 //import Dialogs from './Dialogs/Dialogs';
@@ -10,6 +10,8 @@ import Settings from './Settings/Settings';
 import UsersContainer from "./Users/UsersContainer";
 //import ProfileContainer from "./Profile/ProfileContainer";
 import Login from "./Login/Login";
+import ProfileInfo from "./Profile/ProfileInfo/ProfileInfo";
+import RightPanel from "./RightPanel/RightPanel";
 const Dialogs = React.lazy(() => import('./Dialogs/Dialogs'));
 const ProfileContainer = React.lazy(() => import('./Profile/ProfileContainer'));
 
@@ -17,7 +19,7 @@ const Main = (props) => {
 
     return (
         <div className={s.main_page}>
-            <Navbar/>
+            <LeftPanel/>
             <Route path='/profile/:userId?' render={() =>
                 <React.Suspense fallback={<div>Loading..</div>}>
                     <ProfileContainer profilePage={props.profilePage}/>
@@ -36,7 +38,7 @@ const Main = (props) => {
                 <Route path='/users' component={UsersContainer}/>
                 <Route path='/login' component={Login}/>
             </div>
-            <Sidebar sidebarPage={props.sidebarPage}/>
+            <RightPanel sidebarPage={props.sidebarPage}/>
         </div>
     )
 }
