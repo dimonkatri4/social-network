@@ -1,3 +1,5 @@
 .profileInfo {
     grid-area: inf;
+    margin: 10px;
+    padding: 20px;
 }

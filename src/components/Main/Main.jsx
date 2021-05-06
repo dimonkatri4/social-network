@@ -19,10 +19,10 @@ const Main = (props) => {
 
     return (
         <div className={s.main_page}>
-            <LeftPanel/>
+            <LeftPanel />
             <Route path='/profile/:userId?' render={() =>
                 <React.Suspense fallback={<div>Loading..</div>}>
-                    <ProfileContainer profilePage={props.profilePage}/>
+                    <ProfileContainer/>
                 </React.Suspense>
             }
             />
@@ -38,7 +38,7 @@ const Main = (props) => {
                 <Route path='/users' component={UsersContainer}/>
                 <Route path='/login' component={Login}/>
             </div>
-            <RightPanel sidebarPage={props.sidebarPage}/>
+            <RightPanel sidebarPage={props.sidebarPage} profile={props.profilePage.profile}/>
         </div>
     )
 }
