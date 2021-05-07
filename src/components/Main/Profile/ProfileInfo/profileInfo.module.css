@@ -3,3 +3,13 @@
     margin: 10px;
     padding: 20px;
 }
+
+.contacts {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact {
+    padding: 10px;
+}

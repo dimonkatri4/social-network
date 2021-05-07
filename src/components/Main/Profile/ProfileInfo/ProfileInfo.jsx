@@ -1,8 +1,9 @@
 import React from "react";
 import style from "./profileInfo.module.css"
 import classNames from "classnames";
-import Preloader from "../../../common/Preloader/Preloader";
-import {faInstagram} from '@fortawesome/free-solid-svg-icons'
+import {faInstagram, faFacebookSquare,faGithubSquare,faTwitterSquare, faVk, faYoutube} from "@fortawesome/free-brands-svg-icons";
+import {faLink, faGlobeAmericas} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const ProfileInfo = (props) => {
     if(!props.profile) {
@@ -19,16 +20,32 @@ const ProfileInfo = (props) => {
             Looking for a job: {props.profile.lookingForAJob ? "Yes" : "No" }
         </div>
         {props.profile.lookingForAJobDescription && <div>Description job: {props.profile.lookingForAJobDescription}</div>}
+        <div className={style.contacts}>
         {Object.keys(props.profile.contacts).map((key)=> {
             return <Contacts key={key} contactTitle={key} contactValue={props.profile.contacts[key]}  />
         })}
+        </div>
     </div>
 }
 
 const Contacts = ({contactTitle, contactValue}) => {
-    return <div>
-        {contactValue && <div><b>{contactTitle}</b>: {contactValue}</div>}
+    const contactsIcon = {
+        facebook: faFacebookSquare,
+        github: faGithubSquare,
+        instagram: faInstagram,
+        mainLink: faLink,
+        twitter: faTwitterSquare,
+        vk: faVk,
+        website: faGlobeAmericas,
+        youtube: faYoutube
+    }
+
+    return <div className={style.contact}>
+        {contactValue && <div><a href={contactValue}>
+            <FontAwesomeIcon icon={contactsIcon[contactTitle]}/>
+        </a></div>}
     </div>
+
 }
 
 export default ProfileInfo
