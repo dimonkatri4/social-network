@@ -1,12 +1,19 @@
 import React from "react";
 import style from "./profileInfo.module.css"
 import classNames from "classnames";
-import {faInstagram, faFacebookSquare,faGithubSquare,faTwitterSquare, faVk, faYoutube} from "@fortawesome/free-brands-svg-icons";
+import {
+    faInstagram,
+    faFacebookSquare,
+    faGithubSquare,
+    faTwitterSquare,
+    faVk,
+    faYoutube
+} from "@fortawesome/free-brands-svg-icons";
 import {faLink, faGlobeAmericas} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const ProfileInfo = (props) => {
-    if(!props.profile) {
+    if (!props.profile) {
         return <div></div>
     }
     return <div className={classNames(style.profileInfo, 'profile_block')}>
@@ -17,13 +24,15 @@ const ProfileInfo = (props) => {
             About Me: {props.profile.aboutMe}
         </div>
         <div>
-            Looking for a job: {props.profile.lookingForAJob ? "Yes" : "No" }
+            Looking for a job: {props.profile.lookingForAJob ? "Yes" : "No"}
         </div>
-        {props.profile.lookingForAJobDescription && <div>Description job: {props.profile.lookingForAJobDescription}</div>}
+        {props.profile.lookingForAJobDescription &&
+        <div>Description job: {props.profile.lookingForAJobDescription}</div>}
         <div className={style.contacts}>
-        {Object.keys(props.profile.contacts).map((key)=> {
-            return <Contacts key={key} contactTitle={key} contactValue={props.profile.contacts[key]}  />
-        })}
+            {
+                Object.keys(props.profile.contacts).map((key) => {
+                return props.profile.contacts[key] &&  <Contacts key={key} contactTitle={key} contactValue={props.profile.contacts[key]}/>
+            })}
         </div>
     </div>
 }
@@ -39,13 +48,11 @@ const Contacts = ({contactTitle, contactValue}) => {
         website: faGlobeAmericas,
         youtube: faYoutube
     }
-
-    return <div className={style.contact}>
-        {contactValue && <div><a href={contactValue}>
-            <FontAwesomeIcon icon={contactsIcon[contactTitle]}/>
-        </a></div>}
-    </div>
-
+        return <div className={style.contact}>
+            {contactValue && <div><a href={contactValue}>
+                <FontAwesomeIcon icon={contactsIcon[contactTitle]}/>
+            </a></div>}
+        </div>
 }
 
 export default ProfileInfo
