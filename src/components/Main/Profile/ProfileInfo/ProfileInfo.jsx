@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import style from "./profileInfo.module.css"
 import classNames from "classnames";
 import {
@@ -11,8 +11,15 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import {faLink, faGlobeAmericas} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {withRouter} from "react-router-dom";
+import ProfileDataForm from "./ProfileDataForm";
 
 const ProfileInfo = (props) => {
+
+    let [editMode, setEditMode] = useState(false);
+
+    const isOwner = !props.match.params.userId;
+
     if (!props.profile) {
         return <div></div>
     }
@@ -20,20 +27,9 @@ const ProfileInfo = (props) => {
         <div className="caption">
             <h3 className="title">Profile Info</h3>
         </div>
-        <div>
-            About Me: {props.profile.aboutMe}
-        </div>
-        <div>
-            Looking for a job: {props.profile.lookingForAJob ? "Yes" : "No"}
-        </div>
-        {props.profile.lookingForAJobDescription &&
-        <div>Description job: {props.profile.lookingForAJobDescription}</div>}
-        <div className={style.contacts}>
-            {
-                Object.keys(props.profile.contacts).map((key) => {
-                return props.profile.contacts[key] &&  <Contacts key={key} contactTitle={key} contactValue={props.profile.contacts[key]}/>
-            })}
-        </div>
+        {editMode ? <ProfileDataForm profile={props.profile} /> :
+            <ProfileData {...props} isOwner={isOwner} goToEditMode={() => setEditMode(true)} />
+        }
     </div>
 }
 
@@ -48,11 +44,36 @@ const Contacts = ({contactTitle, contactValue}) => {
         website: faGlobeAmericas,
         youtube: faYoutube
     }
-        return <div className={style.contact}>
-            {contactValue && <div><a href={contactValue}>
-                <FontAwesomeIcon icon={contactsIcon[contactTitle]}/>
-            </a></div>}
-        </div>
+    return <div className={style.contact}>
+        {contactValue && <div><a href={contactValue}>
+            <FontAwesomeIcon icon={contactsIcon[contactTitle]}/>
+        </a></div>}
+    </div>
 }
 
-export default ProfileInfo
+const ProfileData = (props) => {
+    return <div>
+        <div>
+            About Me: {props.profile.aboutMe}
+        </div>
+        <div>
+            Looking for a job: {props.profile.lookingForAJob ? "Yes" : "No"}
+        </div>
+        {props.profile.lookingForAJobDescription &&
+        <div>Description job: {props.profile.lookingForAJobDescription}</div>}
+        <div className={style.contacts}>
+            {
+                Object.keys(props.profile.contacts).map((key) => {
+                    return props.profile.contacts[key] &&
+                        <Contacts key={key} contactTitle={key} contactValue={props.profile.contacts[key]}/>
+                })}
+        </div>
+        {props.isOwner && <div>
+            <button onClick={props.goToEditMode}>Edit</button>
+        </div>}
+    </div>
+}
+
+
+
+export default withRouter(ProfileInfo)

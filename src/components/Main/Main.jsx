@@ -38,7 +38,7 @@ const Main = (props) => {
                 <Route path='/users' component={UsersContainer}/>
                 <Route path='/login' component={Login}/>
             </div>
-            <RightPanel sidebarPage={props.sidebarPage} profile={props.profilePage.profile}/>
+            <RightPanel sidebarPage={props.sidebarPage} profile={props.profilePage.profile} isAuth={props.isAuth}/>
         </div>
     )
 }
