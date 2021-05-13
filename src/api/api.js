@@ -49,5 +49,14 @@ export const profileAPI = {
                 'Content-Type': 'multipart/form-data'
             }
             }).then(response => response.data)
+    },
+    updateFullName(fullName) {
+        return instance.put(`profile/`, {fullName: fullName}).then(response => response.data)
+    },
+    updateAboutMe(textAboutMe) {
+        return instance.put(`profile/`, {aboutMe: textAboutMe}).then(response => response.data)
+    },
+    updateLookingForAJob(valueLookingForAJob) {
+        return instance.put(`profile/`, {lookingForAJob: valueLookingForAJob}).then(response => response.data)
     }
 }

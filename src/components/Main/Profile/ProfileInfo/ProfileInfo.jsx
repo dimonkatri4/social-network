@@ -13,8 +13,15 @@ import {faLink, faGlobeAmericas} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {withRouter} from "react-router-dom";
 import ProfileDataForm from "./ProfileDataForm";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import {updateFullName} from "../../../../redux/profile-reducer";
 
 const ProfileInfo = (props) => {
+
+    const onSubmit = (formData) => {
+        props.updateFullName(formData.fullName)
+    }
 
     let [editMode, setEditMode] = useState(false);
 
@@ -27,7 +34,7 @@ const ProfileInfo = (props) => {
         <div className="caption">
             <h3 className="title">Profile Info</h3>
         </div>
-        {editMode ? <ProfileDataForm profile={props.profile} /> :
+        {editMode ? <ProfileDataForm profile={props.profile} onSubmit={onSubmit} /> :
             <ProfileData {...props} isOwner={isOwner} goToEditMode={() => setEditMode(true)} />
         }
     </div>
@@ -74,6 +81,11 @@ const ProfileData = (props) => {
     </div>
 }
 
+let mapStateToProps = (state) => ({
+    profile:state.profilePage.profile
+})
 
-
-export default withRouter(ProfileInfo)
+export default compose(
+    withRouter,
+    connect(mapStateToProps,{updateFullName})
+)(ProfileInfo)
