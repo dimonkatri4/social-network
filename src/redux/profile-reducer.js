@@ -5,7 +5,7 @@ const SET_USERS_PROFILE = 'profile/SET_USERS_PROFILE';
 const SET_USERS_STATUS = 'profile/SET_USERS_STATUS';
 const DELETE_POST = 'profile/DELETE_POST';
 const SAVE_PHOTO_SUCCESS = 'profile/SAVE_PHOTO_SUCCESS';
-const UPDATE_FULL_NAME_SUCCESS = 'profile/UPDATE_FULL_NAME_SUCCESS';
+const UPDATE_PROFILE_INFO_SUCCESS = 'profile/UPDATE_PROFILE_INFO_SUCCESS';
 
 
 
@@ -82,8 +82,13 @@ const profileReducer = (state = initialState, action) => {
             return {...state, posts: state.posts.filter(p => p.id !== action.idPost)}
         case SAVE_PHOTO_SUCCESS:
             return {...state, profile: {...state.profile, photos: action.photos}}
-        case UPDATE_FULL_NAME_SUCCESS:
-            return {...state, profile: {...state.profile, fullName: action.fullName}}
+        case UPDATE_PROFILE_INFO_SUCCESS:
+            return {...state, profile: {...state.profile,
+                    fullName: action.fullName,
+                    aboutMe:action.aboutMe,
+                    lookingForAJob:action.lookingForAJob,
+                    lookingForAJobDescription: action.jobDescription
+                }}
         default:
             return state
     }
@@ -94,7 +99,8 @@ export const setUsersProfile = (profile) => ({type: SET_USERS_PROFILE, profile})
 export const setUsersStatus = (status) => ({type: SET_USERS_STATUS, status});
 export const deletePost = (idPost) => ({type: DELETE_POST, idPost});
 export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos});
-export const updateFullNameSuccess = (fullName) => ({type: UPDATE_FULL_NAME_SUCCESS, fullName});
+export const updateProfileInfoSuccess = (fullName,aboutMe,lookingForAJob,jobDescription) =>
+    ({type: UPDATE_PROFILE_INFO_SUCCESS, fullName,aboutMe,lookingForAJob,jobDescription});
 
 
 export const getProfile = (userId) => {
@@ -122,10 +128,10 @@ export const savePhoto = (photo) => async (dispatch) => {
     }
 }
 
-export const updateFullName = (fullName) => async (dispatch) => {
-    const data = await profileAPI.updateFullName(fullName);
+export const updateProfileInfo = (fullName,aboutMe,lookingForAJob,jobDescription) => async (dispatch) => {
+    const data = await profileAPI.updateProfileInfo(fullName,aboutMe,lookingForAJob,jobDescription);
     if (data.resultCode === 0) {
-        dispatch(updateFullNameSuccess(fullName))
+        dispatch(updateProfileInfoSuccess(fullName,aboutMe,lookingForAJob,jobDescription))
     }
 }
 

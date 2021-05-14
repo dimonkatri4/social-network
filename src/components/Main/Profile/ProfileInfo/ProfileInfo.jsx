@@ -15,12 +15,13 @@ import {withRouter} from "react-router-dom";
 import ProfileDataForm from "./ProfileDataForm";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {updateFullName} from "../../../../redux/profile-reducer";
+import {updateProfileInfo} from "../../../../redux/profile-reducer";
 
 const ProfileInfo = (props) => {
 
     const onSubmit = (formData) => {
-        props.updateFullName(formData.fullName)
+        props.updateProfileInfo(formData.fullName,formData.aboutMe,formData.lookingForAJob,formData.descriptionJob);
+        setEditMode(false)
     }
 
     let [editMode, setEditMode] = useState(false);
@@ -87,5 +88,5 @@ let mapStateToProps = (state) => ({
 
 export default compose(
     withRouter,
-    connect(mapStateToProps,{updateFullName})
+    connect(mapStateToProps,{updateProfileInfo})
 )(ProfileInfo)
