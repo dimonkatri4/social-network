@@ -55,7 +55,7 @@ const Contacts = ({contactTitle, contactValue}) => {
         youtube: faYoutube
     }
     return <div className={style.contact}>
-        {contactValue && <div><a href={contactValue}>
+        {contactValue && <div><a href={contactValue} title={contactTitle} target="_blank">
             <FontAwesomeIcon icon={contactsIcon[contactTitle]}/>
         </a></div>}
     </div>

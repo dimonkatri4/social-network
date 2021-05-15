@@ -133,10 +133,10 @@ export const savePhoto = (photo) => async (dispatch) => {
 export const updateProfileInfo = (profile) => async (dispatch) => {
     const data = await profileAPI.updateProfileInfo(profile);
     if (data.resultCode === 0) {
-        changeEditModeProfile(false)
-        dispatch(updateProfileInfoSuccess(profile))
+        dispatch(updateProfileInfoSuccess(profile));
+        dispatch(changeEditModeProfile(false));
     } else {
-        let errorMessage = data.messages.length > 0 ? data.messages[0] : "Other Error"
+        let errorMessage = data.messages.length > 0 ? data.messages[0] : "Other Error";
         dispatch(stopSubmit('profileDataEdit', {_error: errorMessage}))
     }
 }
