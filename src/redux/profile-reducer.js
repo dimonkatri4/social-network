@@ -1,4 +1,5 @@
 import {profileAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'profile/ADD-POST';
 const SET_USERS_PROFILE = 'profile/SET_USERS_PROFILE';
@@ -6,6 +7,7 @@ const SET_USERS_STATUS = 'profile/SET_USERS_STATUS';
 const DELETE_POST = 'profile/DELETE_POST';
 const SAVE_PHOTO_SUCCESS = 'profile/SAVE_PHOTO_SUCCESS';
 const UPDATE_PROFILE_INFO_SUCCESS = 'profile/UPDATE_PROFILE_INFO_SUCCESS';
+const CHANGE_EDIT_MODE_PROFILE = 'profile/CHANGE_EDIT_MODE_PROFILE'
 
 
 
@@ -54,7 +56,8 @@ let initialState = {
     ],
     profile: null,
     status: '',
-    photo: null
+    photo: null,
+    editModeProfile:false
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -83,12 +86,11 @@ const profileReducer = (state = initialState, action) => {
         case SAVE_PHOTO_SUCCESS:
             return {...state, profile: {...state.profile, photos: action.photos}}
         case UPDATE_PROFILE_INFO_SUCCESS:
-            return {...state, profile: {...state.profile,
-                    fullName: action.fullName,
-                    aboutMe:action.aboutMe,
-                    lookingForAJob:action.lookingForAJob,
-                    lookingForAJobDescription: action.jobDescription
+            return {...state, profile: {...state.profile, ...action.profile,
+                    contacts: {...state.profile.contacts,...action.profile.contacts}
                 }}
+        case CHANGE_EDIT_MODE_PROFILE:
+            return {...state, editModeProfile: action.editValue}
         default:
             return state
     }
@@ -99,8 +101,8 @@ export const setUsersProfile = (profile) => ({type: SET_USERS_PROFILE, profile})
 export const setUsersStatus = (status) => ({type: SET_USERS_STATUS, status});
 export const deletePost = (idPost) => ({type: DELETE_POST, idPost});
 export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos});
-export const updateProfileInfoSuccess = (fullName,aboutMe,lookingForAJob,jobDescription) =>
-    ({type: UPDATE_PROFILE_INFO_SUCCESS, fullName,aboutMe,lookingForAJob,jobDescription});
+export const updateProfileInfoSuccess = (profile) => ({type: UPDATE_PROFILE_INFO_SUCCESS, profile});
+export const changeEditModeProfile = (editValue) => ({type: CHANGE_EDIT_MODE_PROFILE, editValue});
 
 
 export const getProfile = (userId) => {
@@ -128,10 +130,14 @@ export const savePhoto = (photo) => async (dispatch) => {
     }
 }
 
-export const updateProfileInfo = (fullName,aboutMe,lookingForAJob,jobDescription) => async (dispatch) => {
-    const data = await profileAPI.updateProfileInfo(fullName,aboutMe,lookingForAJob,jobDescription);
+export const updateProfileInfo = (profile) => async (dispatch) => {
+    const data = await profileAPI.updateProfileInfo(profile);
     if (data.resultCode === 0) {
-        dispatch(updateProfileInfoSuccess(fullName,aboutMe,lookingForAJob,jobDescription))
+        changeEditModeProfile(false)
+        dispatch(updateProfileInfoSuccess(profile))
+    } else {
+        let errorMessage = data.messages.length > 0 ? data.messages[0] : "Other Error"
+        dispatch(stopSubmit('profileDataEdit', {_error: errorMessage}))
     }
 }
 

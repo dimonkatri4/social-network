@@ -50,7 +50,7 @@ export const profileAPI = {
             }
             }).then(response => response.data)
     },
-    updateProfileInfo(fullName,aboutMe,lookingForAJob,lookingForAJobDescription) {
-        return instance.put(`profile/`, {fullName,aboutMe,lookingForAJob,lookingForAJobDescription}).then(response => response.data)
+    updateProfileInfo(profile) {
+        return instance.put(`profile/`, {...profile}).then(response => response.data)
     }
 }

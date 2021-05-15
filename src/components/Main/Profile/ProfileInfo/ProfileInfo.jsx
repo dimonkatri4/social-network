@@ -15,16 +15,14 @@ import {withRouter} from "react-router-dom";
 import ProfileDataForm from "./ProfileDataForm";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {updateProfileInfo} from "../../../../redux/profile-reducer";
+import {changeEditModeProfile, updateProfileInfo} from "../../../../redux/profile-reducer";
 
 const ProfileInfo = (props) => {
 
     const onSubmit = (formData) => {
-        props.updateProfileInfo(formData.fullName,formData.aboutMe,formData.lookingForAJob,formData.descriptionJob);
-        setEditMode(false)
+        props.updateProfileInfo(formData);
+        //setEditMode(false)
     }
-
-    let [editMode, setEditMode] = useState(false);
 
     const isOwner = !props.match.params.userId;
 
@@ -35,8 +33,12 @@ const ProfileInfo = (props) => {
         <div className="caption">
             <h3 className="title">Profile Info</h3>
         </div>
-        {editMode ? <ProfileDataForm profile={props.profile} onSubmit={onSubmit} /> :
-            <ProfileData {...props} isOwner={isOwner} goToEditMode={() => setEditMode(true)} />
+        {props.editModeProfile ? <ProfileDataForm onSubmit={onSubmit}
+                                     exitToEditMode={() => props.changeEditModeProfile(false)}
+                                     profile={props.profile}
+                                     initialValues={props.profile}
+            /> :
+            <ProfileData {...props} isOwner={isOwner} goToEditMode={() => props.changeEditModeProfile(true)} />
         }
     </div>
 }
@@ -83,10 +85,11 @@ const ProfileData = (props) => {
 }
 
 let mapStateToProps = (state) => ({
-    profile:state.profilePage.profile
+    profile:state.profilePage.profile,
+    editModeProfile: state.profilePage.editModeProfile
 })
 
 export default compose(
     withRouter,
-    connect(mapStateToProps,{updateProfileInfo})
+    connect(mapStateToProps,{updateProfileInfo,changeEditModeProfile})
 )(ProfileInfo)
