@@ -1,5 +1,6 @@
 import {authAPI, captchaAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
+import {getOwnerProfile} from "./profile-reducer";
 
 const SET_USER_DATA = 'auth/SET_USER_DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'auth/GET_CAPTCHA_URL_SUCCESS';
@@ -35,7 +36,8 @@ export const getAuthUserData = () => async (dispatch) => {
     const data = await authAPI.authMe();
     if (data.resultCode === 0) {
         let {id, email, login} = data.data;
-        dispatch(setAuthUserData(id, email, login, true))
+        dispatch(setAuthUserData(id, email, login, true));
+        dispatch(getOwnerProfile(id))
     }
 }
 

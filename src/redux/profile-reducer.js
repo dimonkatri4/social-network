@@ -11,7 +11,6 @@ const CHANGE_EDIT_MODE_PROFILE = 'profile/CHANGE_EDIT_MODE_PROFILE';
 const SET_OWNER_PROFILE = 'profile/SET_OWNER_PROFILE';
 
 
-
 let initialState = {
     posts: [
         {
@@ -58,8 +57,8 @@ let initialState = {
     profile: null,
     status: '',
     photo: null,
-    editModeProfile:false,
-    profileOwner:null
+    editModeProfile: false,
+    profileOwner: null
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -81,6 +80,8 @@ const profileReducer = (state = initialState, action) => {
             }
         case SET_USERS_PROFILE:
             return {...state, profile: action.profile}
+        case SET_OWNER_PROFILE:
+            return {...state, profileOwner: action.profile}
         case SET_USERS_STATUS:
             return {...state, status: action.status}
         case DELETE_POST:
@@ -88,9 +89,12 @@ const profileReducer = (state = initialState, action) => {
         case SAVE_PHOTO_SUCCESS:
             return {...state, profile: {...state.profile, photos: action.photos}}
         case UPDATE_PROFILE_INFO_SUCCESS:
-            return {...state, profile: {...state.profile, ...action.profile,
-                    contacts: {...state.profile.contacts,...action.profile.contacts}
-                }}
+            return {
+                ...state, profile: {
+                    ...state.profile, ...action.profile,
+                    contacts: {...state.profile.contacts, ...action.profile.contacts}
+                }
+            }
         case CHANGE_EDIT_MODE_PROFILE:
             return {...state, editModeProfile: action.editValue}
         default:
@@ -111,8 +115,14 @@ export const changeEditModeProfile = (editValue) => ({type: CHANGE_EDIT_MODE_PRO
 export const getProfile = (userId) => {
     return async (dispatch) => {
         const data = await profileAPI.getProfile(userId);
+      //  dispatch(getOwnerProfile());
         dispatch(setUsersProfile(data));
     }
+}
+
+export const getOwnerProfile = (userId) => async (dispatch) => {
+    const data = await profileAPI.getProfile(userId);
+    dispatch(setOwnerProfile(data));
 }
 
 
