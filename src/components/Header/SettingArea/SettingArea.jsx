@@ -10,7 +10,7 @@ const SettingArea = (props) => {
         <div className={`${s.setting_area} setting_area`}>
             <SettingPanel/>
             {/*{props.isAuth && <button onClick={props.logout}>Logout</button>}*/}
-            <PhotoHeader {...props} />
+            { props.profile ? <PhotoHeader {...props} /> : <div></div>}
         </div>
     )
 }

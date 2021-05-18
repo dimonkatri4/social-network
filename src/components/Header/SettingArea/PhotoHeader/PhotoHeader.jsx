@@ -36,7 +36,7 @@ const PhotoHeader = (props) => {
     useOutsideClick(wrapperRef);
     return (
         <div ref={wrapperRef} className={s.photo_header}>
-            <img src={photoUser} alt="user" onClick={() => setClickedInside(!clickedInside)}
+            <img src={props.profile.photos.small} alt="user" onClick={() => setClickedInside(!clickedInside)}
             />
             <div>{props.isAuth && props.login}</div>
             {clickedInside &&

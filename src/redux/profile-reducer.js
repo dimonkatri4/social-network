@@ -7,7 +7,8 @@ const SET_USERS_STATUS = 'profile/SET_USERS_STATUS';
 const DELETE_POST = 'profile/DELETE_POST';
 const SAVE_PHOTO_SUCCESS = 'profile/SAVE_PHOTO_SUCCESS';
 const UPDATE_PROFILE_INFO_SUCCESS = 'profile/UPDATE_PROFILE_INFO_SUCCESS';
-const CHANGE_EDIT_MODE_PROFILE = 'profile/CHANGE_EDIT_MODE_PROFILE'
+const CHANGE_EDIT_MODE_PROFILE = 'profile/CHANGE_EDIT_MODE_PROFILE';
+const SET_OWNER_PROFILE = 'profile/SET_OWNER_PROFILE';
 
 
 
@@ -57,7 +58,8 @@ let initialState = {
     profile: null,
     status: '',
     photo: null,
-    editModeProfile:false
+    editModeProfile:false,
+    profileOwner:null
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -98,6 +100,7 @@ const profileReducer = (state = initialState, action) => {
 
 export const addPost = (newPostText) => ({type: ADD_POST, newPostText});
 export const setUsersProfile = (profile) => ({type: SET_USERS_PROFILE, profile});
+export const setOwnerProfile = (profile) => ({type: SET_OWNER_PROFILE, profile});
 export const setUsersStatus = (status) => ({type: SET_USERS_STATUS, status});
 export const deletePost = (idPost) => ({type: DELETE_POST, idPost});
 export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos});
@@ -108,9 +111,10 @@ export const changeEditModeProfile = (editValue) => ({type: CHANGE_EDIT_MODE_PRO
 export const getProfile = (userId) => {
     return async (dispatch) => {
         const data = await profileAPI.getProfile(userId);
-        dispatch(setUsersProfile(data))
+        dispatch(setUsersProfile(data));
     }
 }
+
 
 export const getStatus = (userId) => async (dispatch) => {
     const data = await profileAPI.getStatus(userId);
