@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {
     follow, requestUsers,
-    setCurrentPage,
+    setCurrentPage, setFriends,
     toggleFollowing,
     unfollow
 } from "../../../redux/users-reducer";
@@ -11,7 +11,7 @@ import {compose} from "redux";
 import Preloader from "../../common/Preloader/Preloader";
 import {
     getCurrentPage,
-    getFollowingInProgress,
+    getFollowingInProgress, getFriends,
     getIsFetching,
     getPageSize,
     getTotalUsersCount, getUsers
@@ -23,7 +23,7 @@ import {
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.requestUsers(this.props.pageSize, this.props.currentPage)
+        this.props.requestUsers(this.props.pageSize, this.props.currentPage,this.props.friends)
         // this.props.toggleIsFetching(true);
         // userAPI.getUser(this.props.pageSize, this.props.currentPage).then(data => {
         //     this.props.toggleIsFetching(false)
@@ -34,7 +34,7 @@ class UsersContainer extends React.Component {
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
-        this.props.requestUsers(this.props.pageSize, pageNumber)
+        this.props.requestUsers(this.props.pageSize, pageNumber,this.props.friends)
         /*this.props.toggleIsFetching(true)
         userAPI.getUser(this.props.pageSize, pageNumber).then(data => {
             this.props.toggleIsFetching(false)
@@ -42,8 +42,13 @@ class UsersContainer extends React.Component {
         })*/
     }
 
+    showFriends = (friends) => {
+        this.props.setCurrentPage(1);
+        this.props.setFriends(friends);
+        this.props.requestUsers(this.props.pageSize, this.props.currentPage,friends);
+    }
+
     render() {
-        console.log("USERS render")
         return <>
             {this.props.isFetching && <Preloader/>}
             <Users
@@ -56,6 +61,8 @@ class UsersContainer extends React.Component {
                 users={this.props.users}
                 followingInProgress={this.props.followingInProgress}
                 toggleFollowing={this.props.toggleFollowing}
+                showFriends={this.showFriends}
+                friends={this.props.friends}
             />
         </>
     }
@@ -82,7 +89,8 @@ let mapStateToProps = (state) => {
         totalUsersCount: getTotalUsersCount(state),
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),
-        followingInProgress: getFollowingInProgress(state)
+        followingInProgress: getFollowingInProgress(state),
+        friends:getFriends(state)
     }
 }
 
@@ -100,7 +108,7 @@ let mapStateToProps = (state) => {
 }*/
 
 export default compose(
-    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowing, requestUsers})
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowing,requestUsers,setFriends})
 )(UsersContainer)
 
 /*export default connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowing, getUsers}

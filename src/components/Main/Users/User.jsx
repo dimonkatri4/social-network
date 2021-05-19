@@ -1,6 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import style from "./users.module.css";
+import style from "./user.module.css";
 import classNames from "classnames";
 
 const User = ({followingInProgress, user, follow, unfollow}) => {

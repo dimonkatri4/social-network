@@ -7,6 +7,8 @@ const SET_CURRENT_PAGE = 'users/SET_CURRENT_PAGE';
 const SET_TOTAL_COUNT_USERS = 'users/SET_TOTAL_COUNT_USERS'
 const TOGGLE_IS_FETCHING = 'users/TOGGLE_IS_FETCHING'
 const TOGGLE_FOLLOWING_IN_PROGRESS = 'users/TOGGLE_FOLLOWING_IN_PROGRESS '
+const SET_FRIENDS = 'users/SET_FRIENDS '
+
 
 
 let initialState = {
@@ -16,6 +18,7 @@ let initialState = {
     currentPage: 1,
     isFetching: false,
     followingInProgress: [],                         //масив userId
+    friends: true
 }
 
 // common function for follow and unfollow thunk creators
@@ -74,6 +77,10 @@ const usersReducer = (state = initialState, action) => {
                     [...state.followingInProgress, action.userId] :                    //якщо isFetching==true то записуємо userId в кінець масива
                     state.followingInProgress.filter(id => id !== action.userId)    // якщо isFetching==false то видаляємо userId за допомогою метода filter
             }
+        case SET_FRIENDS:
+            return {
+                ...state, friends: action.friends
+            }
         default:
             return state
     }
@@ -87,15 +94,17 @@ export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page});
 export const setTotalCountUsers = (count) => ({type: SET_TOTAL_COUNT_USERS, count})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const toggleFollowing = (isFetching, userId) => ({type: TOGGLE_FOLLOWING_IN_PROGRESS, isFetching, userId})
+export const setFriends = (friends) => ({type: SET_FRIENDS, friends})
 
 //Thunk Creators
-export const requestUsers = (pageSize, page) => async (dispatch) => {
+export const requestUsers = (pageSize, page,friends) => async (dispatch) => {
     dispatch(toggleIsFetching(true));
-    const data = await userAPI.getUser(pageSize, page);
+    const data = await userAPI.getUser(pageSize, page,friends);
     dispatch(toggleIsFetching(false));
     dispatch(setUsers(data.items));
     dispatch(setTotalCountUsers(data.totalCount))
 }
+
 
 export const unfollow = (userId) => async (dispatch) => {
     followUnfollowFlow(dispatch, userId, userAPI.deleteFollow, unfollowSuccess);
