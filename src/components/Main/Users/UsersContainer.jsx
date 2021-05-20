@@ -50,7 +50,7 @@ class UsersContainer extends React.Component {
 
     render() {
         return <>
-            {this.props.isFetching && <Preloader/>}
+            {this.props.isFetching   && <Preloader/>}
             <Users
                 currentPage={this.props.currentPage}
                 onPageChanged={this.onPageChanged}
