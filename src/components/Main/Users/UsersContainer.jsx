@@ -18,34 +18,26 @@ import {
 } from "../../../redux/users-selectors";
 
 
-// класова контейнерна компонента в якій виконуємо ajax-запит
-// і передає пропси в функціональну,чисту компоненту Users
+
 class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.props.requestUsers(this.props.pageSize, this.props.currentPage,this.props.friends)
-        // this.props.toggleIsFetching(true);
-        // userAPI.getUser(this.props.pageSize, this.props.currentPage).then(data => {
-        //     this.props.toggleIsFetching(false)
-        //     this.props.setUsers(data.items);
-        //     this.props.setTotalCountUsers(data.totalCount)
-        // })
     }
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
         this.props.requestUsers(this.props.pageSize, pageNumber,this.props.friends)
-        /*this.props.toggleIsFetching(true)
-        userAPI.getUser(this.props.pageSize, pageNumber).then(data => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(data.items)
-        })*/
     }
 
     showFriends = (friends) => {
         this.props.setCurrentPage(1);
         this.props.setFriends(friends);
-        this.props.requestUsers(this.props.pageSize, this.props.currentPage,friends);
+        this.props.requestUsers(this.props.pageSize, 1,friends);
+    }
+
+    searchUsers = (userSearchName) => {
+        this.props.requestUsers(this.props.pageSize, 1,this.props.friends, userSearchName)
     }
 
     render() {
@@ -63,23 +55,12 @@ class UsersContainer extends React.Component {
                 toggleFollowing={this.props.toggleFollowing}
                 showFriends={this.showFriends}
                 friends={this.props.friends}
+                searchUsers={this.searchUsers}
             />
         </>
     }
 }
 
-// контейнерна компонента яка будується за допомогою connect
-// і передає пропси з кол-беками в класову компоненту UsersContainer
-/*let mapStateToProps = (state) => {
-    return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
-    }
-}*/
 
 let mapStateToProps = (state) => {
     return {
@@ -94,23 +75,9 @@ let mapStateToProps = (state) => {
     }
 }
 
-/*let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {dispatch(follow(userId))},
-        unfollow: (userId) => {dispatch(unfollow(userId))},
-        setUsers: (users) => {dispatch(setUsers(users))},
-        setCurrentPage: (page) => {dispatch(setCurrentPage(page))},
-        setTotalCountUsers: (count)=> {dispatch(setTotalCountUsers(count))},
-        toggleIsFetching: (isFetching) => {dispatch(toggleIsFetching(isFetching))},
-        toggleFollowing: (isFetching, userId) => {dispatch(toggleFollowing(isFetching, userId))},
-        getUsers: (pageSize,currentPage) => {dispatch(getUsers(pageSize,currentPage))}
-    }
-}*/
 
 export default compose(
     connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowing,requestUsers,setFriends})
 )(UsersContainer)
 
-/*export default connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowing, getUsers}
-                            )(UsersContainer);*/
 

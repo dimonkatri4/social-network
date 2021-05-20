@@ -97,9 +97,9 @@ export const toggleFollowing = (isFetching, userId) => ({type: TOGGLE_FOLLOWING_
 export const setFriends = (friends) => ({type: SET_FRIENDS, friends})
 
 //Thunk Creators
-export const requestUsers = (pageSize, page,friends) => async (dispatch) => {
+export const requestUsers = (pageSize, page, friends, term) => async (dispatch) => {
     dispatch(toggleIsFetching(true));
-    const data = await userAPI.getUser(pageSize, page,friends);
+    const data = await userAPI.getUser(pageSize,page,friends,term);
     dispatch(toggleIsFetching(false));
     dispatch(setUsers(data.items));
     dispatch(setTotalCountUsers(data.totalCount))
