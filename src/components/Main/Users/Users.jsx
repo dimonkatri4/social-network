@@ -17,6 +17,7 @@ let Users = ({totalUsersCount, pageSize, currentPage, onPageChanged, follow, unf
                 totalItemsCount={totalUsersCount}
                 pageSize={pageSize}
                 onPageChanged={onPageChanged}
+                friends={friends}
             />
             <div>
                 {
