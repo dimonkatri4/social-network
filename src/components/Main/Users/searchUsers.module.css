@@ -14,7 +14,7 @@
     position: relative;
 }
 
-.searchBox button {
+.searchButton {
     position: absolute;
     right: -45px;
     top: 10px;
@@ -24,4 +24,13 @@
 }
 .searchIcon {
     height: 15px;
+}
+
+.cleanButton {
+    position: absolute;
+    right: -75px;
+    top: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }

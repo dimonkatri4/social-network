@@ -21,13 +21,20 @@ import {
 
 class UsersContainer extends React.Component {
 
+    state = {
+        userSearchName: null
+    }
+
     componentDidMount() {
         this.props.requestUsers(this.props.pageSize, this.props.currentPage,this.props.friends)
+    }
+    componentWillMount() {
+        this.setState({userSearchName:null})
     }
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
-        this.props.requestUsers(this.props.pageSize, pageNumber,this.props.friends)
+        this.props.requestUsers(this.props.pageSize, pageNumber,this.props.friends,this.state.userSearchName)
     }
 
     showFriends = (friends) => {
@@ -36,8 +43,13 @@ class UsersContainer extends React.Component {
         this.props.requestUsers(this.props.pageSize, 1,friends);
     }
 
-    searchUsers = (userSearchName) => {
-        this.props.requestUsers(this.props.pageSize, 1,this.props.friends, userSearchName)
+    searchUsers = (searchName) => {
+      this.setState({userSearchName:searchName});
+        this.props.requestUsers(this.props.pageSize, 1,this.props.friends,searchName)
+    }
+
+    clearForm = () => {
+        this.setState({userSearchName:null})
     }
 
     render() {
@@ -56,6 +68,7 @@ class UsersContainer extends React.Component {
                 showFriends={this.showFriends}
                 friends={this.props.friends}
                 searchUsers={this.searchUsers}
+                clearForm={this.clearForm}
             />
         </>
     }

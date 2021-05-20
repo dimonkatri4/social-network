@@ -6,9 +6,14 @@ import classNames from "classnames";
 import SearchUsersReduxForm from "./SearchUsers";
 
 
-let Users = ({totalUsersCount, pageSize, currentPage, onPageChanged, follow, unfollow,showFriends,friends,searchUsers, ...props}) => {
 
-    onsubmit = (formData) => {
+let Users = ({totalUsersCount, pageSize,
+                 currentPage, onPageChanged,
+                 follow, unfollow,
+                 showFriends,friends,
+                 searchUsers,clearForm, ...props}) => {
+
+    const onSubmit = (formData) => {
         searchUsers(formData.searchUsers)
     }
 
@@ -18,7 +23,7 @@ let Users = ({totalUsersCount, pageSize, currentPage, onPageChanged, follow, unf
                 <h3 onClick={() =>showFriends(true)} className={classNames(friends &&  style.friendsTitleActive,style.friendsTitle)} >My Friends</h3>
                 <h3 onClick={() =>showFriends(false)} className={classNames(!friends &&  style.friendsTitleActive,style.friendsTitle)} >All Users</h3>
             </div>
-            <SearchUsersReduxForm onSubmit={onsubmit} />
+            <SearchUsersReduxForm onSubmit={onSubmit} searchUsers={searchUsers} />
             <Pagination
                 currentPage={currentPage}
                 totalItemsCount={totalUsersCount}
