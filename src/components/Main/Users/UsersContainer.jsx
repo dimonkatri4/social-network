@@ -36,6 +36,10 @@ class UsersContainer extends React.Component {
         this.props.requestUsers(this.props.pageSize, 1,friends);
     }
 
+    searchUsers = (userSearchName) => {
+        this.props.requestUsers(this.props.pageSize, 1,this.props.friends, userSearchName)
+    }
+
     render() {
         return <>
             {this.props.isFetching && <Preloader/>}
@@ -51,6 +55,7 @@ class UsersContainer extends React.Component {
                 toggleFollowing={this.props.toggleFollowing}
                 showFriends={this.showFriends}
                 friends={this.props.friends}
+                searchUsers={this.searchUsers}
             />
         </>
     }
