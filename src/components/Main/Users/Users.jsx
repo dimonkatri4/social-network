@@ -6,7 +6,6 @@ import classNames from "classnames";
 import SearchUsersReduxForm from "./SearchUsers";
 
 
-
 let Users = ({totalUsersCount, pageSize,
                  currentPage, onPageChanged,
                  follow, unfollow,

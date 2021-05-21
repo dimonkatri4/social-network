@@ -18,7 +18,6 @@ import {
 } from "../../../redux/users-selectors";
 
 
-
 class UsersContainer extends React.Component {
 
     state = {
@@ -26,35 +25,37 @@ class UsersContainer extends React.Component {
     }
 
     componentDidMount() {
-        this.props.requestUsers(this.props.pageSize, this.props.currentPage,this.props.friends)
+        this.props.requestUsers(this.props.pageSize, this.props.currentPage, this.props.friends)
     }
+
     componentWillMount() {
-        this.setState({userSearchName:null})
+        this.setState({userSearchName: null})
     }
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
-        this.props.requestUsers(this.props.pageSize, pageNumber,this.props.friends,this.state.userSearchName)
+        this.props.requestUsers(this.props.pageSize, pageNumber, this.props.friends, this.state.userSearchName)
     }
 
     showFriends = (friends) => {
         this.props.setCurrentPage(1);
         this.props.setFriends(friends);
-        this.props.requestUsers(this.props.pageSize, 1,friends);
+        this.props.requestUsers(this.props.pageSize, 1, friends);
     }
 
     searchUsers = (searchName) => {
-      this.setState({userSearchName:searchName});
-        this.props.requestUsers(this.props.pageSize, 1,this.props.friends,searchName)
+        this.props.setCurrentPage(1);
+        this.setState({userSearchName: searchName});
+        this.props.requestUsers(this.props.pageSize, 1, this.props.friends, searchName)
     }
 
     clearForm = () => {
-        this.setState({userSearchName:null})
+        this.setState({userSearchName: null})
     }
 
     render() {
         return <>
-            {this.props.isFetching   && <Preloader/>}
+            {this.props.isFetching && <Preloader/>}
             <Users
                 currentPage={this.props.currentPage}
                 onPageChanged={this.onPageChanged}
@@ -78,19 +79,19 @@ class UsersContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         //users: getUsersSuper(state),
-        users:getUsers(state),
+        users: getUsers(state),
         pageSize: getPageSize(state),
         totalUsersCount: getTotalUsersCount(state),
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),
         followingInProgress: getFollowingInProgress(state),
-        friends:getFriends(state)
+        friends: getFriends(state)
     }
 }
 
 
 export default compose(
-    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowing,requestUsers,setFriends})
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowing, requestUsers, setFriends})
 )(UsersContainer)
 
 
