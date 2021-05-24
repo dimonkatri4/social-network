@@ -4,7 +4,7 @@ import classNames from "classnames";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleDoubleLeft, faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons'
 
-let Pagination = ({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10,friends}) => {
+let Pagination = ({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10,friends,userSearchName}) => {
     let pageCount = Math.ceil(totalItemsCount / pageSize);
 
     let pages = [];
@@ -20,7 +20,7 @@ let Pagination = ({totalItemsCount, pageSize, currentPage, onPageChanged, portio
 
     useEffect( () => {
      return   setPortionNumber(1)
-    }, [friends])
+    }, [friends,userSearchName])
 
     return (
         <div className={style.pageCount}>

@@ -70,6 +70,7 @@ class UsersContainer extends React.Component {
                 friends={this.props.friends}
                 searchUsers={this.searchUsers}
                 clearForm={this.clearForm}
+                userSearchName={this.state.userSearchName}
             />
         </>
     }

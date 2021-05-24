@@ -10,7 +10,7 @@ let Users = ({totalUsersCount, pageSize,
                  currentPage, onPageChanged,
                  follow, unfollow,
                  showFriends,friends,
-                 searchUsers,clearForm, ...props}) => {
+                 searchUsers,clearForm,userSearchName, ...props}) => {
 
     const onSubmit = (formData) => {
         searchUsers(formData.searchUsers)
@@ -22,13 +22,14 @@ let Users = ({totalUsersCount, pageSize,
                 <h3 onClick={() =>showFriends(true)} className={classNames(friends &&  style.friendsTitleActive,style.friendsTitle)} >My Friends</h3>
                 <h3 onClick={() =>showFriends(false)} className={classNames(!friends &&  style.friendsTitleActive,style.friendsTitle)} >All Users</h3>
             </div>
-            <SearchUsersReduxForm onSubmit={onSubmit} searchUsers={searchUsers} />
+            <SearchUsersReduxForm onSubmit={onSubmit} searchUsers={searchUsers} userSearchName={userSearchName} />
             <Pagination
                 currentPage={currentPage}
                 totalItemsCount={totalUsersCount}
                 pageSize={pageSize}
                 onPageChanged={onPageChanged}
                 friends={friends}
+                userSearchName={userSearchName}
             />
             <div>
                 {
