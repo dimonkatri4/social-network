@@ -10,7 +10,6 @@ import Settings from './Settings/Settings';
 import UsersContainer from "./Users/UsersContainer";
 //import ProfileContainer from "./Profile/ProfileContainer";
 import Login from "./Login/Login";
-import ProfileInfo from "./Profile/ProfileInfo/ProfileInfo";
 import RightPanel from "./RightPanel/RightPanel";
 
 const Dialogs = React.lazy(() => import('./Dialogs/Dialogs'));
@@ -44,7 +43,7 @@ const Main = (props) => {
                 </Switch>
             </div>
 
-            <RightPanel sidebarPage={props.sidebarPage} isAuth={props.isAuth}/>
+            {props.isAuth && <RightPanel sidebarPage={props.sidebarPage} isAuth={props.isAuth}/>}
         </div>
     )
 }
