@@ -1,15 +1,19 @@
 
 .formControl.error textarea,
 .formControl.error input {
-    border: solid 2px red;
+    border: solid 1px #ff5756;
 }
-.formControl.error span {
-    color: red;
-    font-size: 20px;
+.formControl.error span,
+.commonErrorLogin {
+    color: #ff5756;
+    font-size: 16px;
 }
 
 .commonErrorLogin {
-    border: solid 1px red;
-    color:orangered;
-    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.inputBlock {
+    display: flex;
+    flex-flow: column;
 }

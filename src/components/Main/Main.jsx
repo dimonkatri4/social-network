@@ -1,6 +1,5 @@
 import React from 'react';
 import LeftPanel from './LeftPanel/LeftPanel';
-import Sidebar from './RightPanel/Sidebar/Sidebar';
 import s from './main.module.css';
 import {Redirect, Route, Switch} from 'react-router-dom';
 //import Dialogs from './Dialogs/Dialogs';
@@ -19,8 +18,7 @@ const Main = (props) => {
 
     return (
         <div className={s.main_page}>
-            <LeftPanel/>
-
+            {props.isAuth && <LeftPanel/>}
                 <Redirect exact from='/' to='/profile'/>
                 <Route path='/profile/:userId?' render={() =>
                     <React.Suspense fallback={<div>Loading..</div>}>
