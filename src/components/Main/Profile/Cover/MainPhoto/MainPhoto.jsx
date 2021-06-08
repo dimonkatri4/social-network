@@ -1,6 +1,8 @@
 import React from 'react'
 import s from "./mainPhoto.module.css"
 import photoUser from '../../../../../images/photo-user.jpg'
+import {faCamera} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const MainPhoto = (props) => {
 
@@ -11,11 +13,16 @@ const MainPhoto = (props) => {
     }
 
     return (
-        <div>
+        <div className={s.photoBlock}>
             <div className={s.main_photo}>
                 <img src={props.photo.large || photoUser} alt=""/>
             </div>
-            {props.isOwner && <input type="file" className={s.inputPhoto} onChange={updatePhoto}/>}
+            {props.isOwner && <div className={s.inputWrapper}>
+                <input type="file" id="inputPhoto" onChange={updatePhoto} className={s.inputTag}/>
+                <label for="inputPhoto" className={s.inputPhoto}>
+                    <span><FontAwesomeIcon icon={faCamera}/>Change photo</span>
+                </label>
+            </div>}
         </div>
     )
 }

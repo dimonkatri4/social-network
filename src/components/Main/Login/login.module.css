@@ -5,7 +5,7 @@
     margin-right: 0px;
 }
 .loginForm {
-    width: 50%;
+    width: 40%;
 }
 .rememberMe {
     display: flex;
@@ -50,7 +50,7 @@
 .greetingText {
     text-align: center;
     margin-bottom: 30px;
-    font-size: 46px;
+    font-size: 38px;
     color: darkblue;
 }
 .greetingText img {

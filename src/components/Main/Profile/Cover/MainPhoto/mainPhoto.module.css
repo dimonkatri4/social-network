@@ -15,4 +15,13 @@
   }
   .inputPhoto {
       margin-left: 200px;
+      position: absolute;
+      left: -95px;
+      bottom: 25px;
   }
+
+  .inputTag {
+      opacity: 0;
+      visibility: hidden;
+  }
+
