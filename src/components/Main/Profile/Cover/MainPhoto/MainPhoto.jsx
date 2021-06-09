@@ -18,10 +18,8 @@ const MainPhoto = (props) => {
                 <img src={props.photo.large || photoUser} alt=""/>
             </div>
             {props.isOwner && <div className={s.inputWrapper}>
-                <input type="file" id="inputPhoto" onChange={updatePhoto} className={s.inputTag}/>
-                <label for="inputPhoto" className={s.inputPhoto}>
-                    <span><FontAwesomeIcon icon={faCamera}/>Change photo</span>
-                </label>
+                <input type="file" accept="image/*" id="inputPhoto" onChange={updatePhoto} className={s.inputTag}/>
+                <label for="inputPhoto" className={s.inputPhoto}><FontAwesomeIcon icon={faCamera}/></label>
             </div>}
         </div>
     )
