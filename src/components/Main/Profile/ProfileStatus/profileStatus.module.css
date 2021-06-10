@@ -1,3 +1,22 @@
 .addStatus {
     color: #838383;
 }
+.statusBlock {
+    line-height: 1.1vw;
+    max-width: 70vw;
+    padding-left: 4px;
+}
+.textStatus {
+    font-size: 0.89vw;
+    color: #404040;
+}
+
+.inputStatus {
+    background: white;
+    padding: 10px 5px;
+    overflow: visible;
+    outline: none;
+    font-size: 15px;
+    border: 1px solid #dddfe2;
+    min-width: 25vw;
+}

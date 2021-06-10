@@ -20,6 +20,7 @@
     box-shadow: 1px 1px 6px #e1e8ed;
     border-radius: 100%;
     display: inline-block;
+    height: fit-content;
 }
 
 .nameUser {

@@ -6,14 +6,16 @@ import ProfileStatusWithHook from "../../ProfileStatus/ProfileStatusWithHook";
 
 const CoverInfo = (props) => {
     return (
-            <div className={s.cover_info}>
+        <div className={s.cover_info}>
+            <div className={s.nameWithStatus}>
                 <div className={s.user_name}>{props.fullName}</div>
-                <CoverMenu/>
                 <ProfileStatusWithHook status={props.status}
                                        updateStatus={props.updateStatus}
-                                       isOwner={props.isOwner}
-                />
+                                       isOwner={props.isOwner}/>
             </div>
+            {/*<CoverMenu/>*/}
+
+        </div>
     )
 }
 
