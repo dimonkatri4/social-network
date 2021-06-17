@@ -17,6 +17,8 @@ const Cover = (props) => {
                        status={props.status}
                        updateStatus={props.updateStatus}
                        isOwner={props.isOwner}
+                       errorInStatus={props.errorInStatus}
+                       setErrorInStatus={props.setErrorInStatus}
             />
         </div>
     )

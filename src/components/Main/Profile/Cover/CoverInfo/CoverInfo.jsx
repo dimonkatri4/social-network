@@ -11,7 +11,10 @@ const CoverInfo = (props) => {
                 <div className={s.user_name}>{props.fullName}</div>
                 <ProfileStatusWithHook status={props.status}
                                        updateStatus={props.updateStatus}
-                                       isOwner={props.isOwner}/>
+                                       isOwner={props.isOwner}
+                                       errorInStatus={props.errorInStatus}
+                                       setErrorInStatus={props.setErrorInStatus}
+                />
             </div>
             {/*<CoverMenu/>*/}
 

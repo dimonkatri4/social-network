@@ -9,6 +9,7 @@ const SAVE_PHOTO_SUCCESS = 'profile/SAVE_PHOTO_SUCCESS';
 const UPDATE_PROFILE_INFO_SUCCESS = 'profile/UPDATE_PROFILE_INFO_SUCCESS';
 const CHANGE_EDIT_MODE_PROFILE = 'profile/CHANGE_EDIT_MODE_PROFILE';
 const SET_OWNER_PROFILE = 'profile/SET_OWNER_PROFILE';
+const SET_ERROR_IN_STATUS = 'profile/SET_ERROR_IN_STATUS';
 
 
 let initialState = {
@@ -58,7 +59,8 @@ let initialState = {
     status: '',
     photo: null,
     editModeProfile: false,
-    profileOwner: null
+    profileOwner: null,
+    error: null
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -97,6 +99,8 @@ const profileReducer = (state = initialState, action) => {
             }
         case CHANGE_EDIT_MODE_PROFILE:
             return {...state, editModeProfile: action.editValue}
+        case SET_ERROR_IN_STATUS:
+            return {...state, error: action.error}
         default:
             return state
     }
@@ -110,6 +114,7 @@ export const deletePost = (idPost) => ({type: DELETE_POST, idPost});
 export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos});
 export const updateProfileInfoSuccess = (profile) => ({type: UPDATE_PROFILE_INFO_SUCCESS, profile});
 export const changeEditModeProfile = (editValue) => ({type: CHANGE_EDIT_MODE_PROFILE, editValue});
+export const setErrorInStatus = (error) => ({type: SET_ERROR_IN_STATUS, error});
 
 
 export const getProfile = (userId) => {
@@ -134,13 +139,17 @@ export const getStatus = (userId) => async (dispatch) => {
 export const updateStatus = (status) => async (dispatch) => {
     const data = await profileAPI.updateStatus(status);
     if (data.resultCode === 0) {
-        dispatch(setUsersStatus(status))
+        dispatch(setUsersStatus(status));
+        dispatch(setErrorInStatus(null))
+    } else {
+        let errorMessage = data.messages.length > 0 ? data.messages[0] : "Other Error";
+        dispatch(setErrorInStatus(errorMessage))
     }
 }
 export const savePhoto = (photo) => async (dispatch) => {
     const data = await profileAPI.savePhoto(photo);
     if (data.resultCode === 0) {
-        dispatch(savePhotoSuccess(data.data.photos))
+        dispatch(savePhotoSuccess(data.data.photos));
     }
 }
 

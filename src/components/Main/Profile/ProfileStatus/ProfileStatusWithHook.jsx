@@ -7,16 +7,20 @@ const ProfileStatusWithHook = (props) =>  {
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status);
 
+
     useEffect( () => {
-        setStatus(props.status)
+        setStatus(props.status);
+        props.setErrorInStatus(null)
     }, [props.status])
 
    const activateEditMode = () => {
         setEditMode(true)
     }
     const deactivateEditMode = () => {
-        setEditMode(false);
-        props.updateStatus(status);
+        props.updateStatus(status).then( ()=> {
+        !props.errorInStatus && setEditMode(false)}
+        )
+
     }
     const onStatusChange = (e) => {
         let text = e.target.value;
@@ -31,6 +35,9 @@ const ProfileStatusWithHook = (props) =>  {
             {editMode &&
                 <input className={classNames("inputPlace",style.inputStatus)} onChange={onStatusChange}
                        onBlur={deactivateEditMode}  autoFocus={true}  value={status} />
+            }
+            {
+                props.errorInStatus && <div>{props.errorInStatus}</div>
             }
 
         </div>
