@@ -120,7 +120,7 @@ export const setErrorInStatus = (error) => ({type: SET_ERROR_IN_STATUS, error});
 export const getProfile = (userId) => {
     return async (dispatch) => {
         const data = await profileAPI.getProfile(userId);
-      //  dispatch(getOwnerProfile());
+        //  dispatch(getOwnerProfile());
         dispatch(setUsersProfile(data));
     }
 }
@@ -137,13 +137,17 @@ export const getStatus = (userId) => async (dispatch) => {
 }
 
 export const updateStatus = (status) => async (dispatch) => {
-    const data = await profileAPI.updateStatus(status);
-    if (data.resultCode === 0) {
-        dispatch(setUsersStatus(status));
-        dispatch(setErrorInStatus(null))
-    } else {
-        let errorMessage = data.messages.length > 0 ? data.messages[0] : "Other Error";
-        dispatch(setErrorInStatus(errorMessage))
+    try {
+        const data = await profileAPI.updateStatus(status);
+        if (data.resultCode === 0) {
+            dispatch(setUsersStatus(status));
+            dispatch(setErrorInStatus(null))
+        } else {
+            let errorMessage = data.messages.length > 0 ? data.messages[0] : "Other Error";
+            dispatch(setErrorInStatus(errorMessage))
+        }
+    } catch (error) {
+        dispatch(setErrorInStatus(`Problem with server. Status Code: ${error.response.status}`))
     }
 }
 export const savePhoto = (photo) => async (dispatch) => {
