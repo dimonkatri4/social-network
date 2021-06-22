@@ -38,7 +38,8 @@ const ProfileInfo = (props) => {
                                      profile={props.profile}
                                      initialValues={props.profile}
             /> :
-            <ProfileData {...props} isOwner={isOwner} goToEditMode={() => props.changeEditModeProfile(true)} />
+            <ProfileData {...props} isOwner={isOwner}
+                         goToEditMode={() => props.changeEditModeProfile(true)} />
         }
     </div>
 }
@@ -55,7 +56,7 @@ const Contacts = ({contactTitle, contactValue}) => {
         youtube: faYoutube
     }
     return <div className={style.contact}>
-        {contactValue && <div><a href={contactValue} title={contactTitle} target="_blank">
+        {contactValue && <div><a className={style.contactIcon} href={contactValue} title={contactTitle} target="_blank">
             <FontAwesomeIcon icon={contactsIcon[contactTitle]}/>
         </a></div>}
     </div>
@@ -63,14 +64,16 @@ const Contacts = ({contactTitle, contactValue}) => {
 
 const ProfileData = (props) => {
     return <div>
-        <div>
-            About Me: {props.profile.aboutMe}
+        <div className={style.profileInfoTitle}>
+            About Me: <span className={style.profileInfoValue}>{props.profile.aboutMe}</span>
         </div>
-        <div>
-            Looking for a job: {props.profile.lookingForAJob ? "Yes" : "No"}
+        <div className={style.profileInfoTitle}>
+            Looking for a job:
+            <span className={style.profileInfoValue}>{props.profile.lookingForAJob ? "Yes" : "No"}</span>
         </div>
         {props.profile.lookingForAJobDescription &&
-        <div>Description job: {props.profile.lookingForAJobDescription}</div>}
+        <div className={style.profileInfoTitle}>Description job:
+            <span className={style.profileInfoValue}>{props.profile.lookingForAJobDescription}</span></div>}
         <div className={style.contacts}>
             {
                 Object.keys(props.profile.contacts).map((key) => {
@@ -78,8 +81,8 @@ const ProfileData = (props) => {
                         <Contacts key={key} contactTitle={key} contactValue={props.profile.contacts[key]}/>
                 })}
         </div>
-        {props.isOwner && <div>
-            <button onClick={props.goToEditMode}>Edit</button>
+        {props.isOwner && <div className={style.editButton}>
+            <button className="button" onClick={props.goToEditMode}>Edit Profile</button>
         </div>}
     </div>
 }

@@ -13,3 +13,22 @@
 .contact {
     padding: 10px;
 }
+.profileInfoTitle {
+    color: #424242;
+    margin-bottom: 10px;
+}
+.profileInfoValue {
+    color: #202020;
+    font-weight: bold;
+}
+.contactIcon {
+    color:#168aad;
+    font-size: 20px;
+}
+.contactIcon:hover {
+    color: #1e6091;
+}
+.editButton {
+    text-align: center;
+    margin-top: 15px;
+}
