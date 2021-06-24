@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import style from "./profileInfo.module.css"
 import classNames from "classnames";
 import {
@@ -20,9 +20,11 @@ import {changeEditModeProfile, updateProfileInfo} from "../../../../redux/profil
 const ProfileInfo = (props) => {
 
     const profileDataRef = useRef(null);
-    const scrollToTop = () => {
-        profileDataRef.current.scrollIntoView({ behavior: "smooth" })
-    }
+
+
+    useEffect(() => {
+        props.getProfileDataRef(profileDataRef)
+    }, [])
 
     const onSubmit = (formData) => {
         props.updateProfileInfo(formData);
@@ -34,7 +36,7 @@ const ProfileInfo = (props) => {
     if (!props.profile) {
         return <div></div>
     }
-    return <div className={classNames(style.profileInfo, 'profile_block')}>
+    return <div className={classNames(style.profileInfo, 'profile_block')} ref={profileDataRef}>
         <div className="caption">
             <h3 className="title">Profile Info</h3>
         </div>

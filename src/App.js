@@ -11,12 +11,19 @@ import {HashRouter, withRouter} from "react-router-dom";
 import store from "./redux/redux-store";
 
 class App extends React.Component {
+    state = {
+        profileDataRef: ""
+    }
+
     componentDidMount() {
         this.props.initializeApp();
     }
 
-    scrollToProfileEdit = (func) => {
-        return func
+    getProfileDataRef = (ref) => {
+        this.setState({profileDataRef:ref})
+    }
+    scrollToProfileEdit = () => {
+        this.state.profileDataRef.current.scrollIntoView({ behavior: "smooth" });
     }
 
     render() {
@@ -25,8 +32,8 @@ class App extends React.Component {
         }
         return (
             <div className='app-wrapper'>
-                <HeaderContainer/>
-                <MainContainer/>
+                <HeaderContainer profileDataRef={this.state.profileDataRef} scrollToProfileEdit={this.scrollToProfileEdit}/>
+                <MainContainer getProfileDataRef={this.getProfileDataRef}/>
             </div>
         );
     }

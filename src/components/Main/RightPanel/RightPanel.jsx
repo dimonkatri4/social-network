@@ -8,7 +8,7 @@ const RightPanel = (props) => {
     return (
         <div className={s.rightPanel}>
             <Route path='/profile/:userId?' render={() =>
-                    <ProfileInfo profile={props.profile} isAuth={props.isAuth}/>
+                    <ProfileInfo profile={props.profile} isAuth={props.isAuth} getProfileDataRef={props.getProfileDataRef}/>
             }/>
             <Sidebar sidebarPage={props.sidebarPage}/>
         </div>

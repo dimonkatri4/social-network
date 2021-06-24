@@ -41,7 +41,7 @@ const Main = (props) => {
                 </Switch>
             </div>
 
-            {props.isAuth && <RightPanel sidebarPage={props.sidebarPage} isAuth={props.isAuth}/>}
+            {props.isAuth && <RightPanel sidebarPage={props.sidebarPage} isAuth={props.isAuth} getProfileDataRef={props.getProfileDataRef}/>}
         </div>
     )
 }
