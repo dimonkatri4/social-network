@@ -34,13 +34,11 @@ const ProfileDataForm = (props) => {
 
 const ContactsForm = (props) => {
     return <div className={style.infoItem}>
-        <span>{props.contactTitle}</span>
+        <span>{props.contactTitle}:</span>
         <Field className={classNames("inputPlace",style.inputItem)}
                name={"contacts."+props.contactTitle} component={Input} />
     </div>
 }
-
-
 
 let ProfileDataFromReduxForm = reduxForm({form: 'profileDataEdit'})(ProfileDataForm);
 

@@ -43,13 +43,13 @@ const PhotoHeader = (props) => {
             <div className={classNames(s.userSettings)} onClick={() => setClickedInside(false)}>
                 <ul>
                     <li className={s.itemMenu}>
-                        <NavLink to='/'>
+                        <NavLink to='/profile'>
                             <FontAwesomeIcon icon={faUserCircle} className={s.icon}/>
                             View Profile
                         </NavLink>
                     </li>
-                    <li className={s.itemMenu}>
-                        <NavLink to='/'>
+                    <li className={s.itemMenu} >
+                        <NavLink to='/profile'>
                             <FontAwesomeIcon icon={faUserEdit} className={s.icon}/>
                             Edit Profile
                         </NavLink>

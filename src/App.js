@@ -14,6 +14,11 @@ class App extends React.Component {
     componentDidMount() {
         this.props.initializeApp();
     }
+
+    scrollToProfileEdit = (func) => {
+        return func
+    }
+
     render() {
         if (!this.props.initialized) {
             return <Preloader/>
@@ -31,7 +36,7 @@ const mapStateToProps = (state) => ({
     initialized: state.app.initialized
 })
 
-const AppContainer =  compose(
+const AppContainer = compose(
     withRouter,
     connect(mapStateToProps, {initializeApp}))(App)
 

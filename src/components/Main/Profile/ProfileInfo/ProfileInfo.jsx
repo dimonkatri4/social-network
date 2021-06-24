@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import style from "./profileInfo.module.css"
 import classNames from "classnames";
 import {
@@ -18,6 +18,11 @@ import {connect} from "react-redux";
 import {changeEditModeProfile, updateProfileInfo} from "../../../../redux/profile-reducer";
 
 const ProfileInfo = (props) => {
+
+    const profileDataRef = useRef(null);
+    const scrollToTop = () => {
+        profileDataRef.current.scrollIntoView({ behavior: "smooth" })
+    }
 
     const onSubmit = (formData) => {
         props.updateProfileInfo(formData);
