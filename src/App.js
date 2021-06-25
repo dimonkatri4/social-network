@@ -12,7 +12,8 @@ import store from "./redux/redux-store";
 
 class App extends React.Component {
     state = {
-        profileDataRef: ""
+        profileDataRef: "",
+        mainPhotoRef: ""
     }
 
     componentDidMount() {
@@ -22,6 +23,10 @@ class App extends React.Component {
     getProfileDataRef = (ref) => {
         this.setState({profileDataRef:ref})
     }
+    getMainPhotoRef = (ref) => {
+        this.setState({mainPhotoRef:ref})
+    }
+
     scrollToProfileEdit = () => {
         let scroll = () => this.state.profileDataRef.current.scrollIntoView({ behavior: "smooth" });
         if(this.state.profileDataRef.current){
@@ -31,14 +36,38 @@ class App extends React.Component {
         }
     }
 
+    scrollToMainPhoto = () => {
+        let scroll = () => this.state.mainPhotoRef.current.scrollIntoView({ behavior: "smooth" });
+        if(this.state.mainPhotoRef.current){
+            scroll();
+        } else {
+            setTimeout(scroll, 500)
+        }
+    }
+
+/*    scrollToComponent = (componentRef) => {
+        let scroll = () => componentRef.current.scrollIntoView({ behavior: "smooth" });
+        if(componentRef.current){
+            scroll();
+        } else {
+            setTimeout(scroll, 500)
+        }
+    }*/
+
+
     render() {
         if (!this.props.initialized) {
             return <Preloader/>
         }
         return (
             <div className='app-wrapper'>
-                <HeaderContainer profileDataRef={this.state.profileDataRef} scrollToProfileEdit={this.scrollToProfileEdit}/>
-                <MainContainer getProfileDataRef={this.getProfileDataRef}/>
+                <HeaderContainer profileDataRef={this.state.profileDataRef}
+                                 scrollToProfileEdit={this.scrollToProfileEdit}
+                                 scrollToMainPhoto={this.scrollToMainPhoto}/>
+                <MainContainer getProfileDataRef={this.getProfileDataRef}
+                               getMainPhotoRef={this.getMainPhotoRef}
+                               scrollToMainPhoto={this.scrollToMainPhoto}
+                />
             </div>
         );
     }

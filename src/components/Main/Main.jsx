@@ -22,7 +22,7 @@ const Main = (props) => {
                 <Redirect exact from='/' to='/profile'/>
                 <Route path='/profile/:userId?' render={() =>
                     <React.Suspense fallback={<div>Loading..</div>}>
-                        <ProfileContainer/>
+                        <ProfileContainer getMainPhotoRef={props.getMainPhotoRef}/>
                     </React.Suspense>}/>
             <div className={s.content}>
                 <Switch>
@@ -35,7 +35,7 @@ const Main = (props) => {
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>
-                    <Route path='/users' component={UsersContainer}/>
+                    <Route path='/users' render={()=><UsersContainer scrollToMainPhoto={props.scrollToMainPhoto} />}/>
                     <Route path='/login' component={Login}/>
                     <Route exact path='*' render={() => <div>404 Not found</div>}/>
                 </Switch>

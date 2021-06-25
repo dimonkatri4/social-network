@@ -17,6 +17,7 @@ const Profile = (props) => {
                    savePhoto = {props.savePhoto}
                    errorInStatus={props.profilePage.error}
                    setErrorInStatus={props.setErrorInStatus}
+                   getMainPhotoRef={props.getMainPhotoRef}
             />
         <div className={s.content}>
             <CreatePostContainer/>

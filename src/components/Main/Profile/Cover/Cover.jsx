@@ -12,7 +12,11 @@ const Cover = (props) => {
     return (
         <div className={s.cover}>
             <CoverPhoto/>
-            <MainPhoto photo = {props.profile.photos} isOwner={props.isOwner} savePhoto={props.savePhoto} />
+            <MainPhoto photo = {props.profile.photos}
+                       isOwner={props.isOwner}
+                       savePhoto={props.savePhoto}
+                       getMainPhotoRef={props.getMainPhotoRef}
+            />
             <CoverInfo fullName={props.profile.fullName}
                        status={props.status}
                        updateStatus={props.updateStatus}

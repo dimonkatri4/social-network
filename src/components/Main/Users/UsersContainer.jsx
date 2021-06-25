@@ -71,6 +71,7 @@ class UsersContainer extends React.Component {
                 searchUsers={this.searchUsers}
                 clearForm={this.clearForm}
                 userSearchName={this.state.userSearchName}
+                scrollToMainPhoto={this.props.scrollToMainPhoto}
             />
         </>
     }

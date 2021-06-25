@@ -42,7 +42,7 @@ const PhotoHeader = (props) => {
             {clickedInside &&
             <div className={classNames(s.userSettings)} onClick={() => setClickedInside(false)}>
                 <ul>
-                    <li className={s.itemMenu}>
+                    <li className={s.itemMenu} onClick={props.scrollToMainPhoto}>
                         <NavLink to='/profile'>
                             <FontAwesomeIcon icon={faUserCircle} className={s.icon}/>
                             View Profile
