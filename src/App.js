@@ -23,7 +23,12 @@ class App extends React.Component {
         this.setState({profileDataRef:ref})
     }
     scrollToProfileEdit = () => {
-        this.state.profileDataRef.current.scrollIntoView({ behavior: "smooth" });
+        let scroll = () => this.state.profileDataRef.current.scrollIntoView({ behavior: "smooth" });
+        if(this.state.profileDataRef.current){
+            scroll();
+        } else {
+            setTimeout(scroll, 500)
+        }
     }
 
     render() {

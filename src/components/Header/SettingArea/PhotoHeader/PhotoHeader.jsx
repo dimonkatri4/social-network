@@ -31,18 +31,8 @@ const PhotoHeader = (props) => {
             }
         }, [ref]);
     }
-
     const wrapperRef = useRef(null);
     useOutsideClick(wrapperRef);
-
-    /*const scrollToProfileEdit = () => {
-        let scroll = () => props.profileDataRef.current.scrollIntoView({ behavior: "smooth" });
-        if (props.profileDataRef.current) {
-            scroll();
-        } else {
-            setTimeout(scroll,5000)
-        }
-    }*/
 
     return (
         <div ref={wrapperRef} className={s.photo_header}>
