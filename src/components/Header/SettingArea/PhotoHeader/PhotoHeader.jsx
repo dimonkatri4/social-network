@@ -1,7 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
 import s from "./photoHeader.module.css"
-import photoUser from '../../../../images/photo-user.jpg'
-import {NavLink, Redirect} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import classNames from "classnames";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUserCircle, faUserEdit, faCog, faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
@@ -48,7 +47,7 @@ const PhotoHeader = (props) => {
                             View Profile
                         </NavLink>
                     </li>
-                    <li className={s.itemMenu} onClick={<Redirect exact from='/' to='/profile'/>} >
+                    <li className={s.itemMenu} onClick={props.scrollToProfileEdit} >
                         <NavLink to='/profile'>
                             <FontAwesomeIcon icon={faUserEdit} className={s.icon}/>
                             Edit Profile
