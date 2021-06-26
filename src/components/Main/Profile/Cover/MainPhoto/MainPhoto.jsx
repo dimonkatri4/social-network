@@ -1,10 +1,15 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import s from "./mainPhoto.module.css"
 import photoUser from '../../../../../images/photo-user.jpg'
 import {faCamera} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const MainPhoto = (props) => {
+
+    const mainPhotoRef = useRef(null);
+    useEffect(() => {
+        props.getMainPhotoRef(mainPhotoRef);
+    },[])
 
     const updatePhoto = (e) => {
        if( e.target.files.length !== 0) {
@@ -13,7 +18,7 @@ const MainPhoto = (props) => {
     }
 
     return (
-        <div className={s.photoBlock}>
+        <div className={s.photoBlock} ref={mainPhotoRef}>
             <div className={s.main_photo}>
                 <img src={props.photo.large || photoUser} alt=""/>
             </div>

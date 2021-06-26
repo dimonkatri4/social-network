@@ -31,18 +31,8 @@ const PhotoHeader = (props) => {
             }
         }, [ref]);
     }
-
     const wrapperRef = useRef(null);
     useOutsideClick(wrapperRef);
-
-    /*const scrollToProfileEdit = () => {
-        let scroll = () => props.profileDataRef.current.scrollIntoView({ behavior: "smooth" });
-        if (props.profileDataRef.current) {
-            scroll();
-        } else {
-            setTimeout(scroll,5000)
-        }
-    }*/
 
     return (
         <div ref={wrapperRef} className={s.photo_header}>
@@ -52,7 +42,7 @@ const PhotoHeader = (props) => {
             {clickedInside &&
             <div className={classNames(s.userSettings)} onClick={() => setClickedInside(false)}>
                 <ul>
-                    <li className={s.itemMenu}>
+                    <li className={s.itemMenu} onClick={props.scrollToMainPhoto}>
                         <NavLink to='/profile'>
                             <FontAwesomeIcon icon={faUserCircle} className={s.icon}/>
                             View Profile
