@@ -10,7 +10,7 @@ const Header = (props) => {
     return (
         <header className={s.header}>
             <Logo/>
-            {props.isAuth ? <Menu/> : <SearchBar/> }
+            {props.isAuth ? <Menu scrollToProfileEdit={props.scrollToProfileEdit}/> : <SearchBar/> }
             {props.isAuth ? <SettingArea {...props}/> : <SignIn/> }
         </header>
     )

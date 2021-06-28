@@ -26,6 +26,7 @@ const Main = (props) => {
                     </React.Suspense>}/>
             <div className={s.content}>
                 <Switch>
+                    <Redirect exact from='/' to='/profile'/>
                     <Route path='/dialog' render={() =>
                         <React.Suspense fallback={<div>Loading..</div>}>
                             <Dialogs dialogsPage={props.dialogsPage} isAuth={props.isAuth}/>

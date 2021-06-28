@@ -54,7 +54,7 @@ const PhotoHeader = (props) => {
                         </NavLink>
                     </li>
                     <li className={s.itemMenu}>
-                        <NavLink to='/'>
+                        <NavLink to='/settings'>
                             <FontAwesomeIcon icon={faCog} className={s.icon}/>
                             Account Setting
                         </NavLink>
