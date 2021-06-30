@@ -8,7 +8,13 @@ const Menu = (props) => {
             <li><NavLink to="/">Home</NavLink></li>
             <li onClick={props.scrollToProfileEdit}><NavLink to="/profile">Timeline</NavLink></li>
             <li><NavLink to="/settings">Account Settings</NavLink></li>
-            <li><NavLink to="/">More Page</NavLink></li>
+            <li className={s.morePageItem}><a>More Page</a>
+                <ul className={s.dropMenu}>
+                    <li><NavLink to="/users">Users</NavLink></li>
+                    <li><NavLink to="/news">News</NavLink></li>
+                    <li><NavLink to="/music">Music</NavLink></li>
+                </ul>
+            </li>
         </ul>
     )
 }

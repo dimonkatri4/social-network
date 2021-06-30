@@ -2,3 +2,28 @@
     width: 120px;
     height: 50px;
   }
+.dropMenu {
+    position: absolute;
+    z-index: 1;
+    display: none;
+    background-color: #e3e6f1;
+    color:  #007bff;
+}
+.morePageItem {
+    position: relative;
+}
+.morePageItem:hover .dropMenu {
+    display: block;
+}
+.morePageItem:hover a {
+    background-color: #e3e6f1;
+    color:  #007bff;
+}
+.dropMenu li {
+    line-height: 50px;
+    text-align: center;
+}
+.dropMenu li:hover a{
+    background-color: #ffffff;
+    color: #424242;
+}
