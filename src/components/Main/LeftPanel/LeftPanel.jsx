@@ -1,7 +1,6 @@
 import React from 'react'
-import {NavLink, Route} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import s from "./navbar.module.css"
-import ProfileInfo from "../Profile/ProfileInfo/ProfileInfo";
 
 const LeftPanel = () => {
     return (
@@ -23,6 +22,9 @@ const NavBar = () => {
             <NavLink to='/dialog' activeClassName={s.active}>Messages</NavLink>
         </div>
         <div className={s.item}>
+            <NavLink to='/users' activeClassName={s.active}>Users</NavLink>
+        </div>
+        <div className={s.item}>
             <NavLink to='/news' activeClassName={s.active}>News</NavLink>
         </div>
         <div className={s.item}>
@@ -31,10 +33,6 @@ const NavBar = () => {
         <div className={s.item}>
             <NavLink to='/settings' activeClassName={s.active}>Settings</NavLink>
         </div>
-        <div className={s.item}>
-            <NavLink to='/users' activeClassName={s.active}>Users</NavLink>
-        </div>
     </nav>
 }
-
 export default LeftPanel

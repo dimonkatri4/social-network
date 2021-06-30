@@ -1,6 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react'
 import s from "./photoHeader.module.css"
-import photoUser from '../../../../images/photo-user.jpg'
 import {NavLink} from "react-router-dom";
 import classNames from "classnames";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -55,7 +54,7 @@ const PhotoHeader = (props) => {
                         </NavLink>
                     </li>
                     <li className={s.itemMenu}>
-                        <NavLink to='/'>
+                        <NavLink to='/settings'>
                             <FontAwesomeIcon icon={faCog} className={s.icon}/>
                             Account Setting
                         </NavLink>

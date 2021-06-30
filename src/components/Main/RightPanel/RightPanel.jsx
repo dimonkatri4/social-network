@@ -1,5 +1,5 @@
 import React from 'react'
-import {NavLink, Route} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import s from "./rightPanel.module.css"
 import ProfileInfo from "../Profile/ProfileInfo/ProfileInfo";
 import Sidebar from "./Sidebar/Sidebar";
