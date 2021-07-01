@@ -3,27 +3,28 @@
     width: 60px;
     border-radius: 50px;
     vertical-align: top;
-    margin: 20px;
+    margin: 0 15px;
 }
 .profile_block textarea {
-    margin: 20px 0;
-    width: 100%;
-    border: 1px solid #eeeeee;
+    width: 25vw;
+    border: none;
     outline: none;
     resize: none;
     border-radius: 5px;
-    padding: 10px;
-    height: 100px;
+    padding-left:15px;
+    margin-bottom: 30px;
+    height: 6vw;
     font-size: 25px;
+    overflow: auto;
 }
 .create_post {
     display: flex;
-    height: 190px;
+    justify-content: center;
 }
 .panel {
     position: absolute;
     right: 15px;
-    bottom: 20px;
+    bottom: 0px;
     height: 35px;
     background: #fff;
     display: flex;
@@ -52,4 +53,5 @@
 }
 .inputText {
     position: relative;
+    border: 1px solid #eeeeee;
 }

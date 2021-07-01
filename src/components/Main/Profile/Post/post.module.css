@@ -27,6 +27,7 @@
     line-height: 26px;
     letter-spacing: 0.2px;
     font-size: 17px;
+    word-break: break-word;
 }
 .userName {
    color: #088dcd;

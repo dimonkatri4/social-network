@@ -4,6 +4,7 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 import AppSocialNetwork from "./App";
+import './common/fontawesome/fontawesome'
 
 ReactDOM.render(<AppSocialNetwork/> ,document.getElementById('root')
 );

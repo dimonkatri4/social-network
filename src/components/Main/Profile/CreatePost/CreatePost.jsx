@@ -8,6 +8,9 @@ import photoIcon from '../../../../images/icons/photo-camera.png'
 import {Field, reduxForm} from "redux-form";
 import {maxLength, required} from "../../../../utils/validators/validators";
 import {Textarea} from "../../../common/FormsControl/FormsControl";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCamera} from "@fortawesome/free-solid-svg-icons";
+
 
 const maxLength20 = maxLength(20)
 
@@ -17,15 +20,13 @@ const PostForm = (props) => {
             <Field
                 component={Textarea}
                 name={'messageText'}
-                rows="8"
                 placeholder="write something"
-                validate={[required, maxLength20]}
             />
             <div className={s.panel}>
                 <a href="/"><img src={musicIcon} alt="music"/></a>
                 <a href="/"><img src={pictureIcon} alt="picture_icon"/></a>
                 <a href="/"><img src={videoIcon} alt="video-camera"/></a>
-                <a href="/"><img src={photoIcon} alt="photo_camera"/></a>
+                <a href="/"><FontAwesomeIcon icon="camera"/></a>
                 <button className='button'>Publish</button>
             </div>
         </div>

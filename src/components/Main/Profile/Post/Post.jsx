@@ -14,7 +14,7 @@ const Post = (props) => {
                 <div className={s.userName}>{props.userName}</div>
                 <div className={s.date}>Published: {props.date}</div>
             </div>
-            <div className={s.message}>{props.message}</div>
+            <div className={s.message} lang="ru">{props.message}</div>
             <div className={s.post_panel}>
                 <ul>
                     <li>
