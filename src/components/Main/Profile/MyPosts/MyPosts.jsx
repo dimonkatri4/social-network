@@ -2,7 +2,6 @@ import React from 'react'
 import Post from '../Post/Post'
 
 const MyPosts = React.memo((props) => {
-    console.log("MYPOST");
 
     let postElement = props.posts
         .map(post => <Post
@@ -13,7 +12,8 @@ const MyPosts = React.memo((props) => {
             viewsCount={post.viewsCount}
             shareCount={post.shareCount}
             date={post.date}
-            key={post.id}
+            isLiked={post.isLiked}
+            changeIsLiked={props.changeIsLiked}
         />)
 
     return (

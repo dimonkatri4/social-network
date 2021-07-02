@@ -21,7 +21,7 @@ const Profile = (props) => {
             />
         <div className={s.content}>
             <CreatePostContainer/>
-            <MyPosts posts={props.profilePage.posts} />
+            <MyPosts posts={props.profilePage.posts} changeIsLiked={props.changeIsLiked} />
         </div>
         </>
     )

@@ -16,8 +16,10 @@ const Post = (props) => {
             <div className={s.post_panel}>
                 <ul>
                     <li>
-                        <div className={classNames(s.like, s.panelIcon)}><FontAwesomeIcon icon={["far","heart"]}/></div>
-                        <span className={s.likeCount}>{props.likeCount}</span>
+                        <div className={classNames(s.like, s.panelIcon)} onClick={()=> props.changeIsLiked(true)}>
+                            <FontAwesomeIcon icon={props.isLiked ? ["fas","heart"] : ["far","heart"]}/>
+                        </div>
+                        <span>{props.likeCount}</span>
                     </li>
                     <li>
                         <div className={s.panelIcon}><FontAwesomeIcon icon={["far","eye"]}/></div>

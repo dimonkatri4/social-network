@@ -10,6 +10,8 @@ const UPDATE_PROFILE_INFO_SUCCESS = 'profile/UPDATE_PROFILE_INFO_SUCCESS';
 const CHANGE_EDIT_MODE_PROFILE = 'profile/CHANGE_EDIT_MODE_PROFILE';
 const SET_OWNER_PROFILE = 'profile/SET_OWNER_PROFILE';
 const SET_ERROR_IN_STATUS = 'profile/SET_ERROR_IN_STATUS';
+const CHANGE_IS_LIKED = 'profile/CHANGE_IS_LIKED';
+
 
 
 let initialState = {
@@ -22,7 +24,8 @@ let initialState = {
             commentsCount: 5,
             viewsCount: 9,
             shareCount: 1,
-            date: 'June,2 2018 19:20'
+            date: 'June,2 2018 19:20',
+            isLiked: false
         },
         {
             id: 2,
@@ -32,7 +35,8 @@ let initialState = {
             commentsCount: 3,
             viewsCount: 7,
             shareCount: 2,
-            date: 'June,2 2018 19:20'
+            date: 'June,2 2018 19:20',
+            isLiked: true
         },
         {
             id: 3,
@@ -42,7 +46,8 @@ let initialState = {
             commentsCount: 1,
             viewsCount: 21,
             shareCount: 0,
-            date: 'June,2 2018 19:20'
+            date: 'June,2 2018 19:20',
+            isLiked: false
         },
         {
             id: 4,
@@ -52,9 +57,11 @@ let initialState = {
             commentsCount: 15,
             viewsCount: 20,
             shareCount: 3,
-            date: 'June,2 2018 19:20'
+            date: 'June,2 2018 19:20',
+            isLiked: false
         },
     ],
+
     profile: null,
     status: '',
     photo: null,
@@ -74,7 +81,8 @@ const profileReducer = (state = initialState, action) => {
                 commentsCount: 0,
                 viewsCount: 0,
                 shareCount: 0,
-                date: 'November, 20 2020 16:43'
+                date: 'November, 20 2020 16:43',
+                isLiked: false
             };
             return {
                 ...state,
@@ -101,6 +109,8 @@ const profileReducer = (state = initialState, action) => {
             return {...state, editModeProfile: action.editValue}
         case SET_ERROR_IN_STATUS:
             return {...state, error: action.error}
+        case CHANGE_IS_LIKED:
+            return {...state,profile:{...state.posts, isLiked:action.isLiked} }
         default:
             return state
     }
@@ -115,6 +125,7 @@ export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
 export const updateProfileInfoSuccess = (profile) => ({type: UPDATE_PROFILE_INFO_SUCCESS, profile});
 export const changeEditModeProfile = (editValue) => ({type: CHANGE_EDIT_MODE_PROFILE, editValue});
 export const setErrorInStatus = (error) => ({type: SET_ERROR_IN_STATUS, error});
+export const changeIsLiked = (isLiked) => ({type: CHANGE_IS_LIKED, isLiked});
 
 
 export const getProfile = (userId) => {
