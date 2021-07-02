@@ -1,15 +1,6 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef} from "react";
 import style from "./profileInfo.module.css"
 import classNames from "classnames";
-import {
-    faInstagram,
-    faFacebookSquare,
-    faGithubSquare,
-    faTwitterSquare,
-    faVk,
-    faYoutube
-} from "@fortawesome/free-brands-svg-icons";
-import {faLink, faGlobeAmericas} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {withRouter} from "react-router-dom";
 import ProfileDataForm from "./ProfileDataForm";
@@ -53,14 +44,14 @@ const ProfileInfo = (props) => {
 
 const Contacts = ({contactTitle, contactValue}) => {
     const contactsIcon = {
-        facebook: faFacebookSquare,
-        github: faGithubSquare,
-        instagram: faInstagram,
-        mainLink: faLink,
-        twitter: faTwitterSquare,
-        vk: faVk,
-        website: faGlobeAmericas,
-        youtube: faYoutube
+        facebook: ["fab","facebook-square"],
+        github: ["fab","github-square"],
+        instagram: ["fab","instagram"],
+        mainLink: ["fas","link"],
+        twitter: ["fab","twitter-square"],
+        vk: ["fab","vk"],
+        website: ["fas","globe-americas"],
+        youtube: ["fab","youtube"]
     }
     return <div className={style.contact}>
         {contactValue && <div><a className={style.contactIcon} href={contactValue} title={contactTitle} target="_blank">

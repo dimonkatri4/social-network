@@ -1,15 +1,10 @@
 import React from 'react'
 import s from "./createPost.module.css"
 import photoUser from '../../../../images/photo-user.jpg'
-import musicIcon from '../../../../images/icons/music.png'
-import pictureIcon from '../../../../images/icons/picture.png'
-import videoIcon from '../../../../images/icons/video-camera.png'
-import photoIcon from '../../../../images/icons/photo-camera.png'
 import {Field, reduxForm} from "redux-form";
 import {maxLength, required} from "../../../../utils/validators/validators";
 import {Textarea} from "../../../common/FormsControl/FormsControl";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCamera} from "@fortawesome/free-solid-svg-icons";
 
 
 const maxLength20 = maxLength(20)
@@ -23,10 +18,10 @@ const PostForm = (props) => {
                 placeholder="write something"
             />
             <div className={s.panel}>
-                <a href="/"><img src={musicIcon} alt="music"/></a>
-                <a href="/"><img src={pictureIcon} alt="picture_icon"/></a>
-                <a href="/"><img src={videoIcon} alt="video-camera"/></a>
-                <a href="/"><FontAwesomeIcon icon="camera"/></a>
+                <span className={s.iconPanel}><FontAwesomeIcon icon="music"/></span>
+                <span className={s.iconPanel}><FontAwesomeIcon icon="image"/></span>
+                <span className={s.iconPanel}><FontAwesomeIcon icon="video"/></span>
+                <span className={s.iconPanel}><FontAwesomeIcon icon="camera"/></span>
                 <button className='button'>Publish</button>
             </div>
         </div>

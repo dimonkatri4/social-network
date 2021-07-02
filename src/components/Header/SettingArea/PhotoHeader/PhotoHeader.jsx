@@ -3,7 +3,6 @@ import s from "./photoHeader.module.css"
 import {NavLink} from "react-router-dom";
 import classNames from "classnames";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUserCircle, faUserEdit, faCog, faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
 
 const PhotoHeader = (props) => {
 
@@ -43,25 +42,25 @@ const PhotoHeader = (props) => {
                 <ul>
                     <li className={s.itemMenu} onClick={props.scrollToMainPhoto}>
                         <NavLink to='/profile'>
-                            <FontAwesomeIcon icon={faUserCircle} className={s.icon}/>
+                            <FontAwesomeIcon icon="user-circle" className={s.icon}/>
                             View Profile
                         </NavLink>
                     </li>
                     <li className={s.itemMenu} onClick={props.scrollToProfileEdit} >
                         <NavLink to='/profile'>
-                            <FontAwesomeIcon icon={faUserEdit} className={s.icon}/>
+                            <FontAwesomeIcon icon="user-edit" className={s.icon}/>
                             Edit Profile
                         </NavLink>
                     </li>
                     <li className={s.itemMenu}>
                         <NavLink to='/settings'>
-                            <FontAwesomeIcon icon={faCog} className={s.icon}/>
+                            <FontAwesomeIcon icon="cog" className={s.icon}/>
                             Account Setting
                         </NavLink>
                     </li>
                     <li className={s.itemMenu} onClick={props.logout}>
                         <NavLink to='/login'>
-                            <FontAwesomeIcon icon={faSignOutAlt} className={s.icon}/>
+                            <FontAwesomeIcon icon="sign-out-alt" className={s.icon}/>
                             Log Out
                         </NavLink>
                     </li>
