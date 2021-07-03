@@ -24,7 +24,7 @@ let initialState = {
             commentsCount: 5,
             viewsCount: 9,
             shareCount: 1,
-            date: 'June,2 2018 19:20',
+            date: '02.06.2018, 19:20',
             isLiked: false
         },
         {
@@ -35,7 +35,7 @@ let initialState = {
             commentsCount: 3,
             viewsCount: 7,
             shareCount: 2,
-            date: 'June,2 2018 19:20',
+            date: '02.06.2018, 19:20',
             isLiked: true
         },
         {
@@ -46,7 +46,7 @@ let initialState = {
             commentsCount: 1,
             viewsCount: 21,
             shareCount: 0,
-            date: 'June,2 2018 19:20',
+            date: '02.06.2018, 19:20',
             isLiked: false
         },
         {
@@ -57,7 +57,7 @@ let initialState = {
             commentsCount: 15,
             viewsCount: 20,
             shareCount: 3,
-            date: 'June,2 2018 19:20',
+            date: '02.06.2018, 19:20',
             isLiked: false
         },
     ],
@@ -70,6 +70,15 @@ let initialState = {
     error: null
 }
 
+let getDate = () => {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0'), mm = String(today.getMonth() + 1).padStart(2, '0'),
+        hh = String(today.getHours()).padStart(2, '0'), mn = String(today.getMinutes()).padStart(2, '0'),
+        yyy = today.getFullYear();
+    return `${dd}.${mm}.${yyy}, ${hh}:${mn}`
+}
+
+
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
@@ -81,7 +90,7 @@ const profileReducer = (state = initialState, action) => {
                 commentsCount: 0,
                 viewsCount: 0,
                 shareCount: 0,
-                date: 'November, 20 2020 16:43',
+                date: getDate(),
                 isLiked: false
             };
             return {

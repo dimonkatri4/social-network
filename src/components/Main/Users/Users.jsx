@@ -43,6 +43,7 @@ let Users = ({totalUsersCount, pageSize,
                         follow={follow}
                         unfollow={unfollow}
                         scrollToMainPhoto={props.scrollToMainPhoto}
+
                     />)
                 }
             </div>

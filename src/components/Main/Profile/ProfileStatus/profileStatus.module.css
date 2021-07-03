@@ -9,6 +9,7 @@
 .textStatus {
     font-size: 1.2vw;
     color: #404040;
+    word-break: break-word;
 }
 
 .inputStatus {

@@ -41,6 +41,7 @@
 }
 .statusUser {
     color: #088dcd;
+    word-break: break-word;
 }
 
 .followBtn[disabled],
