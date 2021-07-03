@@ -19,8 +19,12 @@ let Users = ({totalUsersCount, pageSize,
     return (
         <div className="profile_block">
             <div className={classNames("caption",style.friendsCaption)}>
-                <h3 onClick={() =>showFriends(true)} className={classNames(friends &&  style.friendsTitleActive,style.friendsTitle)} >My Friends</h3>
-                <h3 onClick={() =>showFriends(false)} className={classNames(!friends &&  style.friendsTitleActive,style.friendsTitle)} >All Users</h3>
+                <h3 onClick={() =>showFriends(true)}
+                    className={classNames(friends &&  style.friendsTitleActive,style.friendsTitle)}>
+                    My Friends</h3>
+                <h3 onClick={() =>showFriends(false)}
+                    className={classNames(!friends &&  style.friendsTitleActive,style.friendsTitle)}>
+                    All Users</h3>
             </div>
             <SearchUsersReduxForm onSubmit={onSubmit} searchUsers={searchUsers} userSearchName={userSearchName} />
             <Pagination

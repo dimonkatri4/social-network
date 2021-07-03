@@ -17,7 +17,7 @@ const CHANGE_IS_LIKED = 'profile/CHANGE_IS_LIKED';
 let initialState = {
     posts: [
         {
-            id: 1,
+            id: 0,
             message: 'Hi, how are you?',
             likeCount: 10,
             userName: 'cat griffith',
@@ -28,7 +28,7 @@ let initialState = {
             isLiked: false
         },
         {
-            id: 2,
+            id: 1,
             message: 'It\'s my first post',
             likeCount: 5,
             userName: 'cat griffith',
@@ -39,7 +39,7 @@ let initialState = {
             isLiked: true
         },
         {
-            id: 3,
+            id: 2,
             message: 'Helo!',
             likeCount: 7,
             userName: 'cat griffith',
@@ -50,7 +50,7 @@ let initialState = {
             isLiked: false
         },
         {
-            id: 4,
+            id: 3,
             message: 'Hi, how are you?',
             likeCount: 14,
             userName: 'cat griffith',
@@ -110,7 +110,16 @@ const profileReducer = (state = initialState, action) => {
         case SET_ERROR_IN_STATUS:
             return {...state, error: action.error}
         case CHANGE_IS_LIKED:
-            return {...state,profile:{...state.posts, isLiked:action.isLiked} }
+            return {...state,posts: state.posts.map(p => {
+                if(p["id"] === action.id) {
+                    if(p.isLiked) {
+                        return {...p, isLiked:action.isLiked,likeCount:p.likeCount-1}
+                    } else {
+                        return {...p, isLiked:action.isLiked,likeCount:p.likeCount+1}
+                    }
+                }
+                return p
+                }) }
         default:
             return state
     }
@@ -125,7 +134,7 @@ export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
 export const updateProfileInfoSuccess = (profile) => ({type: UPDATE_PROFILE_INFO_SUCCESS, profile});
 export const changeEditModeProfile = (editValue) => ({type: CHANGE_EDIT_MODE_PROFILE, editValue});
 export const setErrorInStatus = (error) => ({type: SET_ERROR_IN_STATUS, error});
-export const changeIsLiked = (isLiked) => ({type: CHANGE_IS_LIKED, isLiked});
+export const changeIsLiked = (isLiked,id) => ({type: CHANGE_IS_LIKED, isLiked,id});
 
 
 export const getProfile = (userId) => {

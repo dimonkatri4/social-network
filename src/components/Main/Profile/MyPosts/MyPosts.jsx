@@ -13,6 +13,7 @@ const MyPosts = React.memo((props) => {
             shareCount={post.shareCount}
             date={post.date}
             isLiked={post.isLiked}
+            id={post.id}
             changeIsLiked={props.changeIsLiked}
         />)
 

@@ -5,6 +5,11 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 
 const Post = (props) => {
+
+    const changeLike = () => {
+        props.changeIsLiked(!props.isLiked,props.id);
+    }
+
     return (
         <div className={`${s.item} profile_block`}>
             <div className={s.caption}>
@@ -16,7 +21,7 @@ const Post = (props) => {
             <div className={s.post_panel}>
                 <ul>
                     <li>
-                        <div className={classNames(s.like, s.panelIcon)} onClick={()=> props.changeIsLiked(true)}>
+                        <div className={classNames(s.like, s.panelIcon)} onClick={changeLike}>
                             <FontAwesomeIcon icon={props.isLiked ? ["fas","heart"] : ["far","heart"]}/>
                         </div>
                         <span>{props.likeCount}</span>
