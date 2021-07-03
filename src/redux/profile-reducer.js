@@ -1,5 +1,6 @@
 import {profileAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
+import photoUser from '../images/photo-user.jpg'
 
 const ADD_POST = 'profile/ADD-POST';
 const SET_USERS_PROFILE = 'profile/SET_USERS_PROFILE';
@@ -25,7 +26,8 @@ let initialState = {
             viewsCount: 9,
             shareCount: 1,
             date: '02.06.2018, 19:20',
-            isLiked: false
+            isLiked: false,
+            photo: photoUser
         },
         {
             id: 1,
@@ -36,7 +38,8 @@ let initialState = {
             viewsCount: 7,
             shareCount: 2,
             date: '02.06.2018, 19:20',
-            isLiked: true
+            isLiked: true,
+            photo: photoUser
         },
         {
             id: 2,
@@ -47,7 +50,8 @@ let initialState = {
             viewsCount: 21,
             shareCount: 0,
             date: '02.06.2018, 19:20',
-            isLiked: false
+            isLiked: false,
+            photo: photoUser
         },
         {
             id: 3,
@@ -58,7 +62,8 @@ let initialState = {
             viewsCount: 20,
             shareCount: 3,
             date: '02.06.2018, 19:20',
-            isLiked: false
+            isLiked: false,
+            photo: photoUser
         },
     ],
 
@@ -70,12 +75,13 @@ let initialState = {
     error: null
 }
 
+
 let getDate = () => {
     const today = new Date();
     const dd = String(today.getDate()).padStart(2, '0'), mm = String(today.getMonth() + 1).padStart(2, '0'),
         hh = String(today.getHours()).padStart(2, '0'), mn = String(today.getMinutes()).padStart(2, '0'),
         yyy = today.getFullYear();
-    return `${dd}.${mm}.${yyy}, ${hh}:${mn}`
+    return `${dd}.${mm}.${yyy}, ${hh}:${mn}`;
 }
 
 
@@ -83,15 +89,16 @@ const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
-                id: 5,
+                id: state.posts.length,
                 message: action.newPostText,
                 likeCount: 0,
-                userName: 'cat griffith',
+                userName: state.profileOwner.fullName,
                 commentsCount: 0,
                 viewsCount: 0,
                 shareCount: 0,
                 date: getDate(),
-                isLiked: false
+                isLiked: false,
+                photo: state.profileOwner.photos.small
             };
             return {
                 ...state,

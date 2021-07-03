@@ -1,6 +1,5 @@
 import React from 'react'
 import s from "./createPost.module.css"
-import photoUser from '../../../../images/photo-user.jpg'
 import {Field, reduxForm} from "redux-form";
 import {maxLength, required} from "../../../../utils/validators/validators";
 import {Textarea} from "../../../common/FormsControl/FormsControl";
@@ -31,13 +30,14 @@ const PostForm = (props) => {
 const PostFormRedux = reduxForm({form: 'createPost'})(PostForm)
 
 const CreatePost = (props) => {
+
     const onSubmit = (formData) => {
         props.addPost(formData.messageText)
     }
     return (
         <div className={`${s.profile_block} profile_block`}>
             <div className={s.create_post}>
-                <img className={s.ava} src={photoUser} alt="avatar"/>
+                {props.profileOwner && <img className={s.ava} src={props.profileOwner.photos.small} alt="avatar"/>}
                 <PostFormRedux onSubmit={onSubmit}/>
             </div>
         </div>

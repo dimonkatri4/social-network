@@ -16,6 +16,7 @@ const MyPosts = React.memo((props) => {
             id={post.id}
             changeIsLiked={props.changeIsLiked}
             key={post.id}
+            photo={post.photo}
         />)
 
     return (

@@ -13,7 +13,7 @@ const Post = (props) => {
     return (
         <div className={`${s.item} profile_block`}>
             <div className={s.caption}>
-                <img src={photoUser} alt="user" />
+                <img src={props.photo} alt="userPhoto" />
                 <div className={s.userName}>{props.userName}</div>
                 <div className={s.date}>Published: {props.date}</div>
             </div>

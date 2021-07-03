@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 
 let mapStateToProps = (state) => {
     return {
+        profileOwner: state.profilePage.profileOwner
     }
 }
 /*let mapDispatchToProps = (dispatch) => {
