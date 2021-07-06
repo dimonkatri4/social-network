@@ -24,7 +24,7 @@ const MainPhoto = (props) => {
             </div>
             {props.isOwner && <div className={s.inputWrapper}>
                 <input type="file" accept="image/*" id="inputPhoto" onChange={updatePhoto} className={s.inputTag}/>
-                <label for="inputPhoto" className={s.inputPhoto}><FontAwesomeIcon icon={faCamera}/></label>
+                <label htmlFor="inputPhoto" className={s.inputPhoto}><FontAwesomeIcon icon={faCamera}/></label>
             </div>}
         </div>
     )

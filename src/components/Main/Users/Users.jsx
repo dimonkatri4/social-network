@@ -9,7 +9,7 @@ import SearchUsersReduxForm from "./SearchUsers";
 let Users = ({totalUsersCount, pageSize,
                  currentPage, onPageChanged,
                  follow, unfollow,
-                 showFriends,friends,
+                 showFriends,isFriendsList,
                  searchUsers,clearForm,userSearchName, ...props}) => {
 
     const onSubmit = (formData) => {
@@ -20,10 +20,10 @@ let Users = ({totalUsersCount, pageSize,
         <div className="profile_block">
             <div className={classNames("caption",style.friendsCaption)}>
                 <h3 onClick={() =>showFriends(true)}
-                    className={classNames(friends &&  style.friendsTitleActive,style.friendsTitle)}>
+                    className={classNames(isFriendsList &&  style.friendsTitleActive,style.friendsTitle)}>
                     My Friends</h3>
                 <h3 onClick={() =>showFriends(false)}
-                    className={classNames(!friends &&  style.friendsTitleActive,style.friendsTitle)}>
+                    className={classNames(!isFriendsList &&  style.friendsTitleActive,style.friendsTitle)}>
                     All Users</h3>
             </div>
             <SearchUsersReduxForm onSubmit={onSubmit} searchUsers={searchUsers} userSearchName={userSearchName} />
@@ -32,7 +32,7 @@ let Users = ({totalUsersCount, pageSize,
                 totalItemsCount={totalUsersCount}
                 pageSize={pageSize}
                 onPageChanged={onPageChanged}
-                friends={friends}
+                friends={isFriendsList}
                 userSearchName={userSearchName}
             />
             <div>

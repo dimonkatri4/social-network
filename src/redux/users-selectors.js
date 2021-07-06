@@ -23,7 +23,10 @@ export const getIsFetching = (state) => {
 export const getFollowingInProgress = (state) => {
     return state.usersPage.followingInProgress
 }
-export const getFriends = (state) => {
-    return state.usersPage.friends
+export const getIsFriendsList = (state) => {
+    return state.usersPage.isFriendsList
+}
+export const getFriendsList = (state) => {
+    return state.usersPage.friendsList
 }
 
