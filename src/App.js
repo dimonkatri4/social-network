@@ -16,8 +16,13 @@ class App extends React.Component {
         mainPhotoRef: ""
     }
 
+    catchAllUnhandledErrors = (reason,promise) => {
+        alert(reason.reason)
+    }
+
     componentDidMount() {
         this.props.initializeApp();
+        window.addEventListener("unhandledrejection",this.catchAllUnhandledErrors)
     }
 
     getProfileDataRef = (ref) => {

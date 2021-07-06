@@ -6,15 +6,9 @@ import {Input} from "../../../common/FormsControl/FormsControl";
 
 const Sidebar = (props) => {
 
-    let [formData,editFormData] = useState(null);
-
     const onSubmit = (formData) => {
-        editFormData(formData.searchUsers);
+        props.searchUsers(formData.searchUsers);
     }
-
-    useEffect(()=>{
-        props.searchUsers(formData);
-    }, [formData])
 
     let friendElement = props.users
         .map(el=><Friend img = {el.photos.small} name={el.name} key={el.id} />)

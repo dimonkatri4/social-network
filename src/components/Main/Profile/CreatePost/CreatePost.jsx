@@ -32,7 +32,7 @@ const PostFormRedux = reduxForm({form: 'createPost'})(PostForm)
 const CreatePost = (props) => {
 
     const onSubmit = (formData) => {
-        props.addPost(formData.messageText)
+        props.addPost(formData.messageText);
     }
     return (
         <div className={`${s.profile_block} profile_block`}>
