@@ -6,7 +6,7 @@ import {Input} from "../../../common/FormsControl/FormsControl";
 
 const Sidebar = (props) => {
 
-    const onSubmit = (formData) => {
+    const onChange = (formData) => {
         props.searchUsers(formData.searchUsers);
     }
 
@@ -23,7 +23,7 @@ return (
                 <h3 className="title">Friends</h3>
             </div>
             <div className={s.search}>
-                <SearchUsersInSidebarReduxForm onSubmit={onSubmit} />
+                <SearchUsersInSidebarReduxForm onChange={onChange}/>
             </div>
             {friendElement}
         </div>
@@ -31,9 +31,9 @@ return (
 )
 }
 
-const SearchUserInSidebar = (props) => {
-    return <form onSubmit={props.handleSubmit}>
-        <Field component={Input} placeholder="Search Friends..." name="searchUsers" />
+const SearchUserInSidebar = ({ handleChange, handleSubmit}) => {
+    return <form onSubmit={handleSubmit}>
+        <Field component={Input} placeholder="Search Friends..." name="searchUsers" onChange={handleChange}/>
     </form>
 }
 

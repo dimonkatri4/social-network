@@ -78,10 +78,7 @@ let initialState = {
 
 let getDate = () => {
     const today = new Date();
-    const dd = String(today.getDate()).padStart(2, '0'), mm = String(today.getMonth() + 1).padStart(2, '0'),
-        hh = String(today.getHours()).padStart(2, '0'), mn = String(today.getMinutes()).padStart(2, '0'),
-        yyy = today.getFullYear();
-    return `${dd}.${mm}.${yyy}, ${hh}:${mn}`;
+    return today.toLocaleString();
 }
 
 
