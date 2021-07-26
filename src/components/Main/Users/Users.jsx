@@ -26,7 +26,7 @@ let Users = ({totalUsersCount, pageSize,
                     className={classNames(isFriendsList &&  style.friendsTitleActive,style.friendsTitle)}>
                     My Friends</h3>
                 <h3 onClick={() => {
-                    showFriends(false);
+                    showFriends(null);
                     clearForm();
                 }}
                     className={classNames(!isFriendsList &&  style.friendsTitleActive,style.friendsTitle)}>
@@ -49,7 +49,7 @@ let Users = ({totalUsersCount, pageSize,
                         follow={follow}
                         unfollow={unfollow}
                         scrollToMainPhoto={props.scrollToMainPhoto}
-
+                        key={u.id}
                     />)
                 }
             </div>

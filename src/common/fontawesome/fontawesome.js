@@ -6,7 +6,7 @@ import {
     faLink,
     faMusic,
     faSearch, faSignOutAlt, faUserCircle, faUserEdit,
-    faVideo, faHeart as faHeartSolid
+    faVideo, faHeart as faHeartSolid, faAngleDoubleLeft, faAngleDoubleRight, faAngleRight, faAngleLeft
 } from "@fortawesome/free-solid-svg-icons";
 import {
     faInstagram,
@@ -22,6 +22,7 @@ import {faComment, faEye, faHeart as faHeartRegular, faShareSquare} from "@forta
 library.add(
     faCamera, faVideo, faImage, faMusic,faInstagram,faFacebookSquare,faGithubSquare,faTwitterSquare,faVk,
     faYoutube,faLink,faGlobeAmericas,faSearch,faHome,faBell,faEnvelope,faUserCircle, faUserEdit, faCog, faSignOutAlt,
-    faHeartRegular,faHeartSolid,faEye,faComment,faShareSquare
+    faHeartRegular,faHeartSolid,faEye,faComment,faShareSquare,faAngleDoubleLeft,faAngleDoubleRight,faAngleRight,
+    faAngleLeft
 )
 

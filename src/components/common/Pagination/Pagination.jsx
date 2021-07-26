@@ -21,33 +21,48 @@ let Pagination = ({totalItemsCount, pageSize, currentPage, onPageChanged, portio
 
     useEffect(() => {
         return setPortionNumber(currentPortion)
-    }, [friends, userSearchName,currentPortion])
+    }, [friends, userSearchName, currentPortion])
 
     return (
         <div className={style.pageCount}>
             {portionNumber > 1 &&
-            <span className={style.arrow} onClick={() => setPortionNumber(portionNumber - 1)}>
-                <FontAwesomeIcon icon={faAngleDoubleLeft}/>
-            </span>}
+            <>
+                <span className={style.arrow}
+                      onClick={() => setPortionNumber(1)}
+                      title="To the first portion pages"
+                >
+                    <FontAwesomeIcon icon="angle-double-left"/>
+                </span>
+                <span className={style.arrow}
+                      onClick={() => setPortionNumber(portionNumber - 1)}
+                      title="Previous portion of pages"
+                >
+                    <FontAwesomeIcon icon="angle-left"/>
+                </span>
+            </>
+            }
             {pages
                 .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                 .map(p => <span className={classNames(currentPage === p && style.current, style.numberPage)}
-                                onClick={(event) => {
-                                    onPageChanged(p)
-                                }}
+                                onClick={(event) => onPageChanged(p)}
+                                key={p}
+                                title={currentPage !== p ? "Click to select a page" : "Current page"}
                 >{p}</span>)}
             {portionCount > portionNumber &&
-            <span>
-                <span className={style.numberPage} onClick={()=> {
-                    onPageChanged(pageCount);
-                    setPortionNumber(portionCount);
-                }}>...</span>
-                    <span className={style.arrow} onClick={() => {
-                        setPortionNumber(portionNumber + 1)
-                    }}>
-                <FontAwesomeIcon icon={faAngleDoubleRight}/>
+            <>
+                <span className={style.arrow}
+                      onClick={() => setPortionNumber(portionNumber + 1)}
+                      title="Next portion of pages"
+                >
+                    <FontAwesomeIcon icon="angle-right"/>
+                </span>
+                    <span className={style.arrow}
+                          onClick={() => setPortionNumber(portionCount)}
+                          title="To the last portion pages"
+                    >
+                <FontAwesomeIcon icon="angle-double-right"/>
             </span>
-                </span>}
+                </>}
 
         </div>
     )
