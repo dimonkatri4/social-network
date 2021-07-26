@@ -19,18 +19,18 @@ import {
 
 
 class UsersContainer extends React.Component {
-
-    state = {
-        userSearchName: null
+    constructor(props) {
+        super(props);
+        this.state = {userSearchName: null}
     }
 
     componentDidMount() {
         this.props.requestUsers(this.props.pageSize, this.props.currentPage, this.props.isFriendsList)
     }
 
-    componentWillMount() {
-        this.setState({userSearchName: null})
-    }
+    // componentWillMount() {
+    //     this.setState({userSearchName: null})
+    // }
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
@@ -46,7 +46,7 @@ class UsersContainer extends React.Component {
     searchUsers = (searchName) => {
         this.props.setCurrentPage(1);
         this.setState({userSearchName: searchName});
-        this.props.requestUsers(this.props.pageSize, 1, this.props.isFriendsList, searchName)
+        this.props.requestUsers(this.props.pageSize, 1, this.props.isFriendsList, searchName);
     }
 
     clearForm = () => {

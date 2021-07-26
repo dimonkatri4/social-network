@@ -11,7 +11,7 @@ const Sidebar = (props) => {
     }
 
     let friendElement = props.users
-        .map(el=><Friend img = {el.photos.small} name={el.name} key={el.id} />)
+        .map(el=><Friend img = {el.photos.small} name={el.name} key={el.id} id={el.id} />)
 
 
 

@@ -19,10 +19,16 @@ let Users = ({totalUsersCount, pageSize,
     return (
         <div className="profile_block">
             <div className={classNames("caption",style.friendsCaption)}>
-                <h3 onClick={() =>showFriends(true)}
+                <h3 onClick={() => {
+                    showFriends(true);
+                    clearForm();
+                }}
                     className={classNames(isFriendsList &&  style.friendsTitleActive,style.friendsTitle)}>
                     My Friends</h3>
-                <h3 onClick={() =>showFriends(false)}
+                <h3 onClick={() => {
+                    showFriends(false);
+                    clearForm();
+                }}
                     className={classNames(!isFriendsList &&  style.friendsTitleActive,style.friendsTitle)}>
                     All Users</h3>
             </div>
