@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import LeftPanel from './LeftPanel/LeftPanel';
 import s from './main.module.css';
 import {Redirect, Route, Switch} from 'react-router-dom';
@@ -10,11 +10,16 @@ import UsersContainer from "./Users/UsersContainer";
 //import ProfileContainer from "./Profile/ProfileContainer";
 import Login from "./Login/Login";
 import RightPanel from "./RightPanel/RightPanel";
+import ModalWindow from "./ModalWindow/ModalWindow";
 
 const Dialogs = React.lazy(() => import('./Dialogs/Dialogs'));
 const ProfileContainer = React.lazy(() => import('./Profile/ProfileContainer'));
 
 const Main = (props) => {
+
+    const [active,setActive] = useState(false);
+
+    const profilePhoto = props.profilePage.profile && props.profilePage.profile.photos;
 
     return (
         <div className={s.main_page}>
@@ -22,7 +27,7 @@ const Main = (props) => {
                 <Redirect exact from='/' to='/profile'/>
                 <Route path='/profile/:userId?' render={() =>
                     <React.Suspense fallback={<div>Loading..</div>}>
-                        <ProfileContainer getMainPhotoRef={props.getMainPhotoRef}/>
+                        <ProfileContainer getMainPhotoRef={props.getMainPhotoRef} setActive={setActive} />
                     </React.Suspense>}/>
             <div className={s.content}>
                 <Switch>
@@ -40,6 +45,9 @@ const Main = (props) => {
                     <Route path='/login' component={Login}/>
                     <Route exact path='*' render={() => <div>404 Not found</div>}/>
                 </Switch>
+                <ModalWindow active={active} setActive={setActive}>
+                    {profilePhoto && <img src={profilePhoto.large}/>}
+                </ModalWindow>
             </div>
 
             {props.isAuth && <RightPanel sidebarPage={props.sidebarPage} isAuth={props.isAuth} getProfileDataRef={props.getProfileDataRef}/>}

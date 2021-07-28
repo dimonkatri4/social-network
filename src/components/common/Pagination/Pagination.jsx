@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import style from "./pagination.module.css";
 import classNames from "classnames";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleDoubleLeft, faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons'
 
 let Pagination = ({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10, friends, userSearchName}) => {
     let pageCount = Math.ceil(totalItemsCount / pageSize);

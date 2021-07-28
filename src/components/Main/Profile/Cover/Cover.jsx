@@ -16,6 +16,7 @@ const Cover = (props) => {
                        isOwner={props.isOwner}
                        savePhoto={props.savePhoto}
                        getMainPhotoRef={props.getMainPhotoRef}
+                       setActive={props.setActive}
             />
             <CoverInfo fullName={props.profile.fullName}
                        status={props.status}

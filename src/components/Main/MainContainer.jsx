@@ -7,7 +7,7 @@ let mapStateToProps = (state) => {
         profilePage: state.profilePage,
         dialogsPage: state.dialogsPage,
         sidebarPage: state.sidebarPage,
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
     }
 }
 

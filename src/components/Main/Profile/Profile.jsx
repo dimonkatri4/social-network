@@ -18,6 +18,7 @@ const Profile = (props) => {
                    errorInStatus={props.profilePage.error}
                    setErrorInStatus={props.setErrorInStatus}
                    getMainPhotoRef={props.getMainPhotoRef}
+                   setActive={props.setActive}
             />
         <div className={s.content}>
             <CreatePostContainer/>

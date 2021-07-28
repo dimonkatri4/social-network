@@ -19,7 +19,7 @@ const MainPhoto = (props) => {
 
     return (
         <div className={s.photoBlock} ref={mainPhotoRef}>
-            <div className={s.main_photo}>
+            <div className={s.main_photo} onClick={() => props.setActive(true)}>
                 <img src={props.photo.large || photoUser} alt=""/>
             </div>
             {props.isOwner && <div className={s.inputWrapper}>
