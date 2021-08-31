@@ -11,6 +11,7 @@ import UsersContainer from "./Users/UsersContainer";
 import Login from "./Login/Login";
 import RightPanel from "./RightPanel/RightPanel";
 import ModalWindow from "./ModalWindow/ModalWindow";
+import Page404 from "../common/Page404/Page404";
 
 const Dialogs = React.lazy(() => import('./Dialogs/Dialogs'));
 const ProfileContainer = React.lazy(() => import('./Profile/ProfileContainer'));
@@ -43,7 +44,7 @@ const Main = (props) => {
                     <Route path='/settings' component={Settings}/>
                     <Route path='/users' render={()=><UsersContainer scrollToMainPhoto={props.scrollToMainPhoto} />}/>
                     <Route path='/login' component={Login}/>
-                    <Route exact path='*' render={() => <div>404 Not found</div>}/>
+                    <Route exact path='*' render={() => <Page404/>}/>
                 </Switch>
                 <ModalWindow active={active} setActive={setActive}>
                     {profilePhoto && <img src={profilePhoto.large}/>}
