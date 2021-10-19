@@ -1,7 +1,6 @@
 import {userAPI} from "../api/api";
 
-const FOLLOW_SUCCESS = 'users/FOLLOW_SUCCESS';
-const UNFOLLOW_SUCCESS = 'users/UNFOLLOW_SUCCESS';
+const TOGGLE_FOLLOW_SUCCESS = 'users/TOGGLE_FOLLOW_SUCCESS';
 const SET_USERS = 'users/SET_USERS';
 const SET_CURRENT_PAGE = 'users/SET_CURRENT_PAGE';
 const SET_TOTAL_COUNT_USERS = 'users/SET_TOTAL_COUNT_USERS'
@@ -34,27 +33,27 @@ let followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
 }
 
 //common function for change or update property in object
-const updateObjectInArray = (items, itemId, objectProperty, newObjProps) => {
+/*const updateObjectInArray = (items, itemId, objectProperty, newObjProps) => {
     return items.map(i => {
         if (i[objectProperty] === itemId) {
             return {...i, ...newObjProps}
         }
         return i
     })
-}
+}*/
 
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FOLLOW_SUCCESS:
+        case TOGGLE_FOLLOW_SUCCESS:
             return {
                 ...state,
-                users: updateObjectInArray(state.users, action.userId, "id", {followed: true})
-            }
-        case UNFOLLOW_SUCCESS:
-            return {
-                ...state,
-                users: updateObjectInArray(state.users, action.userId, "id", {followed: false})
+                users: state.users.map(u => {
+                    if (u.id === action.userId) {
+                        return {...u, followed:!u.followed}
+                    }
+                    return u
+                })
             }
         case SET_USERS:
             return {
@@ -93,8 +92,7 @@ const usersReducer = (state = initialState, action) => {
 }
 
 //Action Creators
-export const followSuccess = (userId) => ({type: FOLLOW_SUCCESS, userId});
-export const unfollowSuccess = (userId) => ({type: UNFOLLOW_SUCCESS, userId});
+export const toggleFollowSuccess = (userId) => ({type: TOGGLE_FOLLOW_SUCCESS, userId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page});
 export const setTotalCountUsers = (count) => ({type: SET_TOTAL_COUNT_USERS, count})
@@ -121,11 +119,11 @@ export const requestFriends = (pageSize, page, friends, term) => async (dispatch
 
 
 export const unfollow = (userId) => async (dispatch) => {
-    followUnfollowFlow(dispatch, userId, userAPI.deleteFollow, unfollowSuccess);
+    followUnfollowFlow(dispatch, userId, userAPI.deleteFollow, toggleFollowSuccess);
 }
 
 export const follow = (userId) => async (dispatch) => {
-    followUnfollowFlow(dispatch, userId, userAPI.postFollow, followSuccess);
+    followUnfollowFlow(dispatch, userId, userAPI.postFollow, toggleFollowSuccess);
 }
 
 export default usersReducer;
