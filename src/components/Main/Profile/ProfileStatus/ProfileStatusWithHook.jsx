@@ -61,7 +61,7 @@ const ProfileStatusWithHook = (props) => {
 
     return <div className={style.statusBlock}>
         {!editMode &&
-        <span className={style.textStatus} onDoubleClick={props.isOwner && activateEditMode}
+        <span className={style.textStatus} onDoubleClick={props.isOwner ? activateEditMode : undefined}
               title="Double click to change status">{props.status
         || props.isOwner && <span className={style.addStatus}>Double click to add status</span>} </span>
         }

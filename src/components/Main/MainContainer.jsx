@@ -4,9 +4,7 @@ import Main from "./Main";
 
 let mapStateToProps = (state) => {
     return {
-        profilePage: state.profilePage,
-        dialogsPage: state.dialogsPage,
-        sidebarPage: state.sidebarPage,
+        profile: state.profilePage.profile,
         isAuth: state.auth.isAuth,
     }
 }

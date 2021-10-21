@@ -2,11 +2,7 @@ import React, {useEffect, useRef} from "react";
 import style from "./profileInfo.module.css"
 import classNames from "classnames";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {withRouter} from "react-router-dom";
 import ProfileDataForm from "./ProfileDataForm";
-import {compose} from "redux";
-import {connect} from "react-redux";
-import {changeEditModeProfile, updateProfileInfo} from "../../../../redux/profile-reducer";
 
 const ProfileInfo = (props) => {
 
@@ -24,6 +20,10 @@ const ProfileInfo = (props) => {
 
     const isOwner = !props.match.params.userId;
 
+    const goToEditMode = () => {
+        props.changeEditModeProfile(true)
+    }
+
     if (!props.profile) {
         return <div></div>
     }
@@ -32,26 +32,24 @@ const ProfileInfo = (props) => {
             <h3 className="title">Profile Info</h3>
         </div>
         {props.editModeProfile ? <ProfileDataForm onSubmit={onSubmit}
-                                     exitToEditMode={() => props.changeEditModeProfile(false)}
-                                     profile={props.profile}
-                                     initialValues={props.profile}
+                                                  exitToEditMode={() => props.changeEditModeProfile(false)}
+                                                  profile={props.profile}
+                                                  initialValues={props.profile}
             /> :
-            <ProfileData {...props} isOwner={isOwner}
-                         goToEditMode={() => props.changeEditModeProfile(true)} />
-        }
+            <ProfileData {...props} isOwner={isOwner} goToEditMode={goToEditMode}/>}
     </div>
 }
 
 const Contacts = ({contactTitle, contactValue}) => {
     const contactsIcon = {
-        facebook: ["fab","facebook-square"],
-        github: ["fab","github-square"],
-        instagram: ["fab","instagram"],
-        mainLink: ["fas","link"],
-        twitter: ["fab","twitter-square"],
-        vk: ["fab","vk"],
-        website: ["fas","globe-americas"],
-        youtube: ["fab","youtube"]
+        facebook: ["fab", "facebook-square"],
+        github: ["fab", "github-square"],
+        instagram: ["fab", "instagram"],
+        mainLink: ["fas", "link"],
+        twitter: ["fab", "twitter-square"],
+        vk: ["fab", "vk"],
+        website: ["fas", "globe-americas"],
+        youtube: ["fab", "youtube"]
     }
     return <div className={style.contact}>
         {contactValue && <div><a className={style.contactIcon} href={contactValue} title={contactTitle} target="_blank">
@@ -85,12 +83,4 @@ const ProfileData = (props) => {
     </div>
 }
 
-let mapStateToProps = (state) => ({
-    profile:state.profilePage.profile,
-    editModeProfile: state.profilePage.editModeProfile
-})
-
-export default compose(
-    withRouter,
-    connect(mapStateToProps,{updateProfileInfo,changeEditModeProfile})
-)(ProfileInfo)
+export default ProfileInfo

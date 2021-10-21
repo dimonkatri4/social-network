@@ -2,25 +2,27 @@ import React, {useState} from 'react';
 import LeftPanel from './LeftPanel/LeftPanel';
 import s from './main.module.css';
 import {Redirect, Route, Switch} from 'react-router-dom';
-//import Dialogs from './Dialogs/Dialogs';
 import News from './News/News';
 import Music from './Music/Music';
 import Settings from './Settings/Settings';
 import UsersContainer from "./Users/UsersContainer";
-//import ProfileContainer from "./Profile/ProfileContainer";
 import Login from "./Login/Login";
 import RightPanel from "./RightPanel/RightPanel";
 import ModalWindow from "./ModalWindow/ModalWindow";
 import Page404 from "../common/Page404/Page404";
+//import DialogsContainer from "./Dialogs/DialogsContainer";
+//import ProfileContainer from "./Profile/ProfileContainer";
 
-const Dialogs = React.lazy(() => import('./Dialogs/Dialogs'));
+const DialogsContainer = React.lazy(() => import('./Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./Profile/ProfileContainer'));
 
 const Main = (props) => {
 
     const [active,setActive] = useState(false);
 
-    const profilePhoto = props.profilePage.profile && props.profilePage.profile.photos;
+    const profilePhoto = props.profile && props.profile.photos;
+
+    console.log("Main");
 
     return (
         <div className={s.main_page}>
@@ -35,7 +37,7 @@ const Main = (props) => {
                     <Redirect exact from='/' to='/profile'/>
                     <Route path='/dialog' render={() =>
                         <React.Suspense fallback={<div>Loading..</div>}>
-                            <Dialogs dialogsPage={props.dialogsPage} isAuth={props.isAuth}/>
+                            <DialogsContainer/>
                         </React.Suspense>
                     }/>
                     <Route path='/profile'/>
@@ -51,7 +53,7 @@ const Main = (props) => {
                 </ModalWindow>
             </div>
 
-            {props.isAuth && <RightPanel sidebarPage={props.sidebarPage} isAuth={props.isAuth} getProfileDataRef={props.getProfileDataRef}/>}
+            {props.isAuth && <RightPanel getProfileDataRef={props.getProfileDataRef}/>}
         </div>
     )
 }
