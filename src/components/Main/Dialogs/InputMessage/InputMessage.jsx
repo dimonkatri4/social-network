@@ -3,7 +3,6 @@ import s from './inputMessage.module.css'
 import {Textarea} from "../../../common/FormsControl/FormsControl";
 import {maxLength, required} from "../../../../utils/validators/validators";
 import {Form, Field} from "react-final-form";
-import {addMessage} from "../../../../redux/dilogs-reducer";
 
 const maxLength30 = maxLength(30)
 
