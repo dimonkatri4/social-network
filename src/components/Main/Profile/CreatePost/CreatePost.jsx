@@ -11,7 +11,7 @@ const maxLength20 = maxLength(20)
 const PostForm = (props) => {
     return (
         <Form onSubmit={props.onSubmit}>
-            {({handleSubmit,form})=>(
+            {({handleSubmit})=>(
             <form onSubmit={handleSubmit}>
                 <div className={s.inputText}>
                     <Field
@@ -24,7 +24,7 @@ const PostForm = (props) => {
                         <span className={s.iconPanel}><FontAwesomeIcon icon="image"/></span>
                         <span className={s.iconPanel}><FontAwesomeIcon icon="video"/></span>
                         <span className={s.iconPanel}><FontAwesomeIcon icon="camera"/></span>
-                        <button className="button"  disabled={form.submitting || form.pristine} >Publish</button>
+                        <button className="button">Publish</button>
                     </div>
                 </div>
             </form>

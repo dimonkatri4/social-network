@@ -7,7 +7,6 @@ import NameDialog from './NameDialog/NameDialog'
 import SelectDialog from './SelectDialog/SelectDialog'
 import InputMessageContainer from "./InputMessage/InputMessageContainer";
 import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
-import InputMessageFormRedux from "./InputMessage/InputMessage";
 
 
 const Dialogs = (props) => {
