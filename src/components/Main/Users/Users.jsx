@@ -4,6 +4,7 @@ import User from "./User";
 import style from "./users.module.css"
 import classNames from "classnames";
 import SearchUsersReduxForm from "./SearchUsers";
+import Preloader from "../../common/Preloader/Preloader";
 
 
 let Users = ({totalUsersCount, pageSize,
@@ -41,6 +42,7 @@ let Users = ({totalUsersCount, pageSize,
                 friends={isFriendsList}
                 userSearchName={userSearchName}
             />
+            {props.isFetching ? <Preloader/> :
             <div>
                 {
                     props.users.map(u => <User
@@ -52,7 +54,7 @@ let Users = ({totalUsersCount, pageSize,
                         key={u.id}
                     />)
                 }
-            </div>
+            </div> }
         </div>
     )
 }

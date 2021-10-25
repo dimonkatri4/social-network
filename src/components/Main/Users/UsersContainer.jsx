@@ -54,9 +54,7 @@ class UsersContainer extends React.Component {
     }
 
     render() {
-        return <>
-            {this.props.isFetching && <Preloader/>}
-            <Users
+        return <Users
                 currentPage={this.props.currentPage}
                 onPageChanged={this.onPageChanged}
                 unfollow={this.props.unfollow}
@@ -72,8 +70,8 @@ class UsersContainer extends React.Component {
                 clearForm={this.clearForm}
                 userSearchName={this.state.userSearchName}
                 scrollToMainPhoto={this.props.scrollToMainPhoto}
+                isFetching={this.props.isFetching}
             />
-        </>
     }
 }
 
