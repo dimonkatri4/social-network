@@ -1,8 +1,9 @@
 import React from "react";
-import preloader from "../../../images/Preloader.gif";
+import preloader from "../../../images/Preloader.svg";
+import style from "./preloader.module.css"
 
 const Preloader = () => {
-    return <div>
+    return <div className={style.pagination}>
         <img src={preloader} alt=""/>
     </div>
 }

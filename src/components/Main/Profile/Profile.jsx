@@ -5,6 +5,7 @@ import CreatePostContainer from "./CreatePost/CreatePostContainer";
 import Cover from "./Cover/Cover";
 import {Redirect} from "react-router-dom";
 import {setErrorInStatus} from "../../../redux/profile-reducer";
+import Preloader from "../../common/Preloader/Preloader";
 
 const Profile = (props) => {
      if(!props.isAuth) return <Redirect to='/login'/>

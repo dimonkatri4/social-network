@@ -54,9 +54,7 @@ class UsersContainer extends React.Component {
     }
 
     render() {
-        return <>
-            {this.props.isFetching && <Preloader/>}
-            <Users
+        return <Users
                 currentPage={this.props.currentPage}
                 onPageChanged={this.onPageChanged}
                 unfollow={this.props.unfollow}
@@ -65,15 +63,14 @@ class UsersContainer extends React.Component {
                 pageSize={this.props.pageSize}
                 users={this.props.users}
                 followingInProgress={this.props.followingInProgress}
-                toggleFollowing={this.props.toggleFollowing}
                 showFriends={this.showFriends}
                 isFriendsList={this.props.isFriendsList}
                 searchUsers={this.searchUsers}
                 clearForm={this.clearForm}
                 userSearchName={this.state.userSearchName}
                 scrollToMainPhoto={this.props.scrollToMainPhoto}
+                isFetching={this.props.isFetching}
             />
-        </>
     }
 }
 
@@ -93,7 +90,7 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowing, requestUsers, setIsFriendsList})
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage, requestUsers, setIsFriendsList})
 )(UsersContainer)
 
 

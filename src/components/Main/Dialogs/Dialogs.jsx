@@ -13,6 +13,7 @@ const Dialogs = (props) => {
 
     let nameDialogs = props.dialogsPage.dialogs
         .map(el => <Route path={`/dialog/${el.id}`}
+                          key={el.id}
                           render={() => <NameDialog img={el.img} name={el.name} key={el.id}/>}/>)
 
     // let number = Number();
@@ -24,6 +25,7 @@ const Dialogs = (props) => {
 
     let messagesElement = props.dialogsPage.messages
         .map(message => <Route path='/dialog/:numder'
+                               key={message.id}
                                render={() => <Message message={message.message} key={message.id}/>}/>)
 
 /*    if (!props.isAuth) {

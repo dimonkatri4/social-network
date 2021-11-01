@@ -7,7 +7,6 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {requestFriends} from "../../../../redux/users-reducer";
 import Sidebar from "./Sidebar";
-import Preloader from "../../../common/Preloader/Preloader";
 
 
 class SidebarContainer extends React.Component {

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Settings = () => {
     return (
-        <div>
+        <div className="profile_block">
             Settings
         </div>
     )

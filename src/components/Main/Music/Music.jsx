@@ -2,7 +2,7 @@ import React from 'react'
 
 const Music = () => {
     return (
-        <div>
+        <div className="profile_block">
             Music
         </div>
     )
