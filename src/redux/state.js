@@ -44,15 +44,11 @@ let store = {
             ]
         }
     },
-    subscribe(observer) {
-        this._subscriber = observer
-    },
 
     getState() {
         return this._state;
     },
 
-<<<<<<< HEAD
     addPost()  {
         let newPost = {
             id:5,
@@ -91,11 +87,8 @@ let store = {
 
     subscribe(observer)  {
         this._subscriber = observer
-    }
-}
-
-     export default store
-=======
+    },
+    
     dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
@@ -106,4 +99,4 @@ let store = {
 
 
 export default store
->>>>>>> df5aac8bb61eb77d3a1b32279eec3431097eea5e
+
