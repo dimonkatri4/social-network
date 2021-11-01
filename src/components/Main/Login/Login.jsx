@@ -1,9 +1,9 @@
 import React from "react";
-import {Field, reduxForm} from "redux-form";
+import {Field, Form} from "react-final-form";
 import {connect} from "react-redux";
 import {getCaptchaUrl, login} from "../../../redux/auth-reducer";
 import {Input} from "../../common/FormsControl/FormsControl";
-import {email, required} from "../../../utils/validators/validators";
+import {composeValidators, email, required} from "../../../utils/validators/validators";
 import {Redirect} from "react-router-dom";
 import style from "../../common/FormsControl/formsControl.module.css"
 import s from "./login.module.css"
@@ -13,14 +13,16 @@ import logo from "../../../images/logo.png"
 
 
 const LoginForm = (props) => {
-    return <form onSubmit={props.handleSubmit}>
+    return <Form onSubmit={props.onSubmit} >
+        {({handleSubmit, error, errors,submitError}) => (
+    <form onSubmit={handleSubmit}>
         <div>
             <Field className={classNames("inputPlace", s.loginInput)} placeholder={'Email'} component={Input}
-                   name={'login'} validate={[required, email]}/>
+                   name={'login'} validate={composeValidators(required, email)}/>
         </div>
         <div>
             <Field className={classNames("inputPlace", s.loginInput)} placeholder={'Password'} component={Input}
-                   name={'password'} validate={[required]} type={'password'}/>
+                   name={'password'} validate={required} type={'password'}/>
         </div>
         <div className={s.rememberMe}>
             <Field type={'checkbox'} name={'rememberMe'} component={Input}/>Remember Me
@@ -29,16 +31,18 @@ const LoginForm = (props) => {
         <div className={s.captcha}>
             <img src={props.captcha} onClick={props.getCaptchaUrl} title="click to update the image" alt="captcha"/>
             <Field className={classNames("inputPlace")} placeholder={'Enter the symbols'}
-                   component={Input} name={'captcha'} validate={[required]}/>
+                   component={Input} name={'captcha'} validate={required}/>
         </div>}
         {props.error && <div className={style.commonErrorLogin}>{props.error}</div>}
         <div>
             <button className={classNames("button", s.loginButton)}>Login</button>
         </div>
     </form>
+            )}
+    </Form>
 }
 
-const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
+//const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
 const Login = (props) => {
     const onSubmit = (formData) => {
@@ -60,7 +64,7 @@ const Login = (props) => {
             <div className={`caption`}>
                 <h3 className="title">Login</h3>
             </div>
-            <LoginReduxForm onSubmit={onSubmit} captcha={props.captchaUrl} getCaptchaUrl={props.getCaptchaUrl}/>
+            <LoginForm onSubmit={onSubmit} captcha={props.captchaUrl} getCaptchaUrl={props.getCaptchaUrl}/>
         </div>
     </div>
 }

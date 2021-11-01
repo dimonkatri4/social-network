@@ -38,7 +38,7 @@ const InputMessageForm = (props) => {
 const InputMessage = (props) => {
     const onSubmit = (formData) => {
         props.addMessage(formData.messageText);
-        //formData.messageText = "";
+        formData.messageText = "";
     }
     return (
         <InputMessageForm onSubmit={onSubmit} />

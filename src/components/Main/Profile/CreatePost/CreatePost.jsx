@@ -6,9 +6,9 @@ import {Textarea} from "../../../common/FormsControl/FormsControl";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
-const maxLength20 = maxLength(20)
 
 const PostForm = (props) => {
+    console.log(props)
     return (
         <Form onSubmit={props.onSubmit}>
             {({handleSubmit})=>(
@@ -18,6 +18,7 @@ const PostForm = (props) => {
                         component={Textarea}
                         name={'messageText'}
                         placeholder="write something"
+                        validate={required}
                     />
                     <div className={s.panel}>
                         <span className={s.iconPanel}><FontAwesomeIcon icon="music"/></span>

@@ -63,7 +63,6 @@ class UsersContainer extends React.Component {
                 pageSize={this.props.pageSize}
                 users={this.props.users}
                 followingInProgress={this.props.followingInProgress}
-                toggleFollowing={this.props.toggleFollowing}
                 showFriends={this.showFriends}
                 isFriendsList={this.props.isFriendsList}
                 searchUsers={this.searchUsers}
@@ -91,7 +90,7 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowing, requestUsers, setIsFriendsList})
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage, requestUsers, setIsFriendsList})
 )(UsersContainer)
 
 
