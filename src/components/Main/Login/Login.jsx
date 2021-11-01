@@ -14,7 +14,7 @@ import logo from "../../../images/logo.png"
 
 const LoginForm = (props) => {
     return <Form onSubmit={props.onSubmit} >
-        {({handleSubmit, error, errors,submitError}) => (
+        {({handleSubmit}) => (
     <form onSubmit={handleSubmit}>
         <div>
             <Field className={classNames("inputPlace", s.loginInput)} placeholder={'Email'} component={Input}
@@ -45,6 +45,7 @@ const LoginForm = (props) => {
 //const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
 const Login = (props) => {
+
     const onSubmit = (formData) => {
         props.login(formData.login, formData.password, formData.rememberMe, formData.captcha)
     }
@@ -64,12 +65,14 @@ const Login = (props) => {
             <div className={`caption`}>
                 <h3 className="title">Login</h3>
             </div>
-            <LoginForm onSubmit={onSubmit} captcha={props.captchaUrl} getCaptchaUrl={props.getCaptchaUrl}/>
+            <LoginForm onSubmit={onSubmit} captcha={props.captchaUrl}
+                       getCaptchaUrl={props.getCaptchaUrl} error={props.error}/>
         </div>
     </div>
 }
 let mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
-    captchaUrl: state.auth.captchaUrl
+    captchaUrl: state.auth.captchaUrl,
+    error: state.auth.requestError
 })
 export default connect(mapStateToProps, {login, getCaptchaUrl})(Login)
