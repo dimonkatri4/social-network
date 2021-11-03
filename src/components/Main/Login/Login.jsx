@@ -14,7 +14,7 @@ import logo from "../../../images/logo.png"
 
 const LoginForm = (props) => {
     return <Form onSubmit={props.onSubmit} >
-        {({handleSubmit, error, errors,submitError}) => (
+        {({handleSubmit,submitError}) => (
     <form onSubmit={handleSubmit}>
         <div>
             <Field className={classNames("inputPlace", s.loginInput)} placeholder={'Email'} component={Input}
@@ -33,7 +33,7 @@ const LoginForm = (props) => {
             <Field className={classNames("inputPlace")} placeholder={'Enter the symbols'}
                    component={Input} name={'captcha'} validate={required}/>
         </div>}
-        {props.error && <div className={style.commonErrorLogin}>{props.error}</div>}
+        {submitError && <div className={style.commonErrorLogin}>{submitError}</div>}
         <div>
             <button className={classNames("button", s.loginButton)}>Login</button>
         </div>
@@ -46,7 +46,7 @@ const LoginForm = (props) => {
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        props.login(formData.login, formData.password, formData.rememberMe, formData.captcha)
+        return props.login(formData.login, formData.password, formData.rememberMe, formData.captcha)
     }
     if (props.isAuth) {
         return <Redirect to='/profile'/>
