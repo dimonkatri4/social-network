@@ -1,19 +1,16 @@
 import {authAPI, captchaAPI} from "../api/api";
-import {stopSubmit} from "redux-form";
 import {FORM_ERROR} from 'final-form'
 import {getOwnerProfile} from "./profile-reducer";
 
 const SET_USER_DATA = 'auth/SET_USER_DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'auth/GET_CAPTCHA_URL_SUCCESS';
-const SET_ERROR = 'auth/SET_ERROR';
 
 let initialState = {
     userId: null,
     email: null,
     login: null,
     isAuth: false,
-    captchaUrl: null,
-    requestError: null
+    captchaUrl: null
 }
 
 const authReducer = (state = initialState, action) => {
@@ -23,11 +20,6 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.payload
-            }
-        case SET_ERROR:
-            return {
-                ...state,
-                requestError: action.error
             }
         default:
             return state
@@ -39,9 +31,6 @@ export const setAuthUserData = (userId, email, login, isAuth) =>
 
 export const getCaptchaUrlSuccess = (captchaUrl) =>
     ({type: GET_CAPTCHA_URL_SUCCESS, payload: {captchaUrl}});
-
-const setError = (error) =>
-    ({type: SET_ERROR, error});
 
 export const getAuthUserData = () => async (dispatch) => {
     const data = await authAPI.authMe();
@@ -56,21 +45,14 @@ export const login = (userLogin, password, rememberMe, captcha) => async (dispat
     const data = await authAPI.login(userLogin, password, rememberMe, captcha);
     if (data.resultCode === 0) {
         dispatch(getAuthUserData());
-        dispatch(getCaptchaUrlSuccess(null));
-        dispatch(setError(null))
+        dispatch(getCaptchaUrlSuccess(null))
+    } else if (data.resultCode === 10) {
+        dispatch(getCaptchaUrl());
+        let errorMessage = data.messages.length > 0 ? data.messages[0] : "Other Error";
+        return {[FORM_ERROR]: errorMessage}
     } else {
-        if (data.resultCode === 10) {
-            dispatch(getCaptchaUrl());
-            let errorMessage = data.messages.length > 0 ? data.messages[0] : "Other Error";
-            dispatch(setError(errorMessage))
-
-        } else {
-            let errorMessage = data.messages.length > 0 ? data.messages[0] : "Other Error";
-            dispatch(setError(errorMessage));
-            return {[FORM_ERROR]:errorMessage}
-            //dispatch(stopSubmit('login', {_error: errorMessage}))
-        }
-
+        let errorMessage = data.messages.length > 0 ? data.messages[0] : "Other Error";
+        return {[FORM_ERROR]: errorMessage}
     }
 }
 

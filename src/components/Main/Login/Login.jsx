@@ -10,12 +10,11 @@ import s from "./login.module.css"
 import classNames from "classnames";
 import winkSmile from "../../../images/winkSmile.png"
 import logo from "../../../images/logo.png"
-import {FORM_ERROR} from "final-form";
 
 
 const LoginForm = (props) => {
-    return <Form onSubmit={props.onSubmit}
-        render = {({handleSubmit,submitError}) => (
+    return <Form onSubmit={props.onSubmit} >
+        {({handleSubmit,submitError}) => (
     <form onSubmit={handleSubmit}>
         <div>
             <Field className={classNames("inputPlace", s.loginInput)} placeholder={'Email'} component={Input}
@@ -34,13 +33,13 @@ const LoginForm = (props) => {
             <Field className={classNames("inputPlace")} placeholder={'Enter the symbols'}
                    component={Input} name={'captcha'} validate={required}/>
         </div>}
-        {props.error && <div className={style.commonErrorLogin}>{props.error}</div>}
+        {submitError && <div className={style.commonErrorLogin}>{submitError}</div>}
         <div>
             <button className={classNames("button", s.loginButton)}>Login</button>
         </div>
     </form>
             )}
-    />
+    </Form>
 }
 
 //const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
@@ -48,10 +47,7 @@ const LoginForm = (props) => {
 const Login = (props) => {
 
     const onSubmit = (formData) => {
-        // if(formData.password === "1"){
-        //     return {[FORM_ERROR]:"Error"}
-        // }
-        props.login(formData.login, formData.password, formData.rememberMe, formData.captcha)
+        return props.login(formData.login, formData.password, formData.rememberMe, formData.captcha)
     }
     if (props.isAuth) {
         return <Redirect to='/profile'/>
@@ -70,13 +66,12 @@ const Login = (props) => {
                 <h3 className="title">Login</h3>
             </div>
             <LoginForm onSubmit={onSubmit} captcha={props.captchaUrl}
-                       getCaptchaUrl={props.getCaptchaUrl} error={props.error}/>
+                       getCaptchaUrl={props.getCaptchaUrl}/>
         </div>
     </div>
 }
 let mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
-    captchaUrl: state.auth.captchaUrl,
-    error: state.auth.requestError
+    captchaUrl: state.auth.captchaUrl
 })
 export default connect(mapStateToProps, {login, getCaptchaUrl})(Login)
