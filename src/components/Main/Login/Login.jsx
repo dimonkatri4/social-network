@@ -10,11 +10,12 @@ import s from "./login.module.css"
 import classNames from "classnames";
 import winkSmile from "../../../images/winkSmile.png"
 import logo from "../../../images/logo.png"
+import {FORM_ERROR} from "final-form";
 
 
 const LoginForm = (props) => {
-    return <Form onSubmit={props.onSubmit} >
-        {({handleSubmit}) => (
+    return <Form onSubmit={props.onSubmit}
+        render = {({handleSubmit,submitError}) => (
     <form onSubmit={handleSubmit}>
         <div>
             <Field className={classNames("inputPlace", s.loginInput)} placeholder={'Email'} component={Input}
@@ -39,7 +40,7 @@ const LoginForm = (props) => {
         </div>
     </form>
             )}
-    </Form>
+    />
 }
 
 //const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
@@ -47,6 +48,9 @@ const LoginForm = (props) => {
 const Login = (props) => {
 
     const onSubmit = (formData) => {
+        // if(formData.password === "1"){
+        //     return {[FORM_ERROR]:"Error"}
+        // }
         props.login(formData.login, formData.password, formData.rememberMe, formData.captcha)
     }
     if (props.isAuth) {

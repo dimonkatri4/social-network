@@ -1,5 +1,6 @@
 import {authAPI, captchaAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
+import {FORM_ERROR} from 'final-form'
 import {getOwnerProfile} from "./profile-reducer";
 
 const SET_USER_DATA = 'auth/SET_USER_DATA';
@@ -61,11 +62,12 @@ export const login = (userLogin, password, rememberMe, captcha) => async (dispat
         if (data.resultCode === 10) {
             dispatch(getCaptchaUrl());
             let errorMessage = data.messages.length > 0 ? data.messages[0] : "Other Error";
-            dispatch(setError(errorMessage));
+            dispatch(setError(errorMessage))
 
         } else {
             let errorMessage = data.messages.length > 0 ? data.messages[0] : "Other Error";
-            dispatch(setError(errorMessage))
+            dispatch(setError(errorMessage));
+            return {[FORM_ERROR]:errorMessage}
             //dispatch(stopSubmit('login', {_error: errorMessage}))
         }
 
