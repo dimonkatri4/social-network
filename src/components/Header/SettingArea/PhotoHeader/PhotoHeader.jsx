@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const PhotoHeader = (props) => {
 
+
     let [clickedInside, setClickedInside] = useState(false);
 
     /**

@@ -11,6 +11,7 @@ import {
 } from "../../../redux/profile-reducer";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
+import {getMainPhotoRef} from "../../../redux/app-reducer";
 
 
 class ProfileContainer extends React.Component {
@@ -52,7 +53,7 @@ let mapStateToProps = (state) => ({
 });
 
 export default compose(
-    connect(mapStateToProps,{getProfile,getStatus,updateStatus, savePhoto, setErrorInStatus,changeIsLiked}),
+    connect(mapStateToProps,{getProfile,getStatus,updateStatus, savePhoto, setErrorInStatus,changeIsLiked, getMainPhotoRef}),
     withRouter,
     //withAuthRedirect
 )(ProfileContainer)

@@ -20,6 +20,7 @@ const Profile = (props) => {
                    setErrorInStatus={props.setErrorInStatus}
                    getMainPhotoRef={props.getMainPhotoRef}
                    setActive={props.setActive}
+                   getMainPhotoRef={props.getMainPhotoRef}
             />
         <div className={s.content}>
             <CreatePostContainer/>

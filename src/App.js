@@ -11,10 +11,6 @@ import {HashRouter, withRouter} from "react-router-dom";
 import store from "./redux/redux-store";
 
 class App extends React.Component {
-    state = {
-        profileDataRef: "",
-        mainPhotoRef: ""
-    }
 
     catchAllUnhandledErrors = (reason,promise) => {
         alert(reason.reason)
@@ -25,39 +21,15 @@ class App extends React.Component {
         window.addEventListener("unhandledrejection",this.catchAllUnhandledErrors)
     }
 
-    getProfileDataRef = (ref) => {
-        this.setState({profileDataRef:ref})
-    }
-    getMainPhotoRef = (ref) => {
-        this.setState({mainPhotoRef:ref})
-    }
-
     scrollToProfileEdit = () => {
-        let scroll = () => this.state.profileDataRef.current.scrollIntoView({ behavior: "smooth" });
-        if(this.state.profileDataRef.current){
-            scroll();
-        } else {
-            setTimeout(scroll, 500)
-        }
+        let scroll = () => this.props.profileDataRef.current.scrollIntoView({ behavior: "smooth" });
+        this.props.profileDataRef.current ? scroll() : setTimeout(scroll, 500);
     }
 
     scrollToMainPhoto = () => {
-        let scroll = () => this.state.mainPhotoRef.current.scrollIntoView({ behavior: "smooth" });
-        if(this.state.mainPhotoRef.current){
-            scroll();
-        } else {
-            setTimeout(scroll, 500)
+        let scroll = () => this.props.mainPhotoRef.current.scrollIntoView({ behavior: "smooth" });
+        this.props.mainPhotoRef.current ? scroll() : setTimeout(scroll, 500)
         }
-    }
-
-/*    scrollToComponent = (componentRef) => {
-        let scroll = () => componentRef.current.scrollIntoView({ behavior: "smooth" });
-        if(componentRef.current){
-            scroll();
-        } else {
-            setTimeout(scroll, 500)
-        }
-    }*/
 
 
     render() {
@@ -66,12 +38,9 @@ class App extends React.Component {
         }
         return (
             <div className='app-wrapper'>
-                <HeaderContainer profileDataRef={this.state.profileDataRef}
-                                 scrollToProfileEdit={this.scrollToProfileEdit}
+                <HeaderContainer scrollToProfileEdit={this.scrollToProfileEdit}
                                  scrollToMainPhoto={this.scrollToMainPhoto}/>
-                <MainContainer getProfileDataRef={this.getProfileDataRef}
-                               getMainPhotoRef={this.getMainPhotoRef}
-                               scrollToMainPhoto={this.scrollToMainPhoto}
+                <MainContainer scrollToMainPhoto={this.scrollToMainPhoto}
                 />
             </div>
         );
@@ -79,7 +48,9 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    initialized: state.app.initialized
+    initialized: state.app.initialized,
+    profileDataRef:state.app.profileDataRef,
+    mainPhotoRef:state.app.mainPhotoRef
 })
 
 const AppContainer = compose(
