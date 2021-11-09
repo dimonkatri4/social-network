@@ -9,7 +9,7 @@ const MainPhoto = (props) => {
     const mainPhotoRef = useRef(null);
     useEffect(() => {
         props.getMainPhotoRef(mainPhotoRef);
-    },[])
+    },[mainPhotoRef])
 
     const updatePhoto = (e) => {
        if( e.target.files.length !== 0) {

@@ -4,6 +4,7 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {changeEditModeProfile, updateProfileInfo} from "../../../../redux/profile-reducer";
 import ProfileInfo from "./ProfileInfo";
+import {getProfileDataRef} from "../../../../redux/app-reducer";
 
 
 
@@ -14,5 +15,5 @@ let mapStateToProps = (state) => ({
 
 export default compose(
     withRouter,
-    connect(mapStateToProps,{updateProfileInfo,changeEditModeProfile})
+    connect(mapStateToProps,{updateProfileInfo,changeEditModeProfile,getProfileDataRef})
 )(ProfileInfo)

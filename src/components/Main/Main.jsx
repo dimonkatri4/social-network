@@ -22,8 +22,6 @@ const Main = (props) => {
 
     const profilePhoto = props.profile && props.profile.photos;
 
-    console.log("Main");
-
     return (
         <div className={s.main_page}>
             {props.isAuth && <LeftPanel/>}

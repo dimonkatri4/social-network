@@ -8,7 +8,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 const PostForm = (props) => {
-    console.log(props)
     return (
         <Form onSubmit={props.onSubmit}>
             {({handleSubmit})=>(
