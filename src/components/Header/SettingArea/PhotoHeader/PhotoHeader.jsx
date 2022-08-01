@@ -36,7 +36,7 @@ const PhotoHeader = (props) => {
 
     return (
         <div ref={wrapperRef} className={s.photo_header}>
-            <img src={props.profileOwner.photos ? props.profileOwner.photos.small : photoUser}
+            <img src={props.profileOwner.photos.small ? props.profileOwner.photos.small : photoUser}
                  alt="user"
                  onClick={() => setClickedInside(!clickedInside)}
             />

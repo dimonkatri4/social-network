@@ -46,7 +46,7 @@ const CreatePost = (props) => {
             <div className={s.create_post}>
                 {props.profileOwner && <img
                     className={s.ava}
-                    src={props.profileOwner.photos ? props.profileOwner.photos.small : photoUser}
+                    src={props.profileOwner.photos.small ? props.profileOwner.photos.small : photoUser}
                     alt="avatar"/>}
                 <PostForm onSubmit={onSubmit}/>
             </div>

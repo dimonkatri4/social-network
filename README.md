@@ -2,7 +2,7 @@
 
 ## Додаток розроблений за допомогою фреймворку React.
 
-### Ознайомитись з додатком онлайн можна за посиланням: [Social Network](https://vermillion-lily-0192a9.netlify.app/).
+### Ознайомитись з додатком онлайн можна за посиланням: [Social Network](https://dimonkatri4.github.io/social-network/).
 
 ### Для входу в соціальну мережу використовуйте наступні облікові дані: 
 #### Email: `free@samuraijs.com` Password: `free`
