@@ -3,6 +3,7 @@ import s from "./photoHeader.module.css"
 import {NavLink} from "react-router-dom";
 import classNames from "classnames";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import photoUser from '../../../../images/photo-user.jpg'
 
 const PhotoHeader = (props) => {
 
@@ -35,7 +36,9 @@ const PhotoHeader = (props) => {
 
     return (
         <div ref={wrapperRef} className={s.photo_header}>
-            <img src={props.profileOwner.photos.small} alt="user" onClick={() => setClickedInside(!clickedInside)}
+            <img src={props.profileOwner.photos ? props.profileOwner.photos.small : photoUser}
+                 alt="user"
+                 onClick={() => setClickedInside(!clickedInside)}
             />
             <div>{props.isAuth && props.profileOwner.fullName}</div>
             {clickedInside &&
