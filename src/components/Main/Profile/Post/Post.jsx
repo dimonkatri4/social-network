@@ -7,7 +7,7 @@ import classNames from "classnames";
 const Post = (props) => {
 
     const changeLike = () => {
-        props.changeIsLiked(!props.isLiked,props.id);
+        props.changeIsLiked(props.id);
     }
 
     return (

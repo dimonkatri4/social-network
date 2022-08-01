@@ -40,24 +40,6 @@ const ProfileInfo = (props) => {
     </div>
 }
 
-const Contacts = ({contactTitle, contactValue}) => {
-    const contactsIcon = {
-        facebook: ["fab", "facebook-square"],
-        github: ["fab", "github-square"],
-        instagram: ["fab", "instagram"],
-        mainLink: ["fas", "link"],
-        twitter: ["fab", "twitter-square"],
-        vk: ["fab", "vk"],
-        website: ["fas", "globe-americas"],
-        youtube: ["fab", "youtube"]
-    }
-    return <div className={style.contact}>
-        {contactValue && <div><a className={style.contactIcon} href={contactValue} title={contactTitle} target="_blank">
-            <FontAwesomeIcon icon={contactsIcon[contactTitle]}/>
-        </a></div>}
-    </div>
-}
-
 const ProfileData = (props) => {
     return <div>
         <div className={style.profileInfoTitle}>
@@ -80,6 +62,24 @@ const ProfileData = (props) => {
         {props.isOwner && <div className={style.editButton}>
             <button className="button" onClick={props.goToEditMode}>Edit Profile</button>
         </div>}
+    </div>
+}
+
+const Contacts = ({contactTitle, contactValue}) => {
+    const contactsIcon = {
+        facebook: ["fab", "facebook-square"],
+        github: ["fab", "github-square"],
+        instagram: ["fab", "instagram"],
+        mainLink: ["fas", "link"],
+        twitter: ["fab", "twitter-square"],
+        vk: ["fab", "vk"],
+        website: ["fas", "globe-americas"],
+        youtube: ["fab", "youtube"]
+    }
+    return <div className={style.contact}>
+        {contactValue && <div><a className={style.contactIcon} href={contactValue} title={contactTitle} target="_blank">
+            <FontAwesomeIcon icon={contactsIcon[contactTitle]}/>
+        </a></div>}
     </div>
 }
 

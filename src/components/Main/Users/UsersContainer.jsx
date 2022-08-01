@@ -2,13 +2,11 @@ import React from "react";
 import {connect} from "react-redux";
 import {
     follow, requestUsers,
-    setCurrentPage, setIsFriendsList,
-    toggleFollowing,
+    setCurrentPage, toggleIsFriendsList,
     unfollow
 } from "../../../redux/users-reducer";
 import Users from "./Users";
 import {compose} from "redux";
-import Preloader from "../../common/Preloader/Preloader";
 import {
     getCurrentPage,
     getFollowingInProgress,
@@ -90,7 +88,7 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-    connect(mapStateToProps, {follow, unfollow, setCurrentPage, requestUsers, setIsFriendsList})
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage, requestUsers, setIsFriendsList: toggleIsFriendsList})
 )(UsersContainer)
 
 

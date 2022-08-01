@@ -31,9 +31,6 @@ class ProfileContainer extends React.Component {
     }
     componentDidMount() {
         this.refreshProfile()
-        //     profileAPI.getProfile(userId).then(data => {
-        //     this.props.setUsersProfile(data);
-        // })
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(this.props.match.params.userId !== prevProps.match.params.userId){
@@ -42,6 +39,7 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
+        console.log("PROFILECONTAINER RENDER")
         return <Profile {...this.props} isOwner={!this.props.match.params.userId} />
     }
 }

@@ -66,7 +66,6 @@ let initialState = {
             photo: photoUser
         },
     ],
-
     profile: null,
     status: '',
     photo: null,
@@ -126,9 +125,9 @@ const profileReducer = (state = initialState, action) => {
             return {...state,posts: state.posts.map(p => {
                 if(p["id"] === action.id) {
                     if(p.isLiked) {
-                        return {...p, isLiked:action.isLiked,likeCount:p.likeCount-1}
+                        return {...p, isLiked: false,likeCount:p.likeCount-1}
                     } else {
-                        return {...p, isLiked:action.isLiked,likeCount:p.likeCount+1}
+                        return {...p, isLiked: true,likeCount:p.likeCount+1}
                     }
                 }
                 return p
@@ -147,7 +146,7 @@ export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
 export const updateProfileInfoSuccess = (profile) => ({type: UPDATE_PROFILE_INFO_SUCCESS, profile});
 export const changeEditModeProfile = (editValue) => ({type: CHANGE_EDIT_MODE_PROFILE, editValue});
 export const setErrorInStatus = (error) => ({type: SET_ERROR_IN_STATUS, error});
-export const changeIsLiked = (isLiked,id) => ({type: CHANGE_IS_LIKED, isLiked,id});
+export const changeIsLiked = (id) => ({type: CHANGE_IS_LIKED, id});
 
 
 export const getProfile = (userId) => {

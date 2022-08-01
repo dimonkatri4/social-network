@@ -98,7 +98,7 @@ export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page});
 export const setTotalCountUsers = (count) => ({type: SET_TOTAL_COUNT_USERS, count})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const toggleFollowing = (isFetching, userId) => ({type: TOGGLE_FOLLOWING_IN_PROGRESS, isFetching, userId})
-export const setIsFriendsList = (isFriendsList) => ({type: SET_IS_FRIENDS_LIST, isFriendsList})
+export const toggleIsFriendsList = (isFriendsList) => ({type: SET_IS_FRIENDS_LIST, isFriendsList})
 export const setFriendsList = (friendsList) => ({type: SET_FRIENDS_LIST, friendsList})
 
 //Thunk Creators
